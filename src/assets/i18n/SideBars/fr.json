@@ -1,0 +1,15 @@
+{
+	"SETTINGSBAR":{
+        "DARKTHEME": "Sombre",
+        "LIGHTTHEME": "Claire",
+        "SCHOOL": "ECOLE",
+        "THEME": "Thème",
+        "TITLE": "Paramètres",
+        "YEARFIELD": "Année",
+		"RESETIDBBTN": "Recharger les données locales"
+    },
+    "MODULESBAR":{
+        "LOGOUT": "Se déconnecter",
+	    "MODULES": "Modules"
+    }
+}

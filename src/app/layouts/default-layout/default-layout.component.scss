@@ -1,0 +1,278 @@
+/*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+.navbar {
+    padding: 0px 5px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.navbar-btn {
+    background-color: #2F5BA6 !important;
+    color: white;
+}
+
+.leftrounded{
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.rightrounded{
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-left: 0.8px;
+}
+
+.notClickable, .notClickable :active,.notClickable:hover{
+    cursor: default;
+    outline: none !important;
+    box-shadow: none;
+    color: white !important;
+}
+
+.navCenteredBG{
+    height: fit-content;    
+    border-radius: 50px;
+    background-color: #C3C4CE;
+    direction: ltr !important;
+}
+.btn-darkPurple{
+    background-color: #263148;
+    border-radius: 100%;
+    color: white;
+    padding: 9px 13px;
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 0;
+    height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e6e6e6d9;
+    font-family: 'Poppins', sans-serif;
+}
+
+.realContent{
+    padding: 2px 0px;
+    overflow-x: hidden;
+}
+
+.rounded-18{
+    border-radius: 18px;
+}
+
+.myTabsList li{
+    padding: 3px 4px;
+}
+.myTabsList li a{
+    color: #808080;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 4px;
+    display: block;
+}
+.myTabsList li.active> a.active{
+    color: #3E4EE3 !important;
+    margin-top: 0px;
+}
+.myTabsList li.active{
+    border-top: 4px #3E4EE3 solid ;
+    background: rgb(249,245,245);   
+    background: linear-gradient(180deg, rgb(221, 219, 219) 0%, rgb(238, 236, 236) 100%);
+}
+
+
+.ComponentHeight{
+    margin-top: -5px;
+    overflow-y: hidden;
+}
+
+@media (max-width: 768px){
+    .navbar {
+        padding: 0px 10px;
+    }
+    .ColumnsHidingMenuHeight{
+        height: 70% !important;
+    }
+}
+
+@media( max-width: 450px ){
+    #content{
+        height: unset ;
+    }
+    .ComponentHeight{
+        min-height: 100vh;
+        margin-top: -3px;
+    }
+    .ColumnsHidingMenuHeight{
+        height: unset !important;
+    }
+    .mobileMinHeight{
+        min-height: 100vh;
+    }
+    .mobileUnroundedRight{
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+}
+
+.mobileMinHeight{
+    height: 100%;
+}
+
+@media( max-width: 1440px){
+    .btn-sm{
+        height : 30px;
+        width : 30px;
+        padding: 0px;
+    }
+    .myTabsList li{
+        padding: 0px 4px;
+    }
+}
+
+@media(min-width: 1024px){
+    .ColumnsHidingMenuHeight{
+        height: 50% !important;
+    }
+}
+
+.navBar-btn-Fsize{
+    font-size : 0.85rem !important;
+}
+
+/*
+.igx-RTL {
+    @import '~minireset.css/minireset';
+    /// You can add global styles to this file, and also import other style files 
+    @import "~igniteui-angular/lib/core/styles/themes/index";
+    /// Uncomment the following lines if you want to add a custom palette:
+    /// $primary: #731963 !default;
+    /// $secondary: #ce5712 !default;
+    /// $app-palette: igx-palette($primary, $secondary);
+    /// autoprefixer grid: on 
+    @include igx-core($direction: rtl);
+    @include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+    @include igx-theme($default-palette);   
+}
+*/
+.verticalDevider{
+    font-size: 0.9rem;
+}
+
+
+// Components Common style 
+
+.rounded-15{
+    border-radius: 15px;
+}
+
+.btn-indigo{
+    background-color: #6871C6;
+    color: white;
+    font-size: 13px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.fs-13px{
+    font-size: 13px;
+}
+
+.btn-indigo:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(104,113, 198,0.25);
+}
+
+.cardContent{
+    background-color: #dedede;
+    border-right: 0.7px white solid;
+    border-left: 0.7px white solid;
+}
+
+.rounded-18{
+    border-radius: 18px;
+}
+
+
+// #Theming
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+// 1st grid  custom style
+    $primary: #731963 !default;
+    $secondary: #ce5712 !default;
+    $app-palette: igx-palette($primary, $secondary);
+
+    @include igx-core();
+    @include igx-theme($app-palette);
+
+    $new-grid-theme: igx-grid-theme(
+        $row-odd-background: #F7F3F3,
+        $row-even-background: white,
+        $header-text-color: black,
+        $header-border-width: 1px,
+        $header-border-style: solid,
+        $edited-row-indicator : orange
+    );
+    @include igx-grid($new-grid-theme);
+
+    //@include igx-grid($new-grid-theme);
+
+// 1st grid  custom style
+
+// spliter style
+    $legacy-support: true;
+    $palette: $light-material-palette;
+    $schema: $light-material-schema;
+    $default-palette: $palette;
+    $igx-legacy-support: $legacy-support;
+    $green-palette: igx-palette(
+        $primary: #09f,
+        $secondary: #72da67,
+        $grays: #fff,
+        $surface: #333
+    );
+    $grays-btn-color: igx-color($green-palette, 'grays', 800);
+    $splitter-theme: igx-splitter-theme(
+        $bar-color: #000 ,
+        $handle-color: #000,
+        $expander-color: #fff,
+        $border-radius: 5px,
+        $focus-color: #000000,
+        $size: 6px,
+    );
+
+    $paginator-theme: igx-paginator-theme(
+        $background-color: white,
+    );
+    @include igx-paginator($paginator-theme);
+    @include igx-splitter($splitter-theme);
+    @include igx-css-vars($splitter-theme);
+    
+// end spliter style
+
+
+.warning-check-label:checked{
+    background-color: #ffc107 !important;
+    border-color: #fdbe00 !important;
+}
+
+.btn-xs{
+    font-size: .8rem;
+    padding: .25rem .5rem !important;
+}
+
+@import "~@ng-select/ng-select/themes/default.theme.css";

@@ -1,0 +1,17 @@
+<div class="loader d-flex align-items-center justify-content-center flex-column" [ngClass]="{ 'd-none': !visible }" >
+
+    <div class="card text-white bg-white border-secondary col-11 col-md-5 col-lg-4 col-xl-3" style="height: auto;">
+        <div class="card-body text-center" >
+            <h4 class="card-title text-dark"> {{ 'LOADER.LOADING'|translate }} </h4>
+            <div class="spinner-border text-info mt-3 mb-2" role="status">
+                <span class="visually-hidden"> Chargement ... </span>
+            </div>
+        </div>
+        <div class="card-footer bg-white text-center border-0" *ngIf="cancelable" >
+            <button type="button" class="btn btn-light btn-outline-danger" id="CancelReqBtn" (click)="CancelOperation()">
+                <i class="fas fa-times" ></i> {{ 'LOADER.CANCELOP'|translate }}
+            </button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,152 @@
+@keyframes carre {
+    0% {
+        background-color: rgb(254, 252, 252);
+    }
+    50% {
+        background-color: #368;
+    }
+    100% {
+        background-color: #369;
+    }
+}
+
+
+::ng-deep .carre {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+        transform: scale(1);
+}
+
+.carre:hover {
+    transform: scale(1.1);
+    filter: brightness(120%);
+}
+
+
+
+
+#row2 {
+    margin-top: 5%;
+    margin-left: 9%;
+
+}
+
+.mat-elevation-z4 {
+    background-color: #369;
+    border-radius: 5px;
+    animation-name: carre;
+    animation-duration: 4s;
+}
+
+
+::ng-deep #bar {
+    color: hsl(184, 12%, 75%);
+    background-color: rgb(193, 193, 226);
+    padding: 20px 0px 20px;
+    margin: 0px 0px 20px;
+    box-shadow: rgba(209, 200, 200, 0.279)
+}
+
+::ng-deep #img1,
+#img2 {
+    margin-left: 40%;
+    margin-top: 5%;
+
+}
+
+::ng-deep h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+::ng-deep h2,
+h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+
+}
+
+::ng-deep body {
+    margin: 2em;
+}
+
+::ng-deep body,
+input[type="text"],
+
+
+::ng-deep #button {
+    background-color: rgb(238, 238, 238);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(237, 236, 237);
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 4%;
+    transition: all 0.5s ease;
+    transform: scale(1);
+
+
+}
+
+::ng-deep #button:hover,
+#Lbutton:hover {
+    background-color: rgb(207, 237, 137);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.1);
+    filter: brightness(120%);
+    box-shadow: 0 12px 16px 0 rgba(209, 200, 200, 0.279), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar button {
+    background-color: rgb(148, 242, 140);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 4%;
+    width: 100px;
+}
+
+::ng-deep #button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+}
+
+::ng-deep * {
+    font-family: Georgia, serif;
+}
+
+
+
+#login {
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 1px 1px 12px rgb(180, 179, 179);
+}
+
+.progress{
+    margin-top: 13%;
+}
+.Pourcentage{
+    width: 10%;
+    height: 100%;
+    background-color: rgb(148, 242, 140);}
+//::ng-deep force Css in my component

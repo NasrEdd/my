@@ -1,0 +1,54 @@
+{
+	"TITLE": "Cursus Par Niveau",
+	"SEARCHAREA":{
+		"PLACEHOLDERS" :{
+			"MATRICULE": "Matricule",
+			"NOM": "Nom",
+			"PRENOM": "Prenom",
+			"PROGRAM": "Programme",
+			"ANNEE": "Année",
+			"PROGCODE" : "Code de programme",
+			"FILIERE": "Filière",
+			"ECOLE": "Ecole",
+			"NIVEAU": "Niveau"
+		}
+	},
+	"GRIDBTNS":{
+		"CARTETUD": "Carte d'étudiant",
+		"ATTSCOLAR": "Attestation de scolarité",
+		"ATTDIPL": "Attestation de diplome",
+		"ATTRE" : "Attestation Reussite",
+		"FICHETUD" : "Fiche étudiant",
+		"EXCEL" : "Excel"
+	},
+	"GRIDOTHER":{
+		"LINES" : "Lignes",
+		"PAGINATORLABEL": "Lignes par page",
+		"PAGERTEXT":"parmi",
+		"EMPTY": "Aucun résultat n'a été trouvé",
+		"ADDROW" : "Créer un Etudiant",
+		"STARTSRCH": "Lancer la recherche",
+		"CLEARSRCH": "Vider les résultats"
+	},
+	"GRIDHEADERS":{
+		"MATR": "Matricule",
+		"PROGCODE" : "Code du programme",
+		"PROGNOM" : "Nom du programme",
+		"PROGADM" : "Programme d'admission",
+		"MOYEN" : "Moyenne",
+		"MOYENRECALC" : "Moyenne recalculé",
+		"MENTION" : "Mention",
+		"JURYDEC" : "Décision du Jury",
+		"REMARQ" : "Remarque",
+		"AUTREMODPAIE" : "Autre mode de paiement",
+		"PRENOM": "Prenom",
+		"NOM": "Nom",
+		"SPECIALITY": "Spécialité",
+		"NIVEAU": "Niveau",
+		"ANNEE": "Année",
+		"STATUTANNU": "Statut Annuel",
+		"MODEINSC": "Mode inscription",
+		"QUITUS": "Quitus",
+		"FLAG": "Flag"
+	}
+}

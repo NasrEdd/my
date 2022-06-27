@@ -1,0 +1,20 @@
+<div class="overlay">
+    <div class="overlay-content">
+        <div class="card-body py-4 px-3 col-12">
+            <h3 class="display-4 fw-light text-light text-center"> {{ 'AUTH.SESSION_EXPIRED' | translate }} </h3>
+            <form action="#" class="col-8 col-md-6 col-lg-4 mx-auto text-white mt-3">
+                <div class="form-group text-start">
+                    <label for="overlayUsername"> {{ 'AUTH.USERNAME' | translate }} </label>
+                    <input type="text" class="form-control" name="overlayUsername" id="overlayUsername" aria-describedby="helpId">
+                </div>
+                <div class="form-group mt-3 text-start">
+                    <label for="overlayPassword"> {{ 'AUTH.PASSWORD' | translate }} </label>
+                    <input type="password" class="form-control" name="overlayPassword" id="overlayPassword" aria-describedby="helpId">
+                </div>
+                <div class="form-group mt-3 text-center">
+                    <button type="button" class="btn btn-primary" id="loginBtn"> <i class="fas fa-sign-in-alt"></i> {{ 'AUTH.SIGNIN' | translate }} </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

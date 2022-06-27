@@ -1,0 +1,14 @@
+<h1 class="title">{{titre}}</h1>
+
+<div class="root">
+    <table id="table" class="table">
+        <tr>
+            <th *ngFor="let ele of key">{{ele}}</th>
+        </tr>
+        <tr *ngFor="let elem of value" scope="row">
+            <td *ngFor="let val of elem">{{val}}</td>
+        </tr>
+
+    </table>
+</div>
+<a routerLink=".."><button class="btn">Retoure</button></a>

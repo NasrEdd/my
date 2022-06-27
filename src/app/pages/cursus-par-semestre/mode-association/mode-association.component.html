@@ -1,0 +1,138 @@
+<div class="card col-12 m-0 p-0 modAssociation">
+    <div class="card-body cardContent p-0 h-100 m-0">
+        <div class="col-12 m-0 p-0 h-100">
+            <div class="h-100" style=" border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+                <div class="m-0 p-0">
+                    <div class="col-12">
+                        <h6 class="h5 fw-light text-center text-white bg-secondary py-2" style="user-select: none;">
+                            {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.MODETITLE' | translate }}
+                        </h6>
+                    </div>
+                    <div class="col-12 d-flex flex-column flex-lg-row justify-content-between my-1 py-0 px-2" >
+                        <div class="text-center text-lg-start">
+                            <button type="button" id="clearingBtn" class="btn btn-warning px-3 rounded-15 fs-13px text-white" (click)="ClearData()"><i class="fas fa-trash me-2"></i> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.CLEARING' | translate }} </button>
+                            <div class="btn-group">
+                                <button type="button" id="loadingBtn" class="btn btn-primary px-3 fs-13px" (click)="LoadData( newStudentsCheck.checked, reRegStudentsCheck.checked)" style="border-top-left-radius: 15px; border-bottom-left-radius: 15px;" > <i class="fas fa-cloud-download-alt me-2"></i> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.LOADING' | translate }} </button>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split fs-13px" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" style="border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu py-0">
+                                    <li>
+                                        <div class="dropdown-item">
+                                            <label class="form-check-label pt-2 pb-1">
+                                                <input class="form-check-input" #newStudentsCheck type="checkbox" name="nouveauxEtuds" id="nouveauxEtuds" value="checkedValue"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.NEW' | translate }}
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-item">
+                                            <label class="form-check-label pb-2 pt-1">
+                                                <input class="form-check-input" #reRegStudentsCheck type="checkbox" name="nonReinscrits" id="nonReinscrits" value="checkedValue"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.UNREGISTRED' | translate }}
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- inline checkBoxes
+                            <div class="d-inline">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="nouveauxEtuds" id="nouveauxEtuds" value="checkedValue"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.NEW' | translate }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="nonReinscrits" id="nonReinscrits" value="checkedValue"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.UNREGISTRED' | translate }}
+                                    </label>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                        <div class="text-center text-lg-end mt-1 mt-lg-0">
+                            <button type="button" id="associerBtn" class="btn btn-success px-3 rounded-15 fs-13px me-1" (click)="Associer()"> <i class="fas fa-random"></i> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.ASSOCIATE' | translate }} </button>
+                            <button type="button" id="validerBtn" class="btn btn-info px-3 rounded-15 fs-13px me-1 text-white" (click)="Valider()"> <i class="fas fa-check"></i> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.VALIDER' | translate }} </button>
+                            <button type="button" id="annulerBtn" class="btn btn-danger px-3 rounded-15 fs-13px" (click)="Annuler()"> <i class="fas fa-times"></i> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.CANCEL' | translate }} </button>
+                        </div>
+                        <div class="text-center text-lg-end mt-1 mt-lg-0">
+                            <button type="button" id="hideColumnsBtn" class="btn btn-warning text-white px-3 rounded-15 me-1 fs-13px" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.HIDECOLUMNS' | translate }}" (click)="toggleGridColumnsModal()" >
+                                <i class="fas fa-eye-slash"></i>
+                            </button>
+                        </div> 
+                    </div>
+                </div>
+                <!-- others -->
+                <div class="igx-typography d-block w-100" id="AssociationsContainer">
+                    <igx-splitter [type]="0" class="h-100 w-100">
+                        <igx-splitter-pane id="splitterPane1">
+                            <igx-hierarchical-grid #StudentsGrid id="StudentsGrid" [allowFiltering]="true" [data]="grid1ColumnsConfig.data" [primaryKey]="grid1ColumnsConfig.primaryKey" width="100%" [emptyGridTemplate]="gridEtudiantsEmptyTemplate" [rowEditable]="true" [rowSelection]="'multiple'" [cellSelection]="'none'" [columnSelection]="'none'" displayDensity="compact" (rowSelectionChanging)="handleRowSelectionOfStudent($event)" >
+                                <igx-column *ngFor="let column of grid1ColumnsConfig.columns" [cellClasses]="{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [draggable]="column.draggable" [groupable]="column.groupable" [resizable]="column.resizable" [field]="column.field" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [visibleWhenCollapsed]="column.visibleWhenCollapsed" [width]="column.width">
+                                </igx-column>
+                                <igx-row-island [key]="'Semestres'" [autoGenerate]="false" [width]="'100%'">
+                                    <igx-column-group [header]=" 'CURSUSPARSEM.ASSOCIATION.SUBGRIDHEADERS.GRPHEADER'| translate " [cellClasses]="{'justify-content-center' : true }" headerClasses="text-center" >
+                                        <igx-column *ngFor="let subColumn of subGridColumnsConfig.columns" [cellClasses]="{'justify-content-center' : true }" headerClasses="text-center" [field]="subColumn.field" [header]="subColumn.header | translate" [dataType]="subColumn.dataType" [resizable]="subColumn.resizable" [hidden]="!subColumn.visible" [sortable]="subColumn.sortable" [filterable]="subColumn.filterable" [editable]="subColumn.editable" [width]="subColumn.width"></igx-column>
+                                    </igx-column-group>
+                                </igx-row-island>
+                            </igx-hierarchical-grid>
+                        </igx-splitter-pane>
+                        <igx-splitter-pane #SemestersPane [size]="'40%'" [collapsed]="true" [minSize]="'200px'" id="splitterPane2">
+                            <igx-grid #SemestersGrid id="SemestersGrid" [allowFiltering]="true" [data]="grid2ColumnsConfig.data" [primaryKey]="grid2ColumnsConfig.primaryKey" rowHeight="35px" width="100%" [emptyGridTemplate]="gridEtudiantsEmptyTemplate" [rowEditable]="true" [rowSelection]="'multiple'" [cellSelection]="'none'" [columnSelection]="'none'" displayDensity="compact" (rowSelectionChanging)="handleRowSelectionOfSemester($event)" >
+                                <igx-column *ngFor="let column of grid2ColumnsConfig.columns" [cellClasses]="{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [visibleWhenCollapsed]="column.visibleWhenCollapsed" [width]="column.width">
+                                </igx-column>
+                            </igx-grid>
+                        </igx-splitter-pane>
+                    </igx-splitter>
+                    <ng-template #gridEtudiantsEmptyTemplate>
+                        <div class="col-lg-12">
+                            <p class="text-muted fs-5 text-center"> {{ 'CURSUSPARSEM.GRIDOTHER.EMPTY' | translate }} </p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="GridColumnsModalASSO" tabindex="-1" aria-labelledby="GridColumnsModalASSOLabel" aria-hidden="true">
+    <div class="modal-dialog modal modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content ColumnsHidingMenuHeight">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GridColumnsModalASSOLabel"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.HIDECOLUMNS' | translate }} </h5>
+                <button type="button" id="dismissColumnsHideMenuBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start py-1 col-12 mx-0 row">
+                <div class="col-12 col-lg-6">
+                    <h6 class="h6 fw-light pt-2 pb-1"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.STUDENTSGRID' | translate }} : </h6>
+                    <ng-template ngFor let-column [ngForOf]="grid1ColumnsConfig.columns">
+                        <div class="form-check offset-1 py-1" *ngIf="column.allowHide">
+                            <label class="form-check-label" >
+                                <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                                {{ column.header | translate }}
+                            </label>
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <h6 class="h6 fw-light pt-2 pb-1"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.SEMESTERSGRID' | translate }} : </h6>
+                    <ng-template ngFor let-column [ngForOf]="grid2ColumnsConfig.columns">
+                        <div class="form-check offset-1 py-1" *ngIf="column.allowHide">
+                            <label class="form-check-label" >
+                                <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                                {{ column.header | translate }}
+                            </label>
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="col-12">
+                    <hr class="mx-5 text-center my-1">
+                    <h6 class="h6 fw-light pt-2 pb-1"> {{ 'CURSUSPARSEM.ASSOCIATION.GRIDBTNS.SUBGRIDASSOSEMS' | translate }} : </h6>
+                    <ng-template ngFor let-column [ngForOf]="subGridColumnsConfig.columns">
+                        <div class="form-check offset-1 py-1 col-lg-6" *ngIf="column.allowHide">
+                            <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                            {{ column.header | translate }}
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

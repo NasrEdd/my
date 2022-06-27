@@ -1,0 +1,114 @@
+{
+	"TITLE": "المسار حسب الفصل",
+	"GRIDBTNS": {
+		"DELETESELECTED": "حذف السجلات المحددة",
+		"EXCELEXPORT": "إكسل",
+		"ASSOCIATE": " ربط ",
+		"HIDECOLUMNS": "اختيار الأعمدة المرئية"
+	},
+	"GRIDHEADERS": {
+		"GRP1": {
+			"TITLE": " معلومات الطلاب ",
+			"MATR": "الرقم",
+			"NOM": "النسب",
+			"PRENOM": "الاسم"
+		},
+		"GRP2": {
+			"TITLE": "معلومات القبول",
+			"PROG_CODE": " Prog. Code",
+			"PROG_NOM": " Prog. Nom",
+			"FAC": " الكلية ",
+			"ADMPROGCODE": "رمز برنامج القبول",
+			"ADMPROGNOM": "اسم برنامج القبول"
+		},
+		"GRP3": {
+			"TITLE": "المنهج الدراسي الحالي",
+			"SPECIALITE": "التخصص",
+			"NIVEAU": "المستوى",
+			"SEM": "الفصل",
+			"PERIODE": "المرحلة",
+			"ANNEE": "السنة",	
+			"MOYENNE": "المعدل",
+			"VALIDE": "التحقق",
+			"STAT": "حالة..",
+			"REMARQ": "ملاحظة"
+		}
+	},
+	"GRIDOTHER":{
+		"LINES" : "أسطر",
+		"PAGINATORLABEL": "عدد النتائج",
+		"PAGERTEXT":"من",
+		"EMPTY": "لم يتم العثور على أي نتيجة",
+		"STARTSRCH": "ابحث",
+		"CLEARSRCH": "امسح النتائج",
+		"COLLAPSE": " انقر هنا لطي العمود",
+		"EXPANDE": " انقر هنا لتكبير العمود"
+	},
+	"SEARCHAREA":{
+		"NOM": "النسب",
+		"PRENOM" : "الاسم",
+		"ECOLE"	:	"المدرسة",
+		"ANNEE" : "السنة",
+		"PROGRAMME" : "البرنامج",
+		"FILIERE" : "الشعبة",
+		"NIVEAU" : "المستوى",
+		"SEMESTRE" : "الفصل",
+		"SITUATION": "الحالة"
+	},
+	"ASSOCIATION":{
+		"GRIDBTNS":{
+			"MODETITLE" : "وضع الربط",
+			"CLEARING": "مسح",
+			"LOADING": "تحميل",
+			"UNREGISTRED": "الطلبة الغير المسجلين",
+			"NEW": "الطلبة الجدد",
+			"ASSOCIATE": " ربط ",
+			"VALIDER": "تم",
+			"CANCEL": "إلغاء الأمر",
+			"HIDECOLUMNS": "اختيار أعمدة مرئية",
+			"STUDENTSGRID": "جدول الطلاب",
+			"SEMESTERSGRID": "جدول الفصل الدراسي",
+			"SUBGRIDASSOSEMS" : "جدول الفصول الدراسية المرتبطة"
+		},
+		"GRID1HEADERS":{
+			"MATR": "الرقم",
+			"NOM": "النسب",
+			"PRENOM": "الاسم",
+			"FACULTY": "الكلية",
+			"PROGCODE": "رقم البرنامج",
+			"PROGNOM": "اسم البرنامج",
+			"ADMISSIONTYPE": "نوع القبول",
+			"ADMISSIONDATE": "تاريخ القبول",
+			"INSCRDATE": "تاريخ التسجيل",
+			"ADMISSIONGRP": "مجموعة القبول",
+			"PROGTYPE": "نوع البرنامج",
+			"ADMISSIONNIV": "مستوى القبول",
+			"ADMISSIONFIL": "مسار القبول",
+			"ADMISSIONANN": "سنة القبول"
+		},
+		"GRID2HEADERS":{
+			"FACULTY" : "الكلية",
+			"PROGRAM" : "البرنامج",
+			"PROGCODE": "رقم البرنامج",
+			"FILIERE" : "الشعبة",
+			"NIVEAU" : "المستوى",
+			"SEMESTRE": "الفصل",
+			"ANNEE": "السنة",
+			"PERIOD": "الفترة"
+		},
+		"SUBGRIDHEADERS":{
+			"GRPHEADER" : "الفصول الدراسية المرتبطة",
+			"PROGCODE": "رقم البرنامج",
+			"PROGNOM": "اسم البرنامج",
+			"FILIERE": "الشعبة",
+			"SEMESTER": "الفصل الدراسي",
+			"PERIODE": "المرحلة",
+			"MOYENNE": "المعدل",
+			"VALIDE": "التحقق",
+			"NIVEAU" : "المستوى",
+			"ANNEE" : "السنة",
+			"FACULTY" : "الكلية",
+			"STAT": "حالة.."
+		}
+	}
+}

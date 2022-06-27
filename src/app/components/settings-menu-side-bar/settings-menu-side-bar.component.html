@@ -1,0 +1,62 @@
+<nav id="SettingsSideBar" class="SettingsSideBar">
+
+    <div (click)="closeMenu()" class="dismiss dismiss d-flex justify-content-center align-items-center">
+        <i class="fas fa-arrow-circle-right fa-2x"></i>
+    </div>
+
+    <div class="sidebar-header">
+        <h3 class="h3 text-center"> {{ 'SIDEBARS.SETTINGSBAR.TITLE' | translate }} </h3>
+    </div>
+
+    <ul class="list-unstyled components settingsSection" >
+        <div class="py-4 col-12 text-center mb-4" *ngIf="!widgetData.loaded">
+          <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <form class="p-3 pt-2" *ngIf="widgetData.loaded">
+            <div class="form-group">
+              <label for="year"> {{ 'SIDEBARS.SETTINGSBAR.YEARFIELD' | translate }} </label>
+              <ng-select name="year" id="year" [clearable]="false" (change)="handleYearChange($event)" [(ngModel)]="currentYearId" >
+                <ng-option *ngFor="let year of widgetData.years" [value]="year.yearId"> {{ year.yearStr }}  </ng-option>
+              </ng-select>
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="school"> {{ 'SIDEBARS.SETTINGSBAR.SCHOOL' | translate }} </label>
+              <ng-select name="school" id="school" [clearable]="false" (change)="handleSchoolChange($event)" [(ngModel)]="currentSchoolId">
+                <ng-option *ngFor="let school of widgetData.schools" [value]="school.schoolId"> {{ school.schoolNamekey | translate }}  </ng-option>
+              </ng-select>
+            </div>
+        </form>
+    </ul>
+    
+
+    <div class="p-3 settingsSection">
+        <div class="form-group">
+          <label for="lang">Langue / اللغة</label>
+          <ng-select (change)="changeLang($event)" [(ngModel)]="currentLang" [clearable]="false">
+            <ng-option value="fr">Français - الفرنسية</ng-option>
+            <ng-option value="ar">Arabe - العربية</ng-option>
+          </ng-select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="theme"> {{ 'SIDEBARS.SETTINGSBAR.THEME' | translate }} </label>
+          <ng-select name="theme" id="theme" (change)="appService.themeEmitter.emit($event)" [(ngModel)]="appService.currentTheme" [clearable]="false">
+            <ng-option *ngFor="let theme of themes" [value]="theme.themeName" > {{ theme.translationName | translate }}  </ng-option>
+          </ng-select>
+        </div>
+    </div>
+
+    <div class="position-absolute bottom-0 pb-2 col-12 text-center">
+      <div class="col-12 text-center pb-2">
+        <button type="button" class="btn btn-outline-light" id="resetIdbBtn" data-bs-toggle="tooltip" data-placement="top" [title]=" 'SIDEBARS.SETTINGSBAR.RESETIDBBTN' | translate " (click)="resetIndexedDB()">
+          <i class="fas fa-recycle"></i>
+        </button>
+      </div>
+      <small class="text-white">
+        Version : {{ version }}
+      </small>
+    </div>
+
+</nav>

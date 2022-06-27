@@ -1,0 +1,70 @@
+{
+	"TITLE": "Diplomés",
+	"SEARCHAREA":{
+		"PLACEHOLDERS" :{
+			"MATRICULE": "Matricule",
+			"NOM": "Nom",
+			"PRENOM": "Prenom",
+			"FILIERE": "Filière",
+			"CYCLE" : "Cycle",	
+			"ANNEE": "Année",
+			"ECOLE": "Ecole",
+			"ALLPROMO": "Toute la promotion"
+		}
+	},
+	"GRIDBTNS":{
+		"STUDINFOS": "Infos.étudiant",
+		"GENERNDIP": "Générer N°diplome",
+		"INITNDIP": "Init. N°diplome",
+		"REITRER": "Retirer",
+		"REITREDLIST": "Liste de retirés",
+		"PRINTDIPACC": "Imprimer diplome Acc.",
+		"PRINTDIPRCE": "Imprimer diplome Rce",
+		"EXCEL" : "Excel"
+	},
+	"GRIDOTHER":{
+		"LINES" : "Lignes",
+		"PAGINATORLABEL": "Lignes par page",
+		"PAGERTEXT":"parmi",
+		"EMPTY": "Aucun résultat n'a été trouvé",
+		"ADDROW" : "Créer un Etudiant",
+		"STARTSRCH": "Lancer la recherche",
+		"CLEARSRCH": "Vider les résultats"
+	},
+	"GRIDHEADERS":{
+		"MATR": "Matricule",
+		"PROGCODE" : "Code de programme",
+		"PRENOM": "Prenom",
+		"PRENOM_AR": "Prenom en arabe",
+		"NOM": "Nom",
+		"NOM_AR": "Nom en arabe",
+		"SPECIALITY": "Spécialité",
+		"SPECIALITY_AR": "Spécialité en arabe",
+		"NIVEAU": "Niveau",
+		"ANNEE": "Année",
+		"ANNEE_AR": "Année en arabe",
+		"STATUTANNU": "Statut Annuel",
+		"MODEINSC": "Mode inscription",
+		"QUITUS": "Quitus",
+		"FLAG": "Flag",
+		"DATENAISS": "Date de naissance",
+		"LIEUNAISS": "Lieu de naissance",
+		"LIEUNAISS_AR": "Lieu de naissance en arabe",
+		"CINOUPASS": "CIN ou Passport",
+		"PROGRAM": "Programme",
+		"OPTION": "Option",
+		"CYCLE": "Cycle",
+		"NEWDIPL": "Est nouveau diplômé",
+		"NUMDIPL": "Numéro du diplôme",
+		"SESSION": "Session",
+		"MENTION": "Mention",
+		"MENTION_AR": "Mention en arabe",
+		"MOYENNE": "Moyenne",
+		"REMARQ": "Remarque",
+		"NATIONALITE": "Nationalité",
+		"VALIDMANUEL": "Valid. manuelle",
+		"ESTDILP": "Est diplomé",
+		"FACULTY_AR": "Faculté en arabe",
+		"FACULTY": "Faculté"
+	}
+}

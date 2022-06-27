@@ -1,0 +1,107 @@
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+#row {
+    color: hsl(180, 100%, 1%);
+    width: 50%;
+    height: auto;
+    background-color: #369;
+    border-radius: 5px;
+    margin-left: 4%;
+    margin-right: 4%;
+    padding: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.5s ease;
+    transform: scale(1);
+
+}
+
+#row:hover {
+    transform: scale(1.1);
+    filter: brightness(120%);
+}
+
+.btn:hover{
+    width: 100%;
+}
+#corriger:hover{
+background-color: rgb(207, 237, 137);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.1);
+    filter: brightness(120%);
+    box-shadow: 0 12px 16px 0 rgba(209, 200, 200, 0.279), 0 17px 50px 0 rgba(0, 0, 0, 0.19);}
+#corriger{
+    margin: 2%;
+}
+.buttonR{
+    display:grid;
+}
+#root button, #corriger {
+    background-color: rgb(148, 242, 140);
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 2%;
+    margin-bottom: auto;
+    transition: width 2s;
+    transition-delay: 1s;
+    transition-timing-function: ease;
+    box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+}
+
+
+h2 {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    color: #ece9e9;
+}
+
+span {
+    font-size: 20px;
+    color: red;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #369;
+    margin-top: 5%;
+    margin-bottom: auto;
+    padding-bottom: 2%;
+}
+
+::ng-deep .contenue p {
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 2%;
+
+}
+.progress {
+    margin-top: 29%;
+}
+
+.Pourcentage {
+    width: 70%;
+    height: 100%;
+    background-color: rgb(148, 242, 140);}

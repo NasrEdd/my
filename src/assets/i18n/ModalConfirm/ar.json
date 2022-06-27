@@ -1,0 +1,30 @@
+{
+    "LEAVING_MSGS":{
+        "headerTitle" : "هل أنت متأكد؟",
+        "bodyText" : "هناك تغييرات غير محفوظة ، هل أنت متأكد من المغادرة؟",
+        "closeBtnText": "الغاء",
+        "confirmBtnText": "مغادرة"
+    },
+    "CLEARDATA_MSGS":{
+        "headerTitle" : "هل أنت متأكد؟",
+        "bodyText" : "ستزيل هذه العملية جميع التغييرات ، هل تريد المواصلة؟",
+        "closeBtnText": "الغاء",
+        "confirmBtnText": "واصل"
+    },
+    "LINK_ETUD_TO_SEM_FIRST":{
+        "headerTitle": "فشلت عملية الربط",
+        "bodyText": " حدد الطالب والفصل الدراسي أولا.",
+        "closeBtnText": "حسنًا"
+    },
+    "DISCARD_ASSOCIATIONS" :{
+        "headerTitle": "عمليات ربط غير مؤكدة",
+        "bodyText": "هل ستغادر وتلغي عمليات الربط الحالية؟",
+        "closeBtnText": "إلغاء الأمر",
+        "confirmBtnText": "مفادرة"
+    },
+    "NODATATOEXPORT":{
+        "headerTitle" : "لا يمكن التصدير",
+        "bodyText" : "لا توجد أي بيانات لتصديرها",       
+        "closeBtnText": "حسنًا"
+    }
+}

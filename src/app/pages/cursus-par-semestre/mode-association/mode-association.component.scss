@@ -1,0 +1,91 @@
+.modAssociation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height : 99vh !important;
+}
+
+.cardContent{
+    background-color: #dedede;
+    border-right: 0.7px white solid;
+    border-left: 0.7px white solid;
+}
+
+.btn-indigo{
+    background-color: #6871C6;
+    color: white;
+    font-size: 13px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-indigo:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(104,113, 198,0.25);
+}
+
+.rounded-15{
+    border-radius: 15px;
+}
+
+.fs-13px{
+    font-size: 13px;
+}
+
+.rounded-18{
+    border-radius: 18px;
+}
+
+@import "~igniteui-angular/lib/core/styles/themes/index";
+
+
+
+$primary: #731963 !default;
+$secondary: #ce5712 !default;
+$app-palette: igx-palette($primary, $secondary);
+
+@include igx-core();
+@include igx-theme($app-palette);
+
+$new-grid-theme: igx-grid-theme(
+    $row-odd-background: #F7F3F3,
+    $row-even-background: white,
+    $header-text-color: black,
+    $header-border-width: 1px,
+    $header-border-style: solid,
+    $edited-row-indicator : orange
+);
+@include igx-grid($new-grid-theme);
+
+
+
+// spliter style
+$legacy-support: true;
+$palette: $light-material-palette;
+$schema: $light-material-schema;
+$default-palette: $palette;
+$igx-legacy-support: $legacy-support;
+$green-palette: igx-palette(
+    $primary: #09f,
+    $secondary: #72da67,
+    $grays: #fff,
+    $surface: #333
+);
+$grays-btn-color: igx-color($green-palette, 'grays', 800);
+$splitter-theme: igx-splitter-theme(
+    $bar-color: #000 ,
+    $handle-color: #000,
+    $expander-color: #fff,
+    $border-radius: 5px,
+    $focus-color: #000000,
+    $size: 6px,
+);
+
+@include igx-splitter($splitter-theme);
+@include igx-css-vars($splitter-theme);
+
+// end spliter style
+
+.warning-check-label:checked{
+    background-color: #ffc107 !important;
+    border-color: #fdbe00 !important;
+}

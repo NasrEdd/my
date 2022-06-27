@@ -1,0 +1,16 @@
+{
+	"SETTINGSBAR":{
+		"DARKTHEME": "داكن",
+		"LIGHTTHEME": "أبيض",
+		"SCHOOL": "المدرسة",
+		"THEME": "المظهر",
+		"TITLE": "الإعدادات",
+		"YEARFIELD": "السنة",
+		"RESETIDBBTN": "أعد تحميل البيانات المحلية"
+	},
+	"MODULESBAR":{
+		"LOGOUT": "تسجيل الخروج",
+		"MODULES": "الوحدات"
+	}
+	
+}

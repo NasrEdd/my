@@ -1,0 +1,32 @@
+<h1>{{titre}}</h1>
+
+<div class="container-fluid " id="root">
+    <div id="row" *ngFor="let element of data">
+        <div class="row ">
+            <div id="rowCol">
+                <button class="btn" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+element.id"
+                    aria-expened="false" [attr.aria-controls]="element.id">{{element.title}}</button>
+            </div>
+            <div class="collapse multi-collapse contenue" id={{element.id}}>
+                <p>{{element.description}}</p>
+                <span>{{element.erreur}}</span>
+            </div>
+            <a routerLink={{element.route}}>
+                <button type="submit" class="fixed-bottom" value={{element.buttonID}} class="preTrai btn"
+                    #Bsubmit>Details</button>
+            </a>
+        </div>
+    </div>
+    <div class="buttonR">
+        <a routerLink="/smart-planing/importer"> <button id="corriger">Corriger les données</button></a>
+        <a routerLink="./Lancement"> <button id="corriger">Continue</button></a>
+        <a routerLink=".."> <button id="corriger">Retoure</button></a>
+
+    </div>
+ 
+</div>
+<div class="progress">
+    <div class="Pourcentage">
+        <p></p>
+    </div>
+</div>

@@ -1,0 +1,242 @@
+<div *ngIf="loaded">
+    <div class="d-block text-end px-2 my-1">
+        <button type="button" class="btn btn-warning btn-xs px-2 py-0 me-1 text-white" (click)="toggleGridColumnsModal()" data-bs-toggle="tooltip" data-placement="bottom" title="{{'DOSSIERETUDIANT.FORM.ALLSECTIONS.HIDECOLUMNS' | translate }}" > <i class="fas fa-eye-slash"></i></button>
+        <button type="button" class="btn btn-success btn-xs px-2 py-0 me-1" (click)="addRow()" data-bs-toggle="tooltip" data-placement="bottom" title="{{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.ADD' | translate }}" ><i class="fas fa-plus"></i></button>
+        <button type="button" class="btn btn-danger btn-xs px-2 py-0"  (click)="deleteRows()" data-bs-toggle="tooltip" data-placement="bottom" title="{{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.DELETE' | translate}}" ><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="igx-typography d-flex flex-row h-100 w-100" *ngIf="configuration" style="min-height: 250px; overflow-y: scroll;">
+            <igx-grid #GridSemesters  displayDensity="cosy" [rowEditable]="true" [emptyGridTemplate]="EmptyTemplate" (rowEditDone)="rowEditDone($event)" [rowSelection]="'multiple'" [selectedRows]="[]" [cellSelection]="'none'" [primaryKey]="'EtdPrg_Id'" [data]="configuration.data" width="100%" [height]="''" class="border-secondary">
+                <igx-column *ngFor="let column of configuration.columns" [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [width]="column.width"></igx-column>
+            </igx-grid>
+        <ng-template #EmptyTemplate>
+            <div class="col-lg-12">
+                <p class="text-muted fs-5 text-center"> {{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.EMPTY' | translate }} </p>
+            </div>
+        </ng-template>
+    </div>
+
+    <!-- Modal to hide columns-->
+    <div class="modal fade" id="SemesterHidingMenu" tabindex="-1" aria-labelledby="SemesterGridColumnsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content ColumnsHidingMenuHeight">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="SemesterGridColumnsModalLabel"> {{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.HIDECOLUMNS' | translate }} </h5>
+                    <button type="button" id="dismissSemesterGridColumnsHideMenuBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start py-1 col-12 mx-0">
+                    <ng-template ngFor let-column [ngForOf]="configuration!.columns">
+                        <div class="form-check py-2 offset-1" *ngIf="column.allowHide">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                                {{ column.header | translate }}
+                            </label>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal to associate student to a semester-->
+    <div class="modal fade" id="associationModal" tabindex="-1" aria-labelledby="associationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content h-75">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="associationModalLabel"> {{ 'DOSSIERETUDIANT.FORM.SEMESTERSECTION.ASSOCIER' | translate }} </h5>
+                    <button type="button" id="dismissAssociationModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start py-1 col-12 mx-0 px-1 row">
+                    <div class="col d-flex flex-column px-0">
+                        <div class="accordion accordion-always-open h-100 d-flex flex-column" id="associationAccordion">
+                            <!-- niveau accordion section -->
+                            <div class="card-header flex-shrink-1 p-0" id="accordionHeading1">
+                                <h5 class="accordion mb-0">
+                                    <ng-template [ngIf]="ModalData.niveaux.length">
+                                        <button class="accordion-button bg-little-grey text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#accordionCollapse1" aria-expanded="true" aria-controls="accordionCollapse1">
+                                            <ng-template [ngIf]="selectedData.niveau">
+                                                <strong> Le niveau choisi :  </strong>  <span class="text-info ms-2">  {{ selectedData.niveau.name }} </span> 
+                                            </ng-template>
+                                            <ng-template [ngIf]="!selectedData.niveau">
+                                                Choisir le niveau | {{ 'DOSSIERETUDIANT.FORM.SEMESTERSECTION.NIVEAU' | translate }}
+                                            </ng-template>
+                                        </button>
+                                    </ng-template>
+                                    <ng-template [ngIf]="!ModalData.niveaux.length">
+                                        <button class="accordion-button bg-little-grey text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#accordionCollapse1" aria-expanded="true" aria-controls="accordionCollapse1">
+                                            Choisir le niveau
+                                        </button>
+                                    </ng-template>
+                                </h5>
+                            </div>
+                            <div id="accordionCollapse1" class="collapse flex-grow-1 show" aria-labelledby="accordionHeading1" data-bs-parent="#associationAccordion">
+                                <div class="card-body h-100 border-bottom">
+                                    <ng-template [ngIf]="ModalData.niveaux.length">
+                                        <div class="col-12 row mx-0 justify-content-center" >
+                                            <div class="col-auto px-0 ms-1 mt-2" *ngFor="let niveau of ModalData.niveaux">
+                                                <input type="radio" name="selectNiveau{{niveau!.id}}" class="radio" id="selectNiveau{{niveau!.id}}" [(ngModel)]="newAssociationObject!.Niv_Id" (change)="niveauChange($event, niveau.id)" [value]="niveau.id">
+                                                <label for="selectNiveau{{niveau!.id}}" class="option option-2">
+                                                    <span> {{ niveau!.name }} </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template [ngIf]="!ModalData.niveaux.length">
+                                        Aucun niveau n'a été trouvé
+                                    </ng-template>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Accordion program section -->
+                            <div class="card-header flex-shrink-1 p-0" id="accordionHeading2">
+                                <h5 class="mb-0">
+                                    <button class="accordion-button  bg-little-grey text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionCollapse2" aria-expanded="false" aria-controls="accordionCollapse2">
+                                        <ng-template [ngIf]="!selectedData.niveau">
+                                            Choisir le programme
+                                        </ng-template>
+                                        <ng-template [ngIf]="selectedData.niveau">
+                                            <ng-template [ngIf]="ModalData.programs.length">
+                                                <ng-template [ngIf]="!selectedData.program">
+                                                    Choisir le programme
+                                                </ng-template>
+                                                <ng-template [ngIf]="selectedData.program">
+                                                    <strong> Le programme choisi :  </strong>  <span class="text-info ms-2">  {{ selectedData.program.name }} </span> 
+                                                </ng-template>
+                                            </ng-template>
+                                            <ng-template [ngIf]="!ModalData.programs.length">
+                                                Choisir le programme
+                                            </ng-template>
+                                        </ng-template>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="accordionCollapse2" class="collapse flex-grow-1" aria-labelledby="accordionHeading2" data-bs-parent="#associationAccordion">
+                                <div class="card-body h-100 border-bottom">
+                                    <ng-template [ngIf]="selectedData.niveau">  <!-- si l'element précédent est choisi -->
+                                        <ng-template [ngIf]="ModalData.programs">
+                                            <div class="col-12 row mx-0 justify-content-center" >
+                                                <div class="col-auto px-0 ms-1 mt-2" *ngFor="let program of ModalData.programs">
+                                                    <input type="radio" name="selectProg{{program!.id}}" class="radio" id="selectProg{{program!.id}}" (change)="programChange($event, program.id)" [value]="program.id">
+                                                    <label for="selectProg{{program!.id}}" class="option option-2">
+                                                        <span> {{ program!.name }} </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!ModalData.programs">
+                                            <div class="py-3 text-center">
+                                                <div class="spinner-border text-info" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ng-template>
+                                    <ng-template [ngIf]="!selectedData.niveau">   <!-- si l'element précédent n'est pas choisi -->
+                                        Choisissez d'abord le niveau
+                                    </ng-template>
+                                </div>
+                            </div>
+                            
+
+
+                            <!-- Accordion filière section -->
+                            <div class="card-header flex-shrink-1 p-0" id="accordionHeading3">
+                                <h5 class="mb-0">
+                                    <button class="accordion-button bg-little-grey text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionCollapse3" aria-expanded="false" aria-controls="accordionCollapse3">
+                                        <ng-template [ngIf]="!selectedData.filiere">
+                                            Choisir la filière {{ 'DOSSIERETUDIANT.FORM.SEMESTERSECTION.FILIERE' | translate }}
+                                        </ng-template>
+                                        <ng-template [ngIf]="selectedData.filiere">
+                                            <strong> La filière choisie :  </strong>  <span class="text-info ms-2">  {{ selectedData.filiere.name }} </span> 
+                                        </ng-template>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="accordionCollapse3" class="collapse flex-grow-1" aria-labelledby="accordionHeading3" data-bs-parent="#associationAccordion">
+                                <div class="card-body h-100 border-bottom">
+                                    <ng-template [ngIf]="!selectedData.program"> 
+                                        Choisissez d'abord le programme
+                                    </ng-template>
+                                    <ng-template [ngIf]="selectedData.program"> 
+
+                                        <ng-template [ngIf]="!ModalData.filieres" >
+                                                <div class="py-3 text-center">
+                                                    <div class="spinner-border text-info" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="ModalData.filieres" >
+                                            <div class="col-12 row mx-0 justify-content-center" >
+                                                boucler sur les filières
+                                                <div class="col-auto px-0 ms-1 mt-1" *ngFor="let filiere of ModalData.filieres">
+                                                    <input type="radio" name="selectFiliere{{filiere.id}}" class="radio" id="selectFiliere{{filiere.id}}" [(ngModel)]="newAssociationObject!.Spec_Name" (change)="filiereChange($event, filiere.id)" [value]="filiere.id">
+                                                    <label for="selectFiliere{{filiere.id}}" class="option option-1">
+                                                        <span> {{ filiere.name }} </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ng-template>   
+                                </div>
+                            </div>
+
+                            
+
+
+                            <!-- Accordion Semestre/Period section -->
+                            <div class="card-header flex-shrink-1 p-0" id="accordionHeading4">
+                                <h5 class="mb-0">
+                                    <button class="accordion-button bg-little-grey text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionCollapse4" aria-expanded="false" aria-controls="accordionCollapse4">
+                                        <ng-template [ngIf]="!selectedData.semestre || !selectedData.periode">
+                                            Choisir le semestre et la période | {{ 'DOSSIERETUDIANT.FORM.SEMESTERSECTION.SEMESTRE' | translate }} 
+                                        </ng-template>
+                                        <ng-template [ngIf]="selectedData.semestre && selectedData.periode">
+                                            <strong> Le semestre et la période Choisis :  </strong>  <span class="text-info ms-2">   {{ selectedData.semestre.name }}, {{ selectedData.periode.name }} </span> 
+                                        </ng-template>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="accordionCollapse4" class="collapse flex-grow-1" aria-labelledby="accordionHeading4" data-bs-parent="#associationAccordion">
+                                <div class="card-body h-100 border-bottom">
+                                    <ng-template [ngIf]="selectedData.filiere"> 
+                                        <ng-template [ngIf]="ModalData.semestres">
+                                            <div class="col-12 row mx-0 justify-content-center">
+                                                <div class="col-auto px-0 ms-1 mt-1" *ngFor="let semestre of ModalData.semestres">
+                                                    <input type="radio" name="selectSemester{{semestre!.id}}" class="radio" id="selectSemester{{semestre!.id}}" [(ngModel)]="newAssociationObject!.SpecSmsSess_Id" [value]="semestre.id">
+                                                    <label for="selectSemester{{semestre!.id}}" class="option option-3">
+                                                        <span> {{ semestre!.name }} </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                        <ng-template [ngIf]="!ModalData.semestres">
+                                            <div class="py-3 text-center">
+                                                <div class="spinner-border text-info" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ng-template>
+                                    <ng-template [ngIf]="!selectedData.filiere"> 
+                                        Choisissez d'abord la Filière
+                                    </ng-template>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-success mx-auto" [disabled]="!newAssociationObject!.EtdSpecSms_Id || !newAssociationObject!.Niv_Nom || !newAssociationObject!.Spec_Name" (click)="createAssociation()"> <i class="fas fa-random"></i>  {{ 'DOSSIERETUDIANT.FORM.SEMESTERSECTION.ASSOCIATE' | translate }}  </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center my-3 py-4" *ngIf="!loaded">
+    <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>

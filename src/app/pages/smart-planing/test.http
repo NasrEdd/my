@@ -1,0 +1,7 @@
+
+POST https://smartplanning-backend.herokuapp.com/Username
+Content-Type: application/json
+
+{
+    "user":"ahmed"
+}

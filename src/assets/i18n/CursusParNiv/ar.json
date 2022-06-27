@@ -1,0 +1,54 @@
+{
+	"TITLE": "المسار حسب المستوى",
+	"SEARCHAREA":{
+		"PLACEHOLDERS" : {
+			"MATRICULE": "الرقم",
+			"NOM": "النسب",
+			"PRENOM": "الاسم",
+			"ANNEE": "السنة",
+			"PROGRAM": "برنامج",
+			"FILIERE": "الشعبة",
+			"ECOLE": "المدرسة",
+			"NIVEAU": "مستوى",
+			"PROGCODE" : "رقم البرنامج"
+		}
+	},
+	"GRIDBTNS": {
+		"CARTETUD": "هوية الطالب",
+		"ATTSCOLAR": "شهادة التعليم",
+		"ATTDIPL": "شهادة الدبلوم",
+		"ATTRE": "شهادة النجاح",
+		"FICHETUD": "سجل الطالب",
+		"EXCEL": "إكسيل"
+	},
+	"GRIDOTHER":{
+		"LINES" : "أسطر",
+		"PAGINATORLABEL": "عدد النتائج",
+		"PAGERTEXT":"من",
+		"EMPTY": "لم يتم العثور على أي نتيجة",
+		"ADDROW" : "إنشاء طالب",
+		"STARTSRCH": "ابحث",
+		"CLEARSRCH": "امسح النتائج"
+	},
+	"GRIDHEADERS":{
+		"MATR": "سجل",
+		"PROGCODE": "كود دي البرنامج",
+		"PROGNOM" : "اسم البرنامج",
+		"PROGADM" : "برنامج القبول",
+		"MOYEN" : "المعدل",
+		"MOYENRECALC" : "المعدل المعاد حسابه",
+		"MENTION" : "الدرجة",
+		"JURYDEC" : "قرار اللجنة",
+		"REMARQ" : "ملاحظة",
+		"AUTREMODPAIE" : "طرق الدفع الأخرى",
+		"PRENOM": "الاسم الأول",
+		"NOM": "اسم",
+		"SPECIALITY": "التخصص",
+		"NIVEAU": "المستوى",
+		"ANNEE": "السنة",
+		"STATUTANNU": "الحالة السنوية",
+		"MODEINSC": "وضع التسجيل",
+		"QUITUS": "كيتوس",
+		"FLAG": "مؤشر"
+	}
+}

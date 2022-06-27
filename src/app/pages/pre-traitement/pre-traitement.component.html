@@ -1,0 +1,30 @@
+<h1>{{titre}}</h1>
+
+<div class="container-fluid " id="root">
+    <div id="row" *ngFor="let element of data">
+        <div class="row ">
+            <div id="rowCol">
+                <button class="btn Banim" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+element.id"
+                    aria-expened="false" [attr.aria-controls]="element.id">{{element.title}}</button>
+            </div>
+            <div class="collapse multi-collapse contenue" id={{element.id}}>
+                <p>{{element.description}}</p>
+                <span>{{element.erreur}}</span>
+            </div>
+            <a routerLink={{element.route}}>
+                <button type="submit" class="fixed-bottom" value={{element.buttonID}} class="preTrai btn Banim" #Bsubmit
+                    (click)="go(Bsubmit.value)">Details</button>
+            </a>
+        </div>
+    </div>
+    <div class="BRC">
+    <a routerLink=".."><button class="btn retoure">Retoure</button></a>
+    <a routerLink="./Resumer"><button class="btn continue">Continue</button></a>
+</div>
+
+</div>
+<div class="progress">
+    <div class="Pourcentage">
+        <p></p>
+    </div>
+</div>

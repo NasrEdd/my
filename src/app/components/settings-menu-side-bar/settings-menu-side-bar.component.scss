@@ -1,0 +1,101 @@
+/*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.SettingsSideBar{
+    width: 300px;
+    position: fixed;
+    top: 0;
+    right: -310px;
+    height: 100vh;
+    z-index: 999;
+    background: #254D91;
+    color: #ffffff;
+    transition: all 0.3s;
+    overflow-y: auto;
+    box-shadow: -5px 0px 8px 0px rgba(11,12,64,0.9) ;
+}
+
+.SettingsSideBar.active{
+    right: 0px;
+}
+
+
+.dismiss {
+    width: 48px;
+    height: 45px;
+    line-height: 35px;
+    text-align: center;
+    background: #1f4a94;
+    position: absolute;
+    top: 17px;
+    left: 0px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+
+.dismiss:hover {
+    background: #fff;
+    color: #1f4a94;
+    border-radius: 5px;
+}
+
+
+.SettingsSideBar .sidebar-header {
+    padding: 20px 10px ;
+    background: #1f4a94;
+}
+
+.SettingsSideBar ul.components {
+    padding-top: 20px ;
+    border-bottom: 1px solid white;
+}
+
+.SettingsSideBar ul li {
+    border-top: 1px white solid;
+}
+
+.SettingsSideBar ul li a {
+    padding: 13px 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+.SettingsSideBar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+.SettingsSideBar ul li.active>a {
+    color: #fff;
+    background: #4974BD;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}

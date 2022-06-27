@@ -1,0 +1,65 @@
+#btn {
+    display: none;
+}
+.button-parent {
+    position: fixed;
+    z-index: 60;
+    bottom: 30px; 
+    right: 25px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.button {
+    z-index: 62;
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 5px;
+    background-color: #263148;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* link and link-parent */
+.link-parent {
+    z-index: 61;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+}
+.link-item {
+    background-color: #263148;
+    color: white;
+    position: absolute;
+    display: flex;
+    align-items: center; justify-content: center;
+    bottom: 10px; right: 10px;
+    height: 50px; width: 50px;
+    border-radius: 50%;
+    transition: all .3s ease;
+}
+
+/* control click */
+#btn:checked~.link-parent {
+    height: 100%;
+    .link-item:nth-child(1) {
+        transform: translateY(-70px);
+    }
+    .link-item:nth-child(2) {
+        transform: translateY(-130px);
+    }
+    .link-item:nth-child(3) {
+        transform: translateY(-190px);
+    }
+    .link-item:nth-child(4) {
+        transform: translateY(-250px);
+    }
+    .link-item:nth-child(5) {
+        transform: translateY(-310px);
+    }
+}

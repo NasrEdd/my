@@ -1,0 +1,32 @@
+<h1>{{titre}}</h1>
+
+<div class="container-fluid " id="root">
+    <div id="row" *ngFor="let element of data">
+        <div class="row ">
+            <div id="rowCol">
+                <button class="btn Banim">{{element.title}}</button>
+            </div>
+            <div class="contenue" id={{element.id}}>
+                <p>{{element.description}}</p>
+                <span>{{element.erreur}}</span>
+            </div>
+            <a routerLink={{element.route}}>
+                <button type="submit" class="fixed-bottom" value={{element.buttonID}} class="preTrai btn Banim" #Bsubmit
+                    >Details</button>
+            </a>
+        </div>
+        
+    </div>
+    <div class="buttonR">
+    <a routerLink=".."><button class="btn retoure">Retoure</button></a>
+    <a routerLink="./Resultat"><button class="btn continue">Continue</button></a>
+    
+    </div>
+  
+    
+</div>
+<div class="progress">
+    <div class="Pourcentage">
+        <p></p>
+    </div>
+</div>

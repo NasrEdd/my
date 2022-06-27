@@ -1,0 +1,190 @@
+{
+	"FORM": {
+		"ABSENCESECTION":{
+			"TITLE": "الغياب",
+			"TABTITLE": "الغياب"
+		},
+		"PAIEMENTSECTION":{
+			"TITLE": "الدفع",
+			"TABTITLE": "الدفع"
+		},
+		"BIBLIOSECTION":{
+			"TITLE": "المكتبة",
+			"TABTITLE": "المكتبة"
+		},
+		"NOTESECTION":{
+			"TITLE": "النقط",
+			"TABTITLE": "النقط"
+		},
+		"SEMESTERSECTION":{
+			"TITLE": "الفصول",
+			"TABTITLE": "الفصول",
+			"ASSOCIER":"ربط الطالب بالفصول",
+			"NIVEAU":"المستوى",
+			"FILIERE": "الشعبة",
+			"SEMESTRE": "الفصل الدراسي",
+			"ASSOCIATE": "ربط"
+		},
+		"FORMATIONSECTION": {
+			"TITLE": "التدريبات السابقة",
+			"TABTITLE": "التدريبات",
+			"NOMDILOM" : "اسم الدبلوم",
+			"NUMDILOM": "رقم الدبلوم",
+			"NIVFORMA": "مستوى التدريب",
+			"NOMFORMA": "اسم التدريب",
+			"MOYEN": "المعدل",
+			"MENTION": "الرتبة",
+			"INSTNOM": "اسم المؤسسة",
+			"DATEOBTEN": "تاريخ الحصول عليه",
+			"BASEADMIS": "القبول الأساسي",
+			"ACCRED": "اعتماد",
+			"ADDRL1": "العنوان (السطر1)",
+			"VILLE": "مدينة",
+			"PAYS": "بلد",
+			"TEL1": "خط أرضي 1",
+			"GSM1": "النقال 1"
+		},
+		"MOYENSECTION": {
+			"TITLE": "طرق التوظيف",
+			"TABTITLE": "طرق التوظيف",
+			"SUPPORT": "الوسيلة"
+		},
+		"NOTFOUND": "قم بتحديد طالب واحد أولا",
+		"CLICKTOSCROLL": "اضغط للإنتقال",
+		"PERSONALINFOSSECTION": {
+			"UNDOPHOTOCHANGE" : "إلغاء تعديل الصورة",
+			"ADRLIGNE1": "العنوان (السطر 1)",
+			"ADRLIGNE2": "العنوان (السطر 2)",
+			"REMARQ": "ملاحظة",
+			"POSTALCODE": "الرمز البريدي",
+			"VILLE": "المدينة",
+			"TELFIX1": "رقم ثابت 1",
+			"TELFIX2": "رقم ثابت 2",
+			"GSM1": "رقم النقال 1",
+			"GSM2": "رقم النقال 2",
+			"EMAIL1": "البريد الإلكتروني 1",
+			"EMAIL2": "البريد الإلكتروني 2",
+			"CINOUPASS": "CIN أو جواز السفر",
+			"DATENAISS": "تاريخ الميلاد",
+			"LIEUNAISS": "مكان الولادة",
+			"MATRICULE": "رقم التسجيل",
+			"NATIONALITE": "الجنسية",
+			"NEWPHOTO": "اختر صورة جديدة",
+			"NOM": "النسب",
+			"PAYS": "البلد",
+			"PRENOM": "الإسم",
+			"SEXE": "الجنس",
+			"TITLE": "معلومات شخصية",
+			"TABTITLE": "معلومات شخصية"
+		},
+		"PROGRAMSECTION": {
+			"GRID": {
+				"SITUATIONETU": "حالة الطالب",
+				"ADMISSIONDATE": "تاريخ القبول",
+				"ADMISSIONFIL": "شعبة القبول",
+				"ADMISSIONLEVEL": "مستوى القبول",
+				"ADMISSIONTYPE": "نوع القبول",
+				"ADMISSIONYEAR": "سنة القبول",
+				"INSCRDATE": "تاريخ التسجيل",
+				"INSCRGRP": "مجموعة القبول",
+				"INSCRNUM": "رقم التسجيل",
+				"PROGTYPE": "نوع البرنامج",
+				"PROG":"البرنامج"
+			},
+			"TABTITLE": "برامج",
+			"TITLE": "برامج الطالب"
+		},
+		"TUTEURSECTION": {
+			"TITLE": "مدرسون",
+			"TABTITLE": "مدرسون",
+			"LINK": "رابط",
+			"NOM": "اسم",
+			"PRENOM": "الاسم الأول",
+			"SEXE": "جنس",
+			"CINPASS": "CIN أو جواز السفر",
+			"EMAIL": "البريد الإلكتروني",
+			"ADR": "عنوان",
+			"CEL1": "هاتف 1",
+			"CEL2": "هاتف 2",
+			"FIX1": "ثابت 1",
+			"FIX2": "ثابت 2",
+			"PROF": "مهنة",
+			"FONC": "العمل",
+			"DATENAISS": "تاريخ الميلاد",
+			"PAYS": "البلد",
+			"VILLE": "المدينة",
+			"NATION": "الجنسية",
+			"SECTEUR": "القطاع",
+			"ENTREP": "الشركة"
+		},
+		"ALLSECTIONS":{
+			"HIDECOLUMNS": "اختر الأعمدة لإظهارها",
+			"DELETE": "حذف الصفوف المحددة",
+			"ADD": "إضافة صف",
+			"EMPTY": "لم يتم العثور على أي نتائج",
+			"DSELECTALL": "اختيار/عدم اختيار الكل"
+		}
+	},
+	"FORMHEADER": {
+		"NEXTBTNTITLE": "انتقل إلى الطالب التالي",
+		"PREVBTNTITLE": "انتقل إلى الطالب السابق"
+	},
+	"GRIDOTHER":{
+		"LINES" : "أسطر",
+		"PAGINATORLABEL": "عدد النتائج",
+		"PAGERTEXT":"من",
+		"EMPTY": "لم يتم العثور على أي طالب",
+		"ADDROW" : "إنشاء طالب",
+		"STARTSRCH": "ابحث",
+		"CLEARSRCH": "امسح النتائج"
+	},
+	"GRIDBTNS": {
+		"ADDSTUDENT": "اضافة طالب جديد",
+		"DELETESTUDENT": "حذف الطلبة المحددين",
+		"EXCELEXPORT": "تصدير Excel",
+		"GENERATEEMAILS": "استخراج عناوين البريد",
+		"PRINT": "ملف الترشيح",
+		"HIDECOLUMNS" : "اختر الأعمدة لإظهارها"
+	},
+	"GRIDHEADERS": {
+		"ADRLIGNE1": "العنوان (السطر 1)",
+		"ADRLIGNE2": "العنوان (السطر 2)",
+		"REMARQ": "ملاحظة",
+		"POSTALCODE": "الرمز البريدي",
+		"VILLE": "المدينة",
+		"TELFIX1": "رقم ثابت 1",
+		"TELFIX2": "رقم ثابت 2",
+		"GSM1": "رقم النقال 1",
+		"GSM2": "رقم النقال 2",
+		"EMAIL1": "البريد الإلكتروني 1",
+		"EMAIL2": "البريد الإلكتروني 2",
+		"CINOUPASS": "رقم CIN أو جواز السفر",
+		"MATR": "ماتريكيل",
+		"NATIONALITE": "الجنسية",
+		"NOM": "النسب",
+		"PAYS": "البلد",
+		"PRENOM": "الإسم",
+		"SEXE": "الجنس",
+		"DATENAISS": "تاريخ الميلاد",
+		"LIEUNAISS": "مكان الولادة"
+	},
+	"TITLE": "ملف الطالب",
+	"SEARCHAREA":{
+		"SEARCHTYPE": "نوع البحث",
+		"MULTISEARCH": "بحث متعدد المعايير",
+		"CURSSEARCH": "البحث حسب المنهج الدراسي",
+		"PLACEHOLDERS" : {
+			"MATRICULE": "الرقم",
+			"NOM": "النسب",
+			"PRENOM": "الاسم",
+			"CINOUPASS": "جواز سفر CIN ou",
+			"DATENAISS": "تاريخ الميلاد",
+			"ECOLE": "المدرسة",
+			"ANNEE": "السنة",
+			"PROGRAM": "برنامج",
+			"NIVEAU": "مستوى",
+			"FILIERE": "الشعبة",
+			"SEMESTRE": "الفصل الدراسي"
+		}
+	}
+}

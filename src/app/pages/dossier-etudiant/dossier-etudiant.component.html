@@ -1,0 +1,733 @@
+<div class="card-header col-12 m-0 p-0">
+    <div class="collapse my-2 p-0" id="collapsingSearchArea">
+        <div class="card card-body border-0 px-0 px-lg-2 py-1" style="background-color: transparent;">
+            <div class="col-12 text-center mb-2 mb-md-1">
+                <h6 class="h5 fw-light col-auto d-inline me-1 "> {{ "DOSSIERETUDIANT.SEARCHAREA.SEARCHTYPE" | translate }} : </h6>
+                <div class="d-inline-block col-11 col-md-4">
+                    <select class="form-select" (change)="SearchTypeChangeHandler($event)">
+                        <option selected value="multi"> {{ "DOSSIERETUDIANT.SEARCHAREA.MULTISEARCH" | translate }} </option>
+                        <option value="cursus"> {{ "DOSSIERETUDIANT.SEARCHAREA.CURSSEARCH" | translate }} </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 pt-2 pb-0">
+                <form class="d-block text-center d-lg-flex justify-content-center col-12" id="multiCrSearchForm">
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="text" class="form-control" name="SrchMatricule" id="SrchMatricule" aria-describedby="helpId" [placeholder]=" 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.MATRICULE' | translate">
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="text" class="form-control" name="SrchNom" id="SrchNom" aria-describedby="helpId" [placeholder]=" 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.NOM' | translate" >
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="text" class="form-control" name="SrchPrenom" id="SrchPrenom" aria-describedby="helpId" [placeholder]=" 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.PRENOM' | translate" >
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="text" class="form-control" name="SrchCinPass" id="SrchCinPass" aria-describedby="helpId" [placeholder]=" 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.CINOUPASS' | translate" >
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="date" class="form-control" name="SrchDateNaiss" id="SrchDateNaiss" aria-describedby="helpId" [placeholder]=" 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.DATENAISS' | translate" >
+                        <small class="text-muted"> {{ 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.DATENAISS' | translate }} </small>
+                    </div>
+                    <div class="form-group col-11 col-lg-auto mx-auto me-lg-1 ms-lg-0">
+                        <button type="button" id="getDataBtn1" class="btn btn-info text-center me-1" style="border-radius: 50%;" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'DOSSIERETUDIANT.GRIDOTHER.STARTSRCH' | translate " (click)="GetData()"><i class="fas fa-search"></i></button>
+                        <button type="button" id="clearDataBtn1" class="btn btn-warning text-center" style="border-radius: 50%;" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'DOSSIERETUDIANT.GRIDOTHER.CLEARSRCH' | translate " (click)="clearData()" ><i class="fas fa-times"></i></button>
+                    </div>
+                </form>
+                <form class="d-none text-center justify-content-center col-12 mb-2" id="CursusSearchForm">
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <select class="form-select" name="SrchEcole" id="SrchEcole">
+                            <option selected disabled> {{ 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.ECOLE' | translate }} </option>
+                            <option> Tous les écoles </option>
+                            <option>Poly</option>
+                            <option>Isiam</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <select class="form-select" name="SrchAnnee" id="SrchAnnee">
+                            <option selected disabled> {{ 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.ANNEE' | translate }} </option>
+                            <option> 2021/2022 </option>
+                            <option>2020/2021</option>
+                            <option>2019/2020</option>
+                        </select>    
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <select class="form-select" name="SrchProg" id="SrchProg">
+                            <option selected disabled> {{ 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.PROGRAM' | translate }} </option>
+                            <option> programme1 </option>
+                            <option> programme2 </option>
+                            <option> programme3 </option>
+                        </select>      
+                    </div>
+                    <div class="form-group col-11 col-lg-2 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <select class="form-select" name="SrchNiveau" id="SrchNiveau">
+                            <option selected disabled> {{ 'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.NIVEAU' | translate }} </option>
+                            <option> Niveau1 </option>
+                            <option> Niveau2 </option>
+                            <option> Niveau3 </option>
+                        </select> 
+                    </div>
+                    <div class="form-group col-11 col-lg-1 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="text" class="form-control" name="SrchFiliere" id="SrchFiliere" aria-describedby="helpId" [placeholder]="'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.FILIERE' | translate">
+                    </div>
+                    <div class="form-group col-11 col-lg-1 mx-auto me-lg-1 ms-lg-0 mb-2 mb-lg-0">
+                        <input type="text" class="form-control" name="SrchSemester" id="SrchSemester" aria-describedby="helpId" [placeholder]="'DOSSIERETUDIANT.SEARCHAREA.PLACEHOLDERS.SEMESTRE' | translate">
+                    </div>
+                    <div class="form-group col-11 col-lg-auto mx-auto me-lg-1 ms-lg-0">
+                        <button type="button" id="getDataBtn2" class="btn btn-info text-center me-1" style="border-radius: 50%;" data-bs-toggle="tooltip" data-placement="top" [title]=" 'DOSSIERETUDIANT.GRIDOTHER.STARTSRCH' | translate " (click)="GetData()"><i class="fas fa-search"></i></button>
+                        <button type="button" id="clearDataBtn2" class="btn btn-warning text-center" style="border-radius: 50%;" data-bs-toggle="tooltip" data-placement="top" [title]=" 'DOSSIERETUDIANT.GRIDOTHER.CLEARSRCH' | translate " (click)="clearData()"><i class="fas fa-times"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<igx-splitter [type]="SplitterType" class="h-100 m-0">
+    <igx-splitter-pane size="auto" id="splitterPane1">
+        <div class="col-12 my-0 py-0 h-100" id="splitterPane1card">
+            <div class="card cardContent h-100 p-0 rounded-3">
+                <div class="card-header col-12 m-0 p-0">
+                    <div class="col-12 d-flex flex-column flex-lg-row justify-content-between my-1 px-2" >
+                        <div class="text-center text-lg-start">
+                            <button type="button" id="printBtn" class="btn btn-indigo me-1 px-3 rounded-15"> <i class="fas fa-print me-2"></i> {{ 'DOSSIERETUDIANT.GRIDBTNS.PRINT' | translate }} </button>
+                            <button type="button" id="ExcelBtn" class="btn btn-indigo me-1 px-3 rounded-15 mt-1 mt-md-0" (click)="generateExcel()"> <i class="fas fa-file-excel me-2"></i> {{ 'DOSSIERETUDIANT.GRIDBTNS.EXCELEXPORT' | translate }} </button>
+                            <button type="button" id="getEmailsBtn" class="btn btn-indigo me-1 px-3 rounded-15 mt-1 mt-md-0"> <i class="fas fa-at me-2"></i> {{ 'DOSSIERETUDIANT.GRIDBTNS.GENERATEEMAILS' | translate }} </button>
+                        </div>
+                        <div class="text-center text-lg-end mt-1 mt-lg-0 d-none d-md-inline-block">
+                            <button type="button" id="hideColumnsBtn" class="btn btn-warning text-white px-3 rounded-15 me-1 fs-13px" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'DOSSIERETUDIANT.GRIDBTNS.HIDECOLUMNS' | translate }}" (click)="toggleGridColumnsModal()" >
+                                <i class="fas fa-eye-slash"></i>
+                            </button>
+                            <button type="button" id="addRowBtn1" class="btn btn-success px-3 rounded-15 me-1 fs-13px" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'DOSSIERETUDIANT.GRIDBTNS.ADDSTUDENT' | translate }}" (click)="addRow()" > <i class="fas fa-plus"></i> </button>
+                            <button type="button" id="deleteRowsBtn" class="btn btn-danger px-3 rounded-15 fs-13px" data-bs-toggle="tooltip" data-bs-placement="bottom"  title="{{ 'DOSSIERETUDIANT.GRIDBTNS.DELETESTUDENT' | translate }}" (click)="deleteRows()"> <i class="fas fa-trash-alt"></i> </button>
+                        </div> 
+                    </div>
+                </div>
+                <div class="card-body d-none d-md-block h-100 p-0" style=" border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+                    <div class="igx-typography d-block h-100" id="StudentsGridContainer">
+                        <div class="d-flex flex-row h-100">
+                            <igx-grid #StudentsGrid id="StudentsGrid" [batchEditing]="true" [allowFiltering]="true" [data]="gridConfig.data" [primaryKey]="gridConfig.primaryKey" rowHeight="35px" width="100%" [height]="gridConfig.height? gridConfig.height+'px':''" [emptyGridTemplate]="gridEtudiantsEmptyTemplate" [rowEditable]="true" [rowSelection]="'multiple'" [cellSelection]="'none'" [columnSelection]="'none'" displayDensity="compact" (rowSelectionChanging)="handleRowSelection($event)" >
+                                
+                                <ng-template ngFor let-column [ngForOf]="gridConfig.columns">
+                                    <ng-container *ngIf="column.field!='Sexe_Nom'&&column.field!='Nation_Id'&&column.field!='Pays_Nom'">
+                                        <igx-column  [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [width]="column.width"></igx-column>
+                                    </ng-container>
+                                    <ng-container *ngIf="column.field=='Sexe_Nom'">
+                                        <igx-column  [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [width]="column.width">
+                                            <ng-template igxCellEditor let-cell="cell">
+                                                <ng-select 
+                                                    class="w-100"
+                                                    [(ngModel)]="cell.editValue"
+                                                    (change)="handleSexeOnGridChange($event, cell)"
+                                                    appendTo="body"
+                                                    [clearable]="false"
+                                                >
+                                                    <ng-option *ngFor="let item of formData.gendersTranslations|keyvalue" [value]="item.key"> {{ item.value }} </ng-option>
+                                                </ng-select>
+                                            </ng-template>
+                                        </igx-column>
+                                    </ng-container>
+                                    <ng-container *ngIf="column.field=='Nation_Id'">
+                                        <igx-column  [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [width]="column.width">
+                                            <ng-template igxCellEditor let-cell="cell">
+                                                <ng-select 
+                                                    class="w-100"
+                                                    [(ngModel)]="cell.editValue"
+                                                    (change)="handleNationalityOnGridChange($event, cell)"
+                                                    appendTo="body"
+                                                    [clearable]="false"
+                                                >
+                                                    <ng-option *ngFor="let item of formData.nationalitiesArr" [value]="item.nationalityId"> {{ item.nationalityNamekey|translate }} </ng-option>
+                                                </ng-select>
+                                            </ng-template>
+                                        </igx-column>
+                                    </ng-container>
+                                    <ng-container *ngIf="column.field=='Pays_Nom'">
+                                        <igx-column  [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [width]="column.width">
+                                            <ng-template igxCellEditor let-cell="cell">
+                                                <ng-select 
+                                                    class="w-100"
+                                                    [(ngModel)]="cell.editValue"
+                                                    (change)="handlePaysOnGridChange($event, cell)"
+                                                    appendTo="body"
+                                                    [clearable]="false"
+                                                >
+                                                    <ng-option *ngFor="let item of formData.countriesTranslations|keyvalue" [value]="item.key"> {{ item.value }} </ng-option>
+                                                </ng-select>
+                                            </ng-template>
+                                        </igx-column>
+                                    </ng-container>
+                                </ng-template>
+                            </igx-grid>
+                        </div>
+                        <ng-template #gridEtudiantsAddRowTemplate>
+                            <div class="col-lg-12">
+                                <h5 class="h5 fw-light text-center"> {{ 'DOSSIERETUDIANT.GRIDOTHER.ADDROW' | translate }} </h5>
+                                <div class="col-12 text-center">
+                                    <button type="button" id="addRowBtn2" class="btn btn-success" (click)="addRow()" > <i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template #gridEtudiantsEmptyTemplate>
+                            <div class="col-lg-12">
+                                <p class="text-muted fs-5 text-center"> {{ 'DOSSIERETUDIANT.GRIDOTHER.EMPTY' | translate }} </p>
+                                <!--
+                                <h5 class="h5 fw-light text-center my-2"> {{ 'DOSSIERETUDIANT.GRIDOTHER.ADDROW' | translate }} </h5>
+                                <div class="col-12 text-center">
+                                    <button type="button" class="btn btn-success px-3 rounded-3" (click)="addRow()" [title]="'DOSSIERETUDIANT.GRIDOTHER.ADDROW' | translate" > <i class="fas fa-plus"></i></button>
+                                </div>
+                                -->
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </igx-splitter-pane>
+
+    
+
+    <igx-splitter-pane #splitterPane2 size="18%" [collapsed]="true" minSize="20px" class="mt-1 h-md-20 overflow-y-hidden" (collapsedChange)="waitForresizingSplitter()" id="splitterPane2">
+        <div class="card col-12 py-0 rounded-18">
+            <div class="card-header bg-light px-2 py-1 d-flex justify-content-between rounded-18 col-12 flex-wrap flex-lg-nowrap" id="formHeader">
+                <div style="direction: ltr;" class="order-1 col-auto">
+                    <button type="button" id="navigatePrevBtn" class="btn btn-indigo me-1 rounded-15 fw-bold px-3" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'DOSSIERETUDIANT.FORMHEADER.PREVBTNTITLE' | translate " [disabled]="viewTrakingIndex==undefined || viewTrakingIndex<1" (click)="previousRow()" ><i class="fas fa-caret-left fa-lg"></i></button>
+                    <button type="button" id="navigateNextBtn" class="btn btn-indigo rounded-15 fw-bold px-3" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'DOSSIERETUDIANT.FORMHEADER.NEXTBTNTITLE' | translate " [disabled]="viewTrakingIndex==undefined || (viewTrakingIndex>=(StudentsGrid.dataWithAddedInTransactionRows.length-1))" (click)="nextRow()" ><i class="fas fa-caret-right fa-lg"></i></button>
+                </div>
+                <div class="order-3 order-lg-2 col-lg-auto col-12 text-center mt-2 mt-lg-0" *ngIf="!(currentStudent==undefined || currentStudent==null)">
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1" >
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.personalInfos" (change)="scroll('personalInfosSection', $event)" > {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.personalInfos" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('personalInfosSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.programs" (change)="scroll('programsSection', $event)"> {{  'DOSSIERETUDIANT.FORM.PROGRAMSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.programs" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('programsSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-sm btn-group-toggle px-0 ms-1 d-none d-md-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.formations" (change)="scroll('formationsSection', $event)" > {{  'DOSSIERETUDIANT.FORM.FORMATIONSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.formations" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('formationsSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-md-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.tuteurs" (change)="scroll('tuteursSection', $event)"> {{  'DOSSIERETUDIANT.FORM.TUTEURSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.tuteurs" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('tuteursSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-lg-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.moyensRecrut" (change)="scroll('moyensrecrutSection', $event)"> {{  'DOSSIERETUDIANT.FORM.MOYENSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.moyensRecrut" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('moyensrecrutSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-xl-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.semestres" (change)="scroll('semestersSection', $event)"> {{  'DOSSIERETUDIANT.FORM.SEMESTERSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.semestres" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('semestersSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-xl-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.notes" (change)="scroll('notesSection', $event)"> {{  'DOSSIERETUDIANT.FORM.NOTESECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.notes" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('notesSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-xl-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.biblio" (change)="scroll('biblioSection', $event)"> {{  'DOSSIERETUDIANT.FORM.BIBLIOSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.biblio" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('biblioSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-xxl-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.paiement" (change)="scroll('paiementSection', $event)"> {{  'DOSSIERETUDIANT.FORM.PAIEMENTSECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.paiement" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('paiementSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group btn-group-sm btn-group-toggle px-0 ms-1 d-none d-xxl-inline-flex" data-toggle="buttons">
+                        <label class="btn btn-secondary active fs-14px px-2 py-1">
+                            <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.absence" (change)="scroll('absenceSection', $event)"> {{  'DOSSIERETUDIANT.FORM.ABSENCESECTION.TABTITLE' | translate }}
+                        </label>
+                        <button type="button" class="btn btn-primary" [disabled]="!formData.absence" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('absenceSection')">
+                            <i class="far fa-dot-circle"></i>
+                        </button>
+                    </div>
+    
+                    
+                    <div class="dropdown d-inline-flex ms-1">
+                        <button class="btn btn-secondary dropdown-toggle pt-0 pb-1 my-0" type="button" id="MoreSectionsDropDown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu py-0" aria-labelledby="MoreSectionsDropDown">
+                            <li class="px-2 py-0 my-0 d-md-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons">
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2" >
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.formations" (change)="scroll('formationsSection', $event)"> {{  'DOSSIERETUDIANT.FORM.FORMATIONSECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.formations" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('formationsSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-md-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons">
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.tuteurs" (change)="scroll('tuteursSection', $event)"> {{  'DOSSIERETUDIANT.FORM.TUTEURSECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.tuteurs" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('tuteursSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-lg-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons">
+                                    <label class="btn btn-secondary active fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.moyensRecrut" (change)="scroll('moyensrecrutSection', $event)"> {{  'DOSSIERETUDIANT.FORM.MOYENSECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary" [disabled]="!formData.moyensRecrut" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('moyensrecrutSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-xl-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons">
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.semestres" (change)="scroll('semestersSection', $event)"> {{  'DOSSIERETUDIANT.FORM.SEMESTERSECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.semestres" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('semestersSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-xl-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons">  
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.notes" (change)="scroll('notesSection', $event)"> {{  'DOSSIERETUDIANT.FORM.NOTESECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.notes" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('notesSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-xl-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons"> 
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.biblio" (change)="scroll('biblioSection', $event)"> {{  'DOSSIERETUDIANT.FORM.BIBLIOSECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.biblio" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('biblioSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-xxl-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons">
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.paiement" (change)="scroll('paiementSection', $event)"> {{  'DOSSIERETUDIANT.FORM.PAIEMENTSECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.paiement" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('paiementSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0 d-xxl-none">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons"> 
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [(ngModel)]="formData.absence" (change)="scroll('absenceSection', $event)"> {{  'DOSSIERETUDIANT.FORM.ABSENCESECTION.TABTITLE' | translate }}
+                                    </label>
+                                    <button type="button" class="btn btn-primary col-auto" [disabled]="!formData.absence" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.FORM.CLICKTOSCROLL' | translate }}" (click)="scroll('absenceSection')">
+                                        <i class="far fa-dot-circle"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2 py-0 my-0">
+                                <div class="mydropDownItem btn-group btn-group-toggle px-0" data-toggle="buttons"> 
+                                    <label class="btn btn-secondary active col-10 fs-14px px-1 py-2">
+                                        <input type="checkbox" checked autocomplete="off" [checked]="formData.absence || formData.personalInfos || formData.programs || formData.formations || formData.tuteurs || formData.moyensRecrut || formData.semestres || formData.notes || formData.biblio || formData.paiement" (change)="un_check_all($event)"> {{  'DOSSIERETUDIANT.FORM.ALLSECTIONS.DSELECTALL' | translate }}
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="order-2 order-lg-3">
+                    <button type="button" id="AddRowBtn3" class="btn btn-success me-1 rounded-15 px-3 d-lg-none" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ 'DOSSIERETUDIANT.GRIDBTNS.ADDSTUDENT' | translate }}" (click)="addRow()"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="card-body px-2 py-3  d-flex align-items-center"  *ngIf="(currentStudent==undefined || currentStudent==null);else detailsForm">
+                <div class="alert alert-info col-8 col-lg-6 mx-auto text-center" role="alert">
+                    {{  'DOSSIERETUDIANT.FORM.NOTFOUND' | translate }}
+                </div>
+            </div>
+            <ng-template #detailsForm>
+                <div class="d-flex flex-row h-100 w-100 align-items-center justify-content-center text-center"  *ngIf="!formData.loaded">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="card-body px-1 pt-2 pb-3" *ngIf="formData.loaded" style="overflow-y: auto; overflow-x: hidden;">
+                    <form>
+                        <!-- First form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2" [ngClass]="{'d-none': !formData.personalInfos}" id="personalInfosSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section1', 'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body py-1 d-flex flex-column flex-lg-row px-1" id="Section1">
+                                <div class="col-12 row mx-auto px-1">
+                                    <div class="col-12 col-xl-2 col-lg-4 mb-4 mb-lg-0 justify-content-center flex-column d-lg-flex">
+                                        <div class="d-block text-center mx-auto py-0">
+                                            <div *ngIf="currentStudent!.Pers_Photo ==undefined || currentStudent!.Pers_Photo.length==0" class="d-inline-block rounded-3 my-0 py-0" style="height: 200px; width: 150px; background-color: lightgray;" ></div>
+                                            <img *ngIf="currentStudent!.Pers_Photo && currentStudent!.Pers_Photo!.length" [src]="currentStudent!.Pers_Photo" class="d-inline-block rounded-3 my-0 py-0"  alt="" style="height: 200px; width: 150px; background-color: lightgray;">
+                                            <span *ngIf="currentStudent && currentStudent!.Pers_Photo!=backUpPhotos![currentStudent!.Etd_Id!] " class="d-inline-block align-bottom ms-1 py-0 my-0" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ 'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.UNDOPHOTOCHANGE' | translate }}" (click)="resetPhoto()" > <i class="fas fa-undo"></i> </span>
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <label for="photoPicker">
+                                                <input type="file" id="photoPicker" (change)="photoChangeHandler($event)" class="d-none" >
+                                                <div class="btn btn-indigo me-1" style="cursor: pointer;"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.NEWPHOTO' | translate }} </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xl-10 col-lg-8 px-1">
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput name="matricule" id="matricule" type="text" required="required" disabled [(ngModel)]="currentStudent!.Etd_Matricule" />
+                                                <label igxLabel for="matricule"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.MATRICULE' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput  id="nom" name="nom" type="text" required="required" [(ngModel)]="currentStudent!.Pers_Nom" name="nom" (change)="handleFieldChange($event,'Pers_Nom')" />
+                                                <label igxLabel for="nom">{{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.NOM' | translate }}</label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="prenom" name="prenom" type="text" required="required" [(ngModel)]="currentStudent!.Pers_Prenom" (change)="handleFieldChange($event,'Pers_Prenom')" />
+                                                <label igxLabel for="prenom">{{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.PRENOM' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                            <div class="form-group">
+                                                <label for="dateNaissance" class="fs-13px text-muted"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.DATENAISS' | translate }} </label>
+                                                <input type="date" name="dateNaissance" class="form-control" [(ngModel)]="currentStudent!.Pers_DateNaissance" (change)="handleFieldChange($event,'Pers_DateNaissance')" name="dateNaissance">
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                            <div class="form-group">
+                                                <label for="sexe" class="fs-13px text-muted"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.SEXE' | translate }} </label>
+                                                <ng-select [(ngModel)]="currentStudent!.Sexe_Id" id="sexe"  name="sexe" (change)="handleSexeChange($event)" [clearable]="false" >
+                                                    <ng-option *ngFor="let gender of formData.gendersArr" [value]="gender.genderId"> {{  gender.genderNamekey | translate }}  </ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="cinOuPass" name="cinOuPass" type="text" required="required" [(ngModel)]="currentStudent!.Pers_CinouPass" (change)="handleFieldChange($event,'Pers_CinouPass')" />
+                                                <label igxLabel for="cinOuPass">{{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.CINOUPASS' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-4 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-0">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="lieuNaissance" name="lieuNaissance" type="text" required="required" [(ngModel)]="currentStudent!.Crd_LieuDeNaissance" (change)="handleFieldChange($event,'Crd_LieuDeNaissance')" />
+                                                <label igxLabel for="lieuNaissance"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.LIEUNAISS' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-0">
+                                            <div class="form-group">
+                                                <label for="nationalite" class="fs-13px text-muted">{{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.NATIONALITE' | translate }}</label>
+                                                <ng-select [(ngModel)]="currentStudent!.Nation_Id" id="nationalite"  name="nationalite" (change)="handleNationalityChange($event)" [clearable]="false">
+                                                    <ng-option *ngFor="let nationality of formData.nationalitiesArr" [value]="nationality.nationalityId" > {{  nationality.nationalityNamekey | translate }}  </ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-0">
+                                            <div class="form-group">
+                                                <label for="pays" class="fs-13px text-muted"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.PAYS' | translate }}</label>
+                                                <ng-select [(ngModel)]="currentStudent!.Pays_Id" id="pays"  name="pays" (change)="handlePaysChange($event)" [clearable]="false">
+                                                    <ng-option *ngFor="let country of formData.countriesArr" [value]="country.countryId"> {{   country.countryNamekey|translate }}  </ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-0">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="VILLE" name="VILLE" type="text" required="required" [(ngModel)]="currentStudent!.Crd_Ville" (change)="handleFieldChange($event,'Crd_Ville')" />
+                                                <label igxLabel for="VILLE"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.VILLE' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-0">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="CodePostal" name="CodePostal" type="text" required="required" [(ngModel)]="currentStudent!.Crd_CodePostal" (change)="handleFieldChange($event,'Crd_CodePostal')" />
+                                                <label igxLabel for="CodePostal"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.POSTALCODE' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-3">
+                                            <igx-input-group class="form-group">
+                                                <igx-prefix>+212</igx-prefix>
+                                                <input igxInput id="FIX1" name="FIX1" type="tel" required="required" [(ngModel)]="currentStudent!.Crd_TelFixe1" (change)="handleFieldChange($event,'Crd_TelFixe1')" />
+                                                <label igxLabel for="FIX1"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.TELFIX1' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-3">
+                                            <igx-input-group class="form-group">
+                                                <igx-prefix>+212</igx-prefix>
+                                                <input igxInput id="FIX2" name="FIX2" type="tel" [(ngModel)]="currentStudent!.Crd_TelFixe2" (change)="handleFieldChange($event,'Crd_TelFixe2')" />
+                                                <label igxLabel for="FIX2"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.TELFIX2' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-3">
+                                            <igx-input-group class="form-group">
+                                                <igx-prefix>+212</igx-prefix>
+                                                <input igxInput id="GSM1" name="GSM1" type="tel" required="required" [(ngModel)]="currentStudent!.Crd_Cell1" (change)="handleFieldChange($event,'Crd_Cell1')" />
+                                                <label igxLabel for="GSM1"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.GSM1' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-3">
+                                            <igx-input-group class="form-group">
+                                                <igx-prefix>+212</igx-prefix>
+                                                <input igxInput id="GSM2" name="GSM2" type="tel" [(ngModel)]="currentStudent!.Crd_Cell2" (change)="handleFieldChange($event,'Crd_Cell2')" />
+                                                <label igxLabel for="GSM2"> {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.GSM2' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-3">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="EMAIL1" name="EMAIL1" type="email" required="required" [(ngModel)]="currentStudent!.Crd_AdessCouriel1" (change)="handleFieldChange($event,'Crd_AdessCouriel1')" />
+                                                <label igxLabel for="EMAIL1">  {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.EMAIL1' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="d-inline-block col-12 col-xl-2 col-lg-3 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-3">
+                                            <igx-input-group class="form-group">
+                                                <input igxInput id="EMAIL2" name="EMAIL2" type="email" required="required" [(ngModel)]="currentStudent!.Crd_AdessCouriel2" (change)="handleFieldChange($event,'Crd_AdessCouriel2')" />
+                                                <label igxLabel for="EMAIL2">  {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.EMAIL2' | translate }} </label>
+                                            </igx-input-group>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-inline-block col-12 col-xl-4 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                                <igx-input-group class="form-group" type="border">
+                                                    <textarea igxInput name="AdrLigne1" id="AdrLigne1" rows="2" style="resize: none;" [(ngModel)]="currentStudent!.Crd_AdrLigne1" (change)="handleFieldChange($event,'Crd_AdrLigne1')" ></textarea>
+                                                    <label igxLabel for="AdrLigne1">  {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.ADRLIGNE1' | translate }} </label>
+                                                </igx-input-group>
+                                            </div>
+                                            <div class="d-inline-block col-12 col-xl-4 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                                <igx-input-group class="form-group" type="border">
+                                                    <textarea igxInput name="AdrLigne2" id="AdrLigne2" rows="2" style="resize: none;" [(ngModel)]="currentStudent!.Crd_AdrLigne2" (change)="handleFieldChange($event,'Crd_AdrLigne2')" ></textarea>
+                                                    <label igxLabel for="AdrLigne2">  {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.ADRLIGNE2' | translate }}  </label>
+                                                </igx-input-group>
+                                            </div>
+                                            <div class="d-inline-block col-12 col-xl-4 col-md-4 pe-lg-3 pe-md-2 mb-3 mb-lg-2">
+                                                <igx-input-group class="form-group" type="border">
+                                                    <textarea igxInput name="REMARQ" id="REMARQ" rows="2" style="resize: none;" [(ngModel)]="currentStudent!.Pers_Remarque" (change)="handleFieldChange($event,'Pers_Remarque')" ></textarea>
+                                                    <label igxLabel for="REMARQ">  {{  'DOSSIERETUDIANT.FORM.PERSONALINFOSSECTION.REMARQ' | translate }}  </label>
+                                                </igx-input-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- EndOf First form section -->
+                        
+                        <!-- Second form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2" [ngClass]="{'d-none': !formData.programs}" id="programsSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.PROGRAMSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section2', 'DOSSIERETUDIANT.FORM.PROGRAMSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1" id="Section2">
+                                <app-program-section [configuration]="programGridConfig" class="d-flex flex-column m-0 p-0 w-100 h-100" (edittedEmitter)="programGridConfig.edittedHandler($event)" (createdEmitter)="programGridConfig.creatHandler($event)" (deletedEmitter)="programGridConfig.deleteHandler($event)" style="border: 1px solid #bdbbbb;">
+                                </app-program-section>
+                            </div>
+                        </div>
+                        <!-- EndOf Second form section -->
+
+                        <!-- 3rd form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2" [ngClass]="{'d-none': !formData.formations}" id="formationsSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.FORMATIONSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section3', 'DOSSIERETUDIANT.FORM.FORMATIONSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section3">
+                                <app-formation-section [configuration]="formationGridConfig" [countriesArr]="formData.countriesArr?formData.countriesArr:undefined" class="d-flex flex-column m-0 p-0 w-100 h-100" (edittedEmitter)="formationGridConfig.edittedHandler($event)" (createdEmitter)="formationGridConfig.creatHandler($event)" (deletedEmitter)="formationGridConfig.deleteHandler($event)" style="border: 1px solid #bdbbbb;">
+                                </app-formation-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 3rd form section -->
+
+                        <!-- 4th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2" [ngClass]="{'d-none': !formData.tuteurs}" id="tuteursSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.TUTEURSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section4', 'DOSSIERETUDIANT.FORM.TUTEURSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1" id="Section4">
+                                <app-tuteur-section [configuration]="tuteurGridConfig" class="d-flex flex-column m-0 p-0 w-100 h-100" (edittedEmitter)="tuteurGridConfig.edittedHandler($event)" (createdEmitter)="tuteurGridConfig.creatHandler($event)" (deletedEmitter)="tuteurGridConfig.deleteHandler($event)" style="border: 1px solid #bdbbbb;">
+                                </app-tuteur-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 4th form section -->
+
+                        <!-- 5th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2 mb-3" [ngClass]="{'d-none': !formData.moyensRecrut}" id="moyensrecrutSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.MOYENSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section5', 'DOSSIERETUDIANT.FORM.MOYENSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section5">
+                                <app-moyenrecutem-section [configuration]="moyenrecruGridConfig" (edittedEmitter)="moyenrecruGridConfig.edittedHandler($event)" class="d-flex flex-column m-0 p-0 w-100 h-100" style="border: 1px solid #bdbbbb;">
+                                </app-moyenrecutem-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 5th form section -->
+
+                        <!-- 6th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2 mb-3" [ngClass]="{'d-none': !formData.semestres}" id="semestersSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.SEMESTERSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section6', 'DOSSIERETUDIANT.FORM.SEMESTERSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section6">
+                                <app-semester-section class="d-flex flex-column m-0 p-0 w-100 h-100" style="border: 1px solid #bdbbbb;" [configuration]="semesterGridConfig" [currentStudent]="currentStudent" (edittedEmitter)="semesterGridConfig.edittedHandler($event)" (createdEmitter)="semesterGridConfig.creatHandler($event)" (deletedEmitter)="semesterGridConfig.deleteHandler($event)">
+                                </app-semester-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 6th form section -->
+
+                        <!-- 7th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2 mb-3" [ngClass]="{'d-none': !formData.notes}" id="notesSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.NOTESECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section6', 'DOSSIERETUDIANT.FORM.NOTESECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section7">
+                                <app-notes-section class="d-flex flex-column m-0 p-0 w-100 h-100" style="border: 1px solid #bdbbbb;" [configuration]="notesGridConfig" (edittedEmitter)="notesGridConfig.edittedHandler($event)" (createdEmitter)="notesGridConfig.creatHandler($event)" (deletedEmitter)="notesGridConfig.deleteHandler($event)">
+                                </app-notes-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 7th form section -->
+                        
+                        <!-- 8th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2 mb-3" [ngClass]="{'d-none': !formData.biblio}" id="biblioSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.BIBLIOSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section8', 'DOSSIERETUDIANT.FORM.BIBLIOSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section8">
+                                <app-bibliotheque-section class="d-flex flex-column m-0 p-0 w-100 h-100" style="border: 1px solid #bdbbbb;" [configuration]="biblioGridConfig" (edittedEmitter)="biblioGridConfig.edittedHandler($event)" (createdEmitter)="biblioGridConfig.creatHandler($event)" (deletedEmitter)="biblioGridConfig.deleteHandler($event)" >
+                                </app-bibliotheque-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 8th form section -->
+                        
+                        <!-- 9th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2 mb-3" [ngClass]="{'d-none': !formData.paiement}" id="paiementSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.PAIEMENTSECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section9', 'DOSSIERETUDIANT.FORM.PAIEMENTSECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section9">
+                                <app-paiement-section class="d-flex flex-column m-0 p-0 w-100 h-100" style="border: 1px solid #bdbbbb;">
+                                </app-paiement-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 9th form section -->
+                        
+                        <!-- 10th form section -->
+                        <div class="card px-0 px-lg-2 border border-secondary col-12 rounded-2 mt-2 mb-3" [ngClass]="{'d-none': !formData.absence}" id="absenceSection">
+                            <div class="card-header bg-white border-0 px-2 py-1 d-flex">
+                                <div class="col-auto ms-0 me-auto text-start">
+                                    <h5 class="Sectionheader h6 fw-light text-secondary"> <i class="fas fa-info-circle"></i> {{  'DOSSIERETUDIANT.FORM.ABSENCESECTION.TITLE' | translate }} </h5>
+                                </div>
+                                <div class="col-auto ms-auto me-0 d-none d-md-block text-end">
+                                    <h6 class="Sectionheader text-secondary d-inline-block" (click)="getDialog( 'Section10', 'DOSSIERETUDIANT.FORM.ABSENCESECTION.TITLE' )" style="cursor: pointer;"> <i class="fas fa-arrows-alt"></i> </h6>
+                                </div>
+                            </div>
+                            <div class="card-body w-100 pt-1 pb-3 d-flex px-1"  id="Section10">
+                                <app-absence-section class="d-flex flex-column m-0 p-0 w-100 h-100" style="border: 1px solid #bdbbbb;" [configuration]="absenceGridConfig" (edittedEmitter)="absenceGridConfig.edittedHandler($event)" (createdEmitter)="absenceGridConfig.creatHandler($event)" (deletedEmitter)="absenceGridConfig.deleteHandler($event)" >
+                                </app-absence-section>
+                            </div>
+                        </div>
+                        <!-- EndOf 10th form section -->
+
+                    </form>
+                </div>
+            </ng-template>
+        </div>
+    </igx-splitter-pane>
+</igx-splitter>
+<!-- Modal -->
+<div class="modal fade" id="GridColumnsModal" tabindex="-1" aria-labelledby="GridColumnsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content ColumnsHidingMenuHeight">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GridColumnsModalLabel"> {{ 'DOSSIERETUDIANT.GRIDBTNS.HIDECOLUMNS' | translate }} </h5>
+                <button type="button" id="dismissColumnsHideMenuBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start py-1 col-12 mx-0">
+                <ng-template ngFor let-column [ngForOf]="gridConfig.columns">
+                    <div class="form-check py-2 offset-1" *ngIf="column.allowHide">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                            {{ column.header | translate }}
+                        </label>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<app-menu-flottant ></app-menu-flottant>

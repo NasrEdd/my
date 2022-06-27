@@ -1,0 +1,30 @@
+{
+    "LEAVING_MSGS":{
+        "headerTitle" : "Etes-vous sure?",
+        "bodyText" : "Il y a des modifications non enregistrées, vous etes sure de quitter ? ",
+        "closeBtnText": "Annuler",
+        "confirmBtnText": "Quitter"
+    },
+    "CLEARDATA_MSGS":{
+        "headerTitle" : "Etes-vous sure?",
+        "bodyText" : "Cette opération va supprimer toutes vos modifications, continuer ?",
+        "closeBtnText": "Annuler",
+        "confirmBtnText": "Continuer"
+    },
+    "LINK_ETUD_TO_SEM_FIRST":{
+        "headerTitle" : "L'opération d'association est échouée",
+        "bodyText" : " Selectionnez d'abord l'étudiant et le semestre.",
+        "closeBtnText": "D'accord"
+    },
+    "DISCARD_ASSOCIATIONS" : {
+        "headerTitle" : "Opérations d'association non validées",
+        "bodyText" : "Vous allez quitter et annuler les associations courantes ?",
+        "closeBtnText": "Annuler",
+        "confirmBtnText": "Quitter"
+    },
+    "NODATATOEXPORT":{
+        "headerTitle" : "Rien à exporter",
+        "bodyText" : "Il n'y a aucune donnée à exporter",       
+        "closeBtnText": "D'accord"
+    }
+}

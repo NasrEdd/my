@@ -1,0 +1,8 @@
+{
+    "TITLE" : "CONNEXION",
+    "USERNAME" : "Nom de l'utilisateur",
+    "PASSWORD" : "Mot de passe",
+    "SIGNIN"   :   "Se connecter",
+    "SESSION_EXPIRED":"Votre session est expirée, veuillez vous reconnecter.",
+    "REMMEMBERME" : "Maintenir la session"
+}

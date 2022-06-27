@@ -1,0 +1,70 @@
+{
+	"TITLE": "الخريجين",
+	"SEARCHAREA":{
+		"PLACEHOLDERS" : {
+			"MATRICULE": "الرقم",
+			"NOM": "النسب",
+			"PRENOM": "الاسم",
+			"FILIERE": "الشعبة",
+			"CYCLE" : "السلك",
+			"ANNEE": "السنة",
+			"ECOLE": "المدرسة",
+			"ALLPROMO": "الدفعة كاملة"
+		}
+	},
+	"GRIDBTNS": {
+		"STUDINFOS": "معلومات.étudiant",
+		"GENERNDIP": "توليد الدبلوم رقم",
+		"INITNDIP": "(إنيت) الدبلوم رقم",
+		"REITRER": "سحب",
+		"REITREDLIST": "قائمة المتقاعدين",
+		"PRINTDIPACC": "طباعة دبلوم Acc.",
+		"PRINTDIPRCE": "طباعة دبلوم Rce",
+		"EXCEL": "إكسيل"
+	},
+	"GRIDOTHER":{
+		"LINES" : "أسطر",
+		"PAGINATORLABEL": "عدد النتائج",
+		"PAGERTEXT":"من",
+		"EMPTY": "لم يتم العثور على أي نتيجة",
+		"ADDROW" : "إنشاء طالب",
+		"STARTSRCH": "ابحث",
+		"CLEARSRCH": "امسح النتائج"
+	},
+	"GRIDHEADERS":{
+		"MATR": "سجل",
+		"PROGCODE": "كود دي البرنامج",
+		"PRENOM": "الاسم",
+		"PRENOM_AR": "الاسم التخصص",
+		"NOM": "النسب",
+		"NOM_AR": "النسب بالعربية",
+		"SPECIALITY": "التخصص",
+		"SPECIALITY_AR": "التخصص بالعربية",
+		"NIVEAU": "المستوى",
+		"ANNEE": "السنة",
+		"ANNEE_AR": "السنة بالعربية",
+		"STATUTANNU": "الحالة السنوية",
+		"MODEINSC": "وضع التسجيل",
+		"QUITUS": "كيتوس",
+		"FLAG": "مؤشر",
+		"DATENAISS": "تاريخ الولادة",
+		"LIEUNAISS": "مكان الولادة",
+		"LIEUNAISS_AR": "مكان الولادة بالعربية",
+		"CINOUPASS": "CIN أو جواز السفر",
+		"PROGRAM": "البرنامج",
+		"OPTION": "خيار",
+		"CYCLE": "دور",
+		"NEWDIPL": "خريج جديد",
+		"NUMDIPL": "رقم الدبلوم",
+		"SESSION": "جلسة",
+		"MENTION": "الدرجة",
+		"MENTION_AR": "الدرجة بالعربية",
+		"MOYENNE": "المعدل",
+		"REMARQ": "ملاحظة",
+		"NATIONALITE": "الجنسية",
+		"VALIDMANUEL": "ساري. يدويا",
+		"ESTDILP": "تخرج؟",
+		"FACULTY_AR": "الكلية بالعربية",
+		"FACULTY": "الكلية"
+	}
+}

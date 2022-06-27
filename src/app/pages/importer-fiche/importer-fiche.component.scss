@@ -1,0 +1,181 @@
+@keyframes mymove {
+    from {
+
+        left: 0px;
+    }
+
+    to {
+
+        left: 50px;
+    }
+
+
+}
+
+.choses{
+    width: auto;
+    height: auto;
+}
+
+.import>div {
+    border: none;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #eee;
+    text-align: start;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.1s ease;
+    transform: scale(1);
+
+}
+
+input[type="file"] {
+    width: 300px;
+    height: 20px;
+    padding-left: 200px;
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    margin-left: 30%;
+
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+
+
+}
+
+a {
+    color: rgb(253, 252, 252) !important;
+    text-decoration: none;
+}
+
+label {
+    font-size: 25px;
+    color: #369;
+    text-align: start !important;
+}
+
+.import>div:hover {
+    background-color: rgb(207, 237, 137);
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.1);
+    filter: brightness(120%);
+
+}
+
+.import>div:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+}
+
+
+
+::ng-deep body {
+    margin: 2em;
+}
+
+
+::ng-deep .choses button{
+    background-color: rgb(148, 242, 140);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(251, 252, 253);
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+
+}
+
+
+
+::ng-deep body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+//::ng-deep force Css in my component
+
+::ng-deep .choses {
+    display: flex;
+    height: 50%;
+    background-color: #254D91;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+#envoyer {
+    margin-left: 100px;
+    width: auto;
+}
+
+#choix {
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+
+::ng-deep button:hover {
+    background-color: rgb(207, 237, 137);
+    color: rgb(241, 231, 231);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+::ng-deep button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #369;
+    margin-top: 5%;
+}
+
+#row {
+    display: flex;
+    width: 40%;
+    margin: 10px;
+    position: relative;
+    animation: mymove 1s;
+    animation-timing-function: ease-in;
+    transition: width 2s;
+    position: relative;
+    overflow: hidden;
+        margin-left: 3%;
+}
+
+#row:hover {
+    width: 50%;
+}
+
+#row button {
+    margin-right: 2%;
+}
+
+
+.progress {
+    margin-top: 5%;
+    
+}
+
+.progress div {
+    width: 30%;
+    background-color: rgb(148, 242, 140);
+}

@@ -1,0 +1,10 @@
+<div class="igx-typography d-flex flex-row h-100 w-100" *ngIf="configuration" style="min-height: 250px; overflow-y: scroll;">
+    <igx-grid #GridMoyensrecrutem  displayDensity="cosy" [rowEditable]="true" [emptyGridTemplate]="EmptyTemplate" (rowEditDone)="rowEditDone($event)" [rowSelection]="'none'" [selectRowOnClick]="false" [selectedRows]="[]" [cellSelection]="'none'" [primaryKey]="configuration.primaryKey" [data]="configuration.data" width="100%" [height]="''" class="border-secondary">
+        <igx-column *ngFor="let column of configuration.columns" [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [width]="column.width"></igx-column>
+    </igx-grid>
+    <ng-template #EmptyTemplate>
+        <div class="col-lg-12">
+            <p class="text-muted fs-5 text-center"> {{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.EMPTY' | translate }} </p>
+        </div>
+    </ng-template>
+</div>

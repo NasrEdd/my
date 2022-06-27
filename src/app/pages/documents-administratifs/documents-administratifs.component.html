@@ -1,0 +1,70 @@
+<div class="col-12 my-0 py-0">
+    <div class="card cardContent h-100 p-0">
+        <div class="card-header col-12 m-0 p-0">
+            <div class="collapse mt-0 mb-2 p-0" id="collapsingSearchArea">
+            </div>
+            <div class="col-12 d-flex flex-column flex-lg-row justify-content-between my-1 px-2" >
+                <div class="text-center text-lg-start">
+                    <button type="button" id="demandesLocBtn" class="btn btn-indigo me-1 px-3 rounded-15"> <i class="far fa-folder-open me-1"></i> {{ 'DOCSADMIN.GRIDBTNS.DEMSLOCAL' |translate }} </button>
+                    <button type="button" id="importerBtn" class="btn btn-indigo me-1 px-3 rounded-15"> <i class="far fa-folder-open me-1"></i> {{ 'DOCSADMIN.GRIDBTNS.IMPORT' |translate }} </button>
+                    <button type="button" id="printBtn" class="btn btn-indigo me-1 px-3 rounded-15"> <i class="fas fa-print me-1"></i> {{ 'DOCSADMIN.GRIDBTNS.PRINT' |translate }}  </button>
+                    <button type="button" id="excelBtn" class="btn btn-indigo me-1 px-3 rounded-15 mt-2 mt-lg-0" (click)="generateExcel()"> <i class="fas fa-file-excel me-1"></i> {{ 'DOCSADMIN.GRIDBTNS.EXCEL' |translate }} </button>
+                    <button type="button" id="viderBtn" class="btn btn-light btn-outline-danger me-1 px-3 rounded-15 mt-2 mt-lg-0" style="font-size: 13px;"> <i class="fas fa-trash"></i> {{ 'DOCSADMIN.GRIDBTNS.CLEAR' |translate }} </button>
+                </div>
+                <div class="text-center text-lg-end mt-2 mt-lg-0 d-flex">
+                    <div class="form-group d-flex align-items-center me-1">
+                        <label for="etat" class="pe-2"> {{ 'DOCSADMIN.GRIDBTNS.ETAT' |translate }} </label>
+                        <select class="form-select" name="etat" id="etat">
+                            <option> {{ 'DOCSADMIN.GRIDBTNS.ETATENCOCURS' |translate }}  </option>
+                        </select>
+                    </div>
+                    <button type="button" id="hideColumnsBtn" class="btn btn-warning text-white px-3 rounded-15 fs-13px" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'CURSUSPARSEM.GRIDBTNS.HIDECOLUMNS' | translate }}" (click)="toggleGridColumnsModal()" >
+                        <i class="fas fa-eye-slash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body h-100 p-0" style=" border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;">
+            <div class="igx-typography d-block h-100">
+                <div class="d-flex flex-row h-100">
+                    <igx-grid #Grid id="Grid" [allowFiltering]="true" [batchEditing]="true" [data]="gridConfig.data" [primaryKey]="gridConfig.primaryKey" rowHeight="35px" width="100%" [emptyGridTemplate]="gridEtudiantsEmptyTemplate" [rowEditable]="true" [rowSelection]="'multiple'" [cellSelection]="'none'" [columnSelection]="'none'" displayDensity="compact" (rowSelectionChanging)="handleRowSelection($event)" >
+                        <!--
+                            <igx-paginator #paginator [(page)]="Grid.page" [totalRecords]="Grid.totalRecords" [(perPage)]="Grid.perPage" [selectOptions]="[ 5, 50, 100, 150, 200, 260, 300, 500]" [displayDensity]="Grid.displayDensity" style="background-color: transparent; border: none;" ></igx-paginator>
+                        -->
+                        <igx-column *ngFor="let column of gridConfig.columns" [cellClasses]="{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [draggable]="column.draggable" [groupable]="column.groupable" [resizable]="column.resizable" [field]="column.field" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [visibleWhenCollapsed]="column.visibleWhenCollapsed" [width]="column.width">
+                        </igx-column>
+                    </igx-grid>
+                </div> 
+                <ng-template #gridEtudiantsEmptyTemplate>
+                    <div class="col-lg-12">
+                        <p class="text-muted fs-5 text-center"> {{ 'DOCSADMIN.GRIDOTHER.EMPTY' | translate }} </p>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<app-menu-flottant></app-menu-flottant>
+
+<!-- Modal -->
+<div class="modal fade" id="GridColumnsModal" tabindex="-1" aria-labelledby="GridColumnsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content ColumnsHidingMenuHeight">
+            <div class="modal-header">
+                <h5 class="modal-title" id="GridColumnsModalLabel"> {{ 'DOCSADMIN.GRIDBTNS.HIDECOLUMNS' | translate }} </h5>
+                <button type="button" id="dismissColumnsHideMenuBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start py-1 col-12 mx-0"> 
+                <ng-template ngFor let-column [ngForOf]="gridConfig.columns">
+                        <div class="form-check py-2 offset-1" *ngIf="column.allowHide">
+                            <label class="form-check-label" >
+                                <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                                {{ column.header | translate }}
+                            </label>
+                        </div>
+                    <span class="py-1"></span>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

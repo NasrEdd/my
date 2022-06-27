@@ -1,0 +1,48 @@
+{
+    "MAINBTNS":{
+        "UNDO": "Annuler la dernière action",
+        "REDO": "Refaire la dernière action",
+        "SRCH": "Chercher",
+        "REINITIATE": "Réinitialiser l'affichage",
+        "SYNCHRONISE" : "Synchroniser avec ....",
+        "SAVE" : "Enregistrer les modifications"
+    },
+    "PAGINATIONSTRINGS":{
+        "LINES" : "Lignes",
+		"PAGINATORLABEL": "Lignes par page",
+		"PAGERTEXT":"parmi"
+    },
+    "GRIDSTRINGS":{
+        "GROUPINGAREA":{
+            "AREAMSG": "Faites glisser un en-tête de colonne et déposez-le ici pour grouper par cette colonne."
+        },
+        "GRID":{
+            "EDITBTNDONE": "Terminé",
+            "EDITBTNCANCEL": "Annuler",
+            "FILTERKEYWORD" : "Filtrer",
+            "FILTERROWCLOSE" : "Fermer",
+            "FILTERROWRESET" : "Réinitialiser",
+            "FILTERINPTPLACEHOLDER" : "Filtrer par une valeur"
+        }
+    },
+    "GENDERS" : {
+        "FEMME": "Femme",
+        "HOMME": "Homme",
+        "INDEFINI": "Indéféni"
+    },
+    "NATIONALITIES": {
+        "MOROCCO": "Marocaine",
+        "GERMANY" : "Allmande",
+        "FRANCE" : "Française"
+    },
+    "COUNTRIES":{
+        "MOROCCO": "Maroc",
+        "GERMANY" : "Allemagne",
+        "FRANCE" : "France"
+    },
+    "SCHOOLS":{
+        "ALLSCHOOLS": "Toutes les écoles",
+        "ISIAM":"ISIAM",
+        "POLY":"POLY"
+    }
+}

@@ -1,0 +1,32 @@
+{
+	"TITLE": "Documents administratifs",
+	"GRIDBTNS":{
+		"DEMSLOCAL": "Demande locales",
+		"IMPORT": "Importer",
+		"PRINT": "Lancer",
+		"EXCEL" : "Excel",
+		"CLEAR" : "Vider",
+		"ETAT" : "Etat",
+		"ETATENCOCURS" : "En cours",
+		"HIDECOLUMNS" : "Choisir les colonnes visibles"
+	},
+	"GRIDOTHER":{
+		"LINES" : "Lignes",
+		"PAGINATORLABEL": "Lignes par page",
+		"PAGERTEXT":"parmi",
+		"EMPTY": "Aucun résultat n'a été trouvé",
+		"ADDROW" : "Créer un Etudiant",
+		"STARTSRCH": "Lancer la recherche",
+		"CLEARSRCH": "Vider les résultats"
+	},
+	"GRIDHEADERS":{
+		"FAC": "Faculté",
+		"MATR": "Matricule",
+		"PRENOM": "Prenom",
+		"NOM": "Nom",
+		"NDEMANDE": "N° demande",
+		"DATE": "Date",
+		"DOC": "Document",
+		"ETAT":"Etat"
+	}
+}

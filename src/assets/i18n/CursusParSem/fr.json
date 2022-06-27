@@ -1,0 +1,114 @@
+{
+	"TITLE": "Cursus Par Semestre",
+	"GRIDBTNS": {
+		"DELETESELECTED": "Supprimer les enregistrements sélectionnés",
+		"EXCELEXPORT": "Excel",
+		"ASSOCIATE": " Associer ",
+		"HIDECOLUMNS" : "Choisir les colonnes visibles"
+	},
+	"GRIDHEADERS": {
+		"GRP1":{
+			"TITLE" : " Infos Etudiant ",
+			"MATR": "Matricule",
+			"NOM": "Nom",
+			"PRENOM": "Prenom"
+		},
+		"GRP2":{
+			"TITLE": "Infos Admission",
+			"PROG_CODE": "Code du programme",
+			"PROG_NOM": "Nom du programme",
+			"FAC": " Faculté ",
+			"ADMPROGCODE" : "Code de programme d'admission",
+			"ADMPROGNOM" : "Nom de programme d'admission"
+		},
+		"GRP3":{
+			"TITLE": "Cursus Courant",
+			"SPECIALITE": "Spécialité",
+			"NIVEAU": "Niveau",
+			"SEM": "Semestre",
+			"PERIODE": "Période",
+			"ANNEE" :"Année",
+			"MOYENNE" : "Moyenne",
+			"VALIDE": "Validé",
+			"STAT": "Stat..",
+			"REMARQ" : "Remarque"
+		}
+	},
+	"GRIDOTHER":{
+		"LINES" : "Lignes",
+		"PAGINATORLABEL": "Lignes par page",
+		"PAGERTEXT":"parmi",
+		"EMPTY": "Aucun résultat n'a été trouvé",
+		"STARTSRCH": "Lancer la recherche",
+		"CLEARSRCH": "Vider les résultats",
+		"COLLAPSE" : " Cliquez ici pour réduire la colonne",
+		"EXPANDE" : " Cliquez ici pour agrandir la colonne"
+	},
+	"SEARCHAREA":{
+		"NOM": "Nom",
+		"PRENOM" : "Prenom",
+		"ECOLE"	:	"Ecole",
+		"ANNEE" : "Année",
+		"PROGRAMME" : "Programmme",
+		"FILIERE" : "Filière",
+		"NIVEAU" : "Niveau",
+		"SEMESTRE" : "Semestre",
+		"SITUATION": "Situation"
+	},
+	"ASSOCIATION":{
+		"GRIDBTNS":{
+			"MODETITLE" : "Mode d'association",
+			"CLEARING" : "Vider",
+			"LOADING" : "Charger",
+			"UNREGISTRED" : "Non reinscrits",
+			"NEW" : "Nouveaux Etudiants",
+			"ASSOCIATE" : " Associer ",
+			"VALIDER" : "Valider",
+			"CANCEL" : "Annuler",
+			"HIDECOLUMNS" : "Choisir les colonnes visibles",
+			"STUDENTSGRID" : "Grille des étudiants",
+			"SEMESTERSGRID" : "Grille des semestres",
+			"SUBGRIDASSOSEMS" : "Grille des semestres associés"
+		},
+		"GRID1HEADERS":{
+			"MATR" : "Matricule",
+			"NOM" : "Nom",
+			"PRENOM": "Prenom",
+			"FACULTY" : "Faculté",
+			"PROGCODE": "Code du programme",
+			"PROGNOM" : "Nom du programme",
+			"ADMISSIONTYPE" : "Type d'admission",
+			"ADMISSIONDATE": "Date d'admission",
+			"INSCRDATE": "Date d'inscription",
+			"ADMISSIONGRP" : "Groupe d'admission",
+			"PROGTYPE": "Type de Programme",
+			"ADMISSIONNIV": "Niveau d'admission",
+			"ADMISSIONFIL": "Filière d'admission",
+			"ADMISSIONANN": "Année d'admission"
+		},
+		"GRID2HEADERS":{
+			"FACULTY" : "Faculté",
+			"PROGRAM" : "Programme",
+			"PROGCODE": "Code programme",
+			"FILIERE" : "Filière",
+			"NIVEAU" : "Niveau",
+			"SEMESTRE": "Semestre",
+			"ANNEE": "Année",
+			"PERIOD": "Période"
+		},
+		"SUBGRIDHEADERS":{
+			"GRPHEADER" : "Semestres associés",
+			"PROGCODE": "Code du programme",
+			"PROGNOM" : "Nom du programme",
+			"FILIERE" : "Filière",
+			"SEMESTER" : "Semestre",
+			"PERIODE" : "Période",
+			"MOYENNE" : "Moyenne",
+			"VALIDE" : "Validé",
+			"NIVEAU" : "Niveau",
+			"ANNEE" : "Année",
+			"FACULTY" : "Faculté",
+			"STAT": "Stat.."
+		}
+	}
+}

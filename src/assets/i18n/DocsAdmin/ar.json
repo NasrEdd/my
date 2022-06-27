@@ -1,0 +1,32 @@
+{
+	"TITLE": "وثائق إدارية",
+	"GRIDBTNS": {
+		"DEMSLOCAL": "الطلبات المحلية",
+		"IMPORT": "استورد",
+		"PRINT": "طباعة",
+		"EXCEL": "إكسل",
+		"CLEAR": "مسح",
+		"ETAT": "الحالة",
+		"ETATENCOCURS": "قيد التقدم",
+		"HIDECOLUMNS": "اختيار الأعمدة المرئية"
+	},
+	"GRIDOTHER":{
+		"LINES" : "أسطر",
+		"PAGINATORLABEL": "عدد النتائج",
+		"PAGERTEXT":"من",
+		"EMPTY": "لم يتم العثور على أي نتيجة",
+		"ADDROW" : "إنشاء طالب",
+		"STARTSRCH": "ابحث",
+		"CLEARSRCH": "امسح النتائج"
+	},
+	"GRIDHEADERS":{
+		"FAC": "الكلية",
+		"MATR": "الرقم",
+		"PRENOM": "الاسم",
+		"NOM": "النسب",
+		"NDEMANDE": "رقم الطلب",
+		"DATE": "التاريخ",
+		"DOC": "المستند",
+		"ETAT": "الحالة"
+	}
+}

@@ -1,0 +1,21 @@
+<div class="button-parent d-lg-none" id="menuFlottant">
+    <input type="checkbox" id="btn">
+    <label for="btn" class="button">
+        <i class="fas fa-ellipsis-v"></i>
+    </label>
+
+    <div class="link-parent mx-auto">
+        <button class="btn link-item" id="mainSearchBtn2" [disabled]="!gridservice.canSearch" (click)="showSearchArea()">
+            <i class="fas fa-search"></i>
+        </button>
+        <button class="btn link-item" id="mainResetBtn2">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+        <button class="btn link-item" id="mainSyncBtn2">
+            <i class="fas fa-redo"></i>
+        </button>
+        <button class="btn link-item" [disabled]="!gridservice.canSave" (click)="saveBtn()" id="mainSaveBtn2" >
+            <i class="fas fa-save"></i>
+        </button>
+    </div>
+</div>

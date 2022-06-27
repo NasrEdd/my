@@ -1,0 +1,48 @@
+{
+    "MAINBTNS":{
+        "UNDO": "تراجع عن الإجراء الأخير",
+        "REDO": "أعد الإجراء الأخير",
+        "SRCH": "بحث",
+        "REINITIATE": "إعادة تعيين العرض",
+        "SYNCHRONISE" : "تزامن مع ....",
+        "SAVE" : "حفظ التغييرات"
+    },
+    "PAGINATIONSTRINGS":{
+        "LINES" : "أسطر",
+		"PAGINATORLABEL": "عدد النتائج",
+		"PAGERTEXT":"من"
+    },
+    "GRIDSTRINGS":{
+        "GROUPINGAREA":{
+            "AREAMSG": "اسحب رأس العمود وأسقطه هنا للتجميع حسب ذلك العمود."
+        },
+        "GRID":{
+            "EDITBTNDONE": "تم",
+            "EDITBTNCANCEL": "إلغاء",
+            "FILTERKEYWORD": "تصنيف",
+            "FILTERROWCLOSE": "غلق",
+            "FILTERROWRESET": "اعاده تعيين",
+            "FILTERINPTPLACEHOLDER": "تصنيف حسب القيمة"
+        }
+    },
+    "GENDERS" :  {
+        "FEMME": "أنثى",
+        "HOMME": "ذكر",
+        "INDEFINI": "غير محدد"
+    },
+    "NATIONALITIES": {
+        "MOROCCO": "مغربية",
+        "GERMANY" : "ألمانية",
+        "FRANCE" : "فرنسية"
+    },
+    "COUNTRIES":{
+        "MOROCCO": "المغرب",
+        "GERMANY" : "ألمانية",
+        "FRANCE" : "فرنسا"
+    },
+    "SCHOOLS":{
+        "ALLSCHOOLS": "جميع المدارس",
+        "ISIAM":"ISIAM",
+        "POLY":"POLY"
+    }
+}

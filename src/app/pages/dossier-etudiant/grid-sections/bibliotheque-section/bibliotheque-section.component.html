@@ -1,0 +1,37 @@
+<div class="d-block text-end px-2 my-1">
+    <button type="button" class="btn btn-warning btn-xs px-2 py-0 me-1 text-white" (click)="toggleGridColumnsModal()" data-bs-toggle="tooltip" data-placement="bottom" title="{{'DOSSIERETUDIANT.FORM.ALLSECTIONS.HIDECOLUMNS' | translate }}" > <i class="fas fa-eye-slash"></i></button>
+    <button type="button" class="btn btn-success btn-xs px-2 py-0 me-1" (click)="addRow()" data-bs-toggle="tooltip" data-placement="bottom" title="{{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.ADD' | translate }}" ><i class="fas fa-plus"></i></button>
+    <button type="button" class="btn btn-danger btn-xs px-2 py-0"  (click)="deleteRows()" data-bs-toggle="tooltip" data-placement="bottom" title="{{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.DELETE' | translate}}" ><i class="fas fa-trash"></i></button>
+</div>
+<div class="igx-typography d-flex flex-row h-100 w-100" *ngIf="configuration" style="min-height: 250px; overflow-y: scroll;">
+        <igx-grid #GridBiblio  displayDensity="cosy" [rowEditable]="true" [emptyGridTemplate]="EmptyTemplate" (rowEditDone)="rowEditDone($event)" [rowSelection]="'multiple'" [selectRowOnClick]="false" [selectedRows]="[]" [cellSelection]="'none'" [primaryKey]="'EtdPrg_Id'" [data]="configuration.data" width="100%" [height]="''" class="border-secondary">
+            <igx-column *ngFor="let column of configuration.columns" [cellClasses] = "{'justify-content-center' : true }" headerClasses="text-center" [header]=" column.header | translate " [hidden]="!column.visible" [dataType]="column.dataType" [resizable]="column.resizable" [field]="column.field" [formatter]="column.formatter" [sortable]="column.sortable" [filterable]="column.filterable" [editable]="column.editable" [groupable]="column.groupable" [width]="column.width"></igx-column>
+        </igx-grid>
+    <ng-template #EmptyTemplate>
+        <div class="col-lg-12">
+            <p class="text-muted fs-5 text-center"> {{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.EMPTY' | translate }} </p>
+        </div>
+    </ng-template>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="biblioHidingMenu" tabindex="-1" aria-labelledby="BiblioGridColumnsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content ColumnsHidingMenuHeight">
+            <div class="modal-header">
+                <h5 class="modal-title" id="BiblioGridColumnsModalLabel"> {{ 'DOSSIERETUDIANT.FORM.ALLSECTIONS.HIDECOLUMNS' | translate }} </h5>
+                <button type="button" id="dismissBiblioGridColumnsHideMenuBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start py-1 col-12 mx-0">
+                <ng-template ngFor let-column [ngForOf]="configuration!.columns">
+                    <div class="form-check py-2 offset-1" *ngIf="column.allowHide">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input warning-check-label btn-outline-warning" [(ngModel)]="column.visible" [name]="'is'+column.field+'Hidden'" value="checked">
+                            {{ column.header | translate }}
+                        </label>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

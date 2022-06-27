@@ -1,0 +1,190 @@
+{
+	"FORM": {
+		"ABSENCESECTION":{
+			"TITLE": "Absence",
+			"TABTITLE":"Absence"
+		},
+		"PAIEMENTSECTION":{
+			"TITLE": "Paiement",
+			"TABTITLE":"Paiement"
+		},
+		"BIBLIOSECTION":{
+			"TITLE": "Bibliothèque",
+			"TABTITLE":"Bibliothèque"
+		},
+		"NOTESECTION":{
+			"TITLE": "Notes",
+			"TABTITLE":"Notes"
+		},
+		"SEMESTERSECTION":{
+			"TITLE": "Semestres",
+			"TABTITLE":"Semestres",
+			"ASSOCIER":"Associer l'étudiant à des semestres",
+			"NIVEAU":"Niveau",
+			"FILIERE": "Filière",
+			"SEMESTRE": "Semestre",
+			"ASSOCIATE": "Associer"
+		},
+		"FORMATIONSECTION": {
+			"TITLE": "Formations précédents",
+			"TABTITLE":"Formations",
+			"NOMDILOM" : "Nom du diplome",
+			"NUMDILOM" : "Numéro du diplome",
+			"NIVFORMA" : "Niveau de formation",
+			"NOMFORMA" : "Nom de formation",
+			"MOYEN" : "Moyenne",
+			"MENTION" : "Mention",
+			"INSTNOM" : "Nom de l'institution",
+			"DATEOBTEN" : "Date d'obtention",
+			"BASEADMIS" : "Base admission",
+			"ACCRED" : "Accredité",
+			"ADDRL1" : "Adresse (Ligne1)",
+			"VILLE" : "Ville",
+			"PAYS" : "Pays",
+			"TEL1" : "téléphone fixe 1",
+			"GSM1" : "GSM 1"
+		},
+		"MOYENSECTION": {
+			"TITLE": "Moyens de recrutement",
+			"TABTITLE":"Moyens de Recrut",
+			"SUPPORT": "Support"
+		},
+		"NOTFOUND": "Séléctionnez d'abord un seul étudiant",
+		"CLICKTOSCROLL": "cliquez pour allez vers la section",
+		"PERSONALINFOSSECTION": {
+			"UNDOPHOTOCHANGE" : "Annuler la modification de la photo",
+			"ADRLIGNE1" : "Adresse (ligne 1)",
+			"ADRLIGNE2" : "Adresse (ligne 2)",
+			"REMARQ" : "Remarque",
+			"POSTALCODE" : "Code Postal",
+			"VILLE" : "Ville",
+			"TELFIX1": "Numéro Fixe 1",
+			"TELFIX2": "Numéro Fixe 2",
+			"GSM1" : "GSM 1",
+			"GSM2" : "GSM 2",
+			"EMAIL1": "Email 1",
+			"EMAIL2": "Email 2",
+			"CINOUPASS": "CIN ou passport",
+			"DATENAISS": "Date de naissance",
+			"LIEUNAISS": "Lieu de naissance",
+			"MATRICULE": "Matricule",
+			"NATIONALITE": "Nationalité",
+			"NEWPHOTO": "Choisir une nouvelle photo",
+			"NOM": "Nom",
+			"PAYS": "Pays",
+			"PRENOM": "Prenom",
+			"SEXE": "Sexe",
+			"TITLE": "Informations personnelles",
+			"TABTITLE":"Infos personnelles"
+		},
+		"PROGRAMSECTION": {
+			"GRID": {
+				"SITUATIONETU": "Situation d'étudiant",
+				"ADMISSIONDATE": "Date admission",
+				"ADMISSIONFIL": "Filière admission",
+				"ADMISSIONLEVEL": "Niveau admission",
+				"ADMISSIONTYPE": "Type admission",
+				"ADMISSIONYEAR": "Année admission",
+				"INSCRDATE": "Date inscription",
+				"INSCRGRP": "Groupe admission",
+				"INSCRNUM": "Numéro inscription",
+				"PROGTYPE": "Type programme",
+				"PROG":"Programme"
+			},
+			"TABTITLE":"Programmes",
+			"TITLE": "Programmes de l'étudiant"
+		},
+		"TUTEURSECTION": {
+			"TITLE": "Tuteurs",
+			"TABTITLE":"Tuteurs",
+			"LINK" : "Lien",
+			"NOM" : "Nom",
+			"PRENOM" : "Prénom",
+			"SEXE" : "Sexe",
+			"CINPASS" : "CIN ou Passport",
+			"EMAIL" : "Email",
+			"ADR" : "Adresse",
+			"CEL1" : "Tél 1",
+			"CEL2" : "Tél 2",
+			"FIX1" : "Fixe 1",
+			"FIX2" : "Fixe 2",
+			"PROF" : "Profession",
+			"FONC" : "Fonction",
+			"DATENAISS" : "Date naissance",
+			"PAYS" : "Pays",
+			"VILLE" : "Ville",
+			"NATION" : "Nationalité",
+			"SECTEUR" : "Secteur",
+			"ENTREP" : "Entreprise"
+		},
+		"ALLSECTIONS":{
+			"HIDECOLUMNS": "Choisir les colonnes visibles",
+			"DELETE": "Supprimer les lignes séléctionnées",
+			"ADD" : "Ajouter une ligne",
+			"EMPTY" : "Aucun résultat n'a été trouvé",
+			"DSELECTALL": "Cocher/Décocher tout"
+		}
+	},
+	"FORMHEADER": {
+		"NEXTBTNTITLE": "Naviguer à l'étudiant suivant",
+		"PREVBTNTITLE": "Naviguer à l'étudiant précédent"
+	},
+	"GRIDOTHER":{
+		"LINES" : "Lignes",
+		"PAGINATORLABEL": "Lignes par page",
+		"PAGERTEXT":"parmi",
+		"EMPTY": "Aucun étudiant n'a été trouvé",
+		"ADDROW" : "Créer un Etudiant",
+		"STARTSRCH": "Lancer la recherche",
+		"CLEARSRCH": "Vider les résultats"
+	},
+	"GRIDBTNS": {
+		"ADDSTUDENT": "Ajouter un nouvel étudiant",
+		"DELETESTUDENT": "Supprimer les étudiants sélectionnés",
+		"EXCELEXPORT": "Exportation Excel",
+		"GENERATEEMAILS": "Générer les e-mails",
+		"PRINT": "Dossier de candidature",
+		"HIDECOLUMNS" : "Choisir les colonnes visibles"
+	},
+	"GRIDHEADERS": {
+		"ADRLIGNE1" : "Adresse (ligne 1)",
+		"ADRLIGNE2" : "Adresse (ligne 2)",
+		"REMARQ" : "Remarque",
+		"POSTALCODE" : "Code Postal",
+		"VILLE" : "Ville",
+		"TELFIX1": "Numéro Fixe 1",
+		"TELFIX2": "Numéro Fixe 2",
+		"GSM1" : "GSM 1",
+		"GSM2" : "GSM 2",
+		"EMAIL1": "Email 1",
+		"EMAIL2": "Email 2",
+		"CINOUPASS": "CIN ou passeport",
+		"MATR": "Matricule",
+		"NATIONALITE": "Nationalité",
+		"NOM": "Nom",
+		"PAYS": "Pays",
+		"PRENOM": "Prenom",
+		"SEXE": "Sexe",
+		"DATENAISS": "Date de naissance",
+		"LIEUNAISS": "Lieu de naissance"
+	},
+	"TITLE": "Dossier Etudiant",
+	"SEARCHAREA":{
+		"SEARCHTYPE": "Type de recherche",
+		"MULTISEARCH": "Recherche multicritères",
+		"CURSSEARCH": "Recherche par cursus",
+		"PLACEHOLDERS" :{
+			"MATRICULE": "Matricule",
+			"NOM": "Nom",
+			"PRENOM": "Prenom",
+			"CINOUPASS": "CIN ou passport",
+			"DATENAISS": "Date de naissance",
+			"ECOLE": "Ecole",
+			"ANNEE": "Année",
+			"PROGRAM": "Programme",
+			"NIVEAU": "Niveau",
+			"FILIERE": "Filière",
+			"SEMESTRE": "Semestre"
+		}
+	}
+}
