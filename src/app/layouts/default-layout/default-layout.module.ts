@@ -1,5 +1,5 @@
 // IgxExcelExporterService no longer need to be manually provided and can be safely removed.
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DefaultLayoutRoutingModule } from './default-layout-routing.module';
@@ -16,6 +16,7 @@ import { SmartPlaningComponent } from 'src/app/pages/smart-planing/smart-planing
 import { ChoseComponent } from 'src/app/components/chose/chose.component';
 import { ImporterFicheComponent } from 'src/app/pages/importer-fiche/importer-fiche.component';
 import { EvaluerEmploitComponent } from 'src/app/pages/evaluer-emploit/evaluer-emploit.component';
+import { ProgressBarreComponent } from 'src/app/components/progress-barre/progress-barre.component'
 
 import { TableErreurComponent } from 'src/app/components/table-erreur/table-erreur.component';
 
@@ -73,6 +74,8 @@ import { CustomRouteReuseStrategy } from '../../Classes/custom-route-reuse-strat
     ImporterFicheComponent,
     EvaluerEmploitComponent,
     TableErreurComponent,
+    ProgressBarreComponent,
+
   ],
   imports: [
     CommonModule,
@@ -93,6 +96,8 @@ import { CustomRouteReuseStrategy } from '../../Classes/custom-route-reuse-strat
       useClass: CustomRouteReuseStrategy,
     }
     */
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class DefaultLayoutModule { }

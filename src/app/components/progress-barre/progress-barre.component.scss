@@ -1,0 +1,62 @@
+::ng-deep.Progroot {
+    height: 20%;
+    border-radius: 7px;
+    width: 80%;
+    margin: auto auto auto 9%;
+    display: block;
+}
+
+::ng-deep.Progbarre {
+    height: 50%;
+    border-radius: 7px;
+    width: 80%;
+    margin: auto auto auto 10%;
+    display: block;
+    display: table;
+}
+
+::ng-deep.Progpourcentage {
+    border: .5px solid white;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 7px;
+    margin-top: 3%;
+    background-color: red;
+    color: green;
+    font-size: 150%;
+    padding: 1%;
+    color: white;
+
+}
+
+::ng-deep.ProgButton {
+    padding: 10px 22px;
+    margin: auto auto auto 13%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 70%;
+}
+
+::ng-deep.ProgButton button {
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+    background-color: rgb(148, 242, 140);
+    border: none;
+    color: white;
+    width: 20%;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+::ng-deep.ProgButton button:hover {
+    background-color: rgb(207, 237, 137);
+    color: rgb(241, 231, 231);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

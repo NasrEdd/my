@@ -1,11 +1,10 @@
 #root {
-    display: grid;
+    display: inline-block;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 160px;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: auto;
     margin-bottom: auto;
 
 }
@@ -18,7 +17,7 @@
     border-radius: 5px;
     margin-left: 4%;
     margin-right: 4%;
-    padding: 10px;
+    padding: 9px;
     margin-top: auto;
     margin-bottom: auto;
     position: relative;
@@ -28,15 +27,61 @@
 
 }
 
+#rowCol {
+    display: flex;
+
+}
+
 #row:hover {
     transform: scale(1.1);
     filter: brightness(120%);
 }
 
-.Banim:hover {
-    width: 100%;
+#ElI1,
+#ElI2,
+#ElI3,
+#ElI4 {
+    border-radius: 7px;
+    width: .4%;
+    padding: 0 1% 0 1%;
+    background-color: rgb(148, 242, 140);
+    box-shadow: 0 2px 8px 0 rgba(56, 42, 42, 0.24);
+    color: rgb(252, 5, 5);
+    display: table;
 }
 
+#El1,
+#El2,
+#El3,
+#El4 {
+    border-radius: 7px;
+    width: .4%;
+    background-color: rgb(148, 242, 140);
+    padding: 0 1% 0 1%;
+    text-align: center;
+    box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+    color: rgb(248, 252, 5);
+    display: table;
+
+}
+
+#ErrP {
+    font-weight: bolder;
+    font-size: 150%;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+
+.contenue {
+    width: 70%;
+    text-align: left;
+    justify-self: center;
+    align-items: center;
+    border-radius: 5px;
+    padding-left: 10px;
+}
 
 #root .Banim {
     background-color: rgb(148, 242, 140);
@@ -49,12 +94,15 @@
     font-size: 16px;
     border-radius: 4px;
     text-decoration: none;
-    margin-top: 2%;
-    margin-bottom: auto;
-    transition: width 2s;
-    transition-delay: 1s;
-    transition-timing-function: ease;
+    width: 300px;
     box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+}
+
+.col {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .retoure,
@@ -72,7 +120,7 @@
 
 .continue:hover,
 .retoure:hover {
-    background-color: rgb(148, 242, 140);
+    background-color: rgb(207, 237, 137);
     color: rgb(241, 231, 231);
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
@@ -96,6 +144,7 @@ h2 {
 span {
     font-size: 20px;
     color: red;
+    text-align: center;
 }
 
 h1 {
@@ -103,23 +152,17 @@ h1 {
     text-align: center;
     font-weight: bold;
     color: #369;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: auto;
     padding-bottom: 2%;
 }
 
 ::ng-deep .contenue p {
-    background-color: white;
+    color: white;
     border-radius: 5px;
-    margin-top: 2%;
+    margin-top: 1%;
+    font-size: 15px;
+    font-weight: bolder;
 
 }
 
-.progress {
-    margin-top: 5%;
-}
-
-.Pourcentage {
-    width: 50%;
-    height: 100%;
-    background-color: rgb(148, 242, 140);}

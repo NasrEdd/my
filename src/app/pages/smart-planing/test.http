@@ -1,7 +1,9 @@
 
 POST https://smartplanning-backend.herokuapp.com/Username
-Content-Type: application/json
+Content-Type: application/json; 
 
 {
-    "user":"ahmed"
+    "user":"khdhfd"
 }
+
+

@@ -23,7 +23,7 @@ var Data: any = [{
 })
 export class ImporterFicheComponent implements OnInit {
   url2: string = "https://smartplanning-backend.herokuapp.com/Generation/ResultatsPretraitement/";
-  
+  titre : string = "titre general"
   formData = new FormData();
 
   file: string = "";
@@ -31,10 +31,11 @@ export class ImporterFicheComponent implements OnInit {
   url: string = "https://smartplanning-backend.herokuapp.com/Generation";
   username: string = "nasr";
 
-  constructor(private http: HttpClient, private loader: LoaderService, ) { }
+  constructor(private http: HttpClient, private loader: LoaderService,) { }
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+
     })
   }
 
@@ -43,62 +44,84 @@ export class ImporterFicheComponent implements OnInit {
 
   }
 
-  getFile(event: any) {
-      this.file=(event.target.files);
-      this.name = event.target.files.name;
-    console.log(this.file);
+//colorer les div
+  checked(id: string) {
 
-    }
+    $(document).ready(function () {
+      let element = $("#" + id).parent().parent().parent();
 
-  
+      element.css({
+        color: "white",
+        background: "#399",
+        border: "1px solid white",
+        filter: "brightness(120%)"
+      });
+    });
 
-  importer(elemnt : string) {
-      this.formData.append("name", this.name);
-      this.formData.append("file", this.file);
-    
-    console.log(this.formData);
-
-    switch(elemnt){
-      case "SP" :
-        this.http.post(this.url + "/UploadSections/" + this.username, this.formData)
-          .subscribe(res => {
-            console.log(res);
-            alert('Uploaded Successfully.');
-          });
-        break;
-      case "TD" :
-        this.http.post(this.url + "/UploadDisponibilites/" + this.username, this.formData)
-          .subscribe(res => {
-            console.log(res);
-            alert('Uploaded Successfully.');
-          });
-        break;
-      case "PD" :
-        this.http.post(this.url + "/UploadPreferences/" + this.username, this.formData)
-          .subscribe(res => {
-            console.log(res);
-            alert('Uploaded Successfully.');
-          });
-        break;
-      case "TS" :
-        this.http.post(this.url + " /UploadSalles/" + this.username, this.formData)
-          .subscribe(res => {
-            console.log(res);
-            alert('Uploaded Successfully.');
-          });
-        break;
-    
-    };
-   
   }
 
-  traiter()
-  {
-    Data = this.http.post(this.url2 + this.username,null)
+
+  getFile(event: any, nom: string) {
+    this.file = (event.target.files);
+    this.name = event.target.files.name;
+    console.log(nom);
+
+    this.checked(nom);
+
+
+    this.formData.append("name", this.name);
+    this.formData.append("file", this.file);
+
+    console.log(this.formData);
+
+    switch (nom) {
+      case "SP":
+
+        this.http.post(this.url + "/UploadSections/" + "asaad", this.formData)
+          .subscribe(res => {
+            console.log(res);
+            alert('Uploaded Successfully.');
+          });
+        break;
+      case "TD":
+
+        this.http.post(this.url + "/UploadDisponibilites/" + "asaad", this.formData)
+          .subscribe(res => {
+            console.log(res);
+            alert('Uploaded Successfully.');
+          });
+        break;
+      case "PD":
+
+        this.http.post(this.url + "/UploadPreferences/" + "asaad", this.formData)
+          .subscribe(res => {
+            console.log(res);
+            alert('Uploaded Successfully.');
+          });
+
+        break;
+      case "TS":
+
+        this.http.post(this.url + " /UploadSalles/" + "asaad", this.formData)
+          .subscribe(res => {
+            console.log(res);
+            alert('Uploaded Successfully.');
+          });
+        break;
+
+    };
+
+  }
+
+  traiter() {
+    console.log("hr")
+    Data = this.http.post(this.url2 + this.username, null)
       .subscribe(res => {
         console.log(res);
         alert('Uploaded Successfully.');
       });
+    console.log("hello", Data);
+
 
   }
 

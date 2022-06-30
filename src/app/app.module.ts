@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -29,7 +29,7 @@ import { environment } from 'src/environments/environment';
 import { ResumerComponent } from './pages/resumer/resumer.component';
 import { PreTraitementComponent } from 'src/app/pages/pre-traitement/pre-traitement.component';
 import { ResultatComponent } from './resultat/resultat.component';
-import { LancementAlgoComponent } from './pages/lancement-algo/lancement-algo.component'
+import { LancementAlgoComponent } from './pages/lancement-algo/lancement-algo.component';
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -146,7 +146,9 @@ const indexDbConfig: DBConfig  = {
    
   ],  
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule {
 }

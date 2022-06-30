@@ -16,21 +16,44 @@ export class ResumerComponent implements OnInit {
   data: any = [{
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
     title: "resumer",
-    erreur: "1",
+    erreur: 1,
     buttonID: "detail1",
     route: "./Resultat",
-    id:"A"
+    id: "A"
+  }, {
+    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    title: "resumer",
+    erreur: 1,
+    buttonID: "detail1",
+    route: "./Resultat",
+    id: "B"
+  }, {
+    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    title: "resumer",
+    erreur: 1,
+    buttonID: "detail1",
+    route: "./Resultat",
+    id: "C"
   }]
 
   constructor(private loader: LoaderService, private http: HttpClient) { }
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+      $(".img").hide();
     })
   }
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
+
+  }
+
+  click(valeur: any) {
+    $("#" + valeur.id).show();
+  }
+  hide(valeur: any) {
+    $("#" + valeur.id).hide();
 
   }
 

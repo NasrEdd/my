@@ -1,67 +1,58 @@
-<h1>Importation des données</h1>
+
+
+<h1>{{titre}}</h1>
 
 <div class="container-fluid choses ">
     <div class="row import">
         <div id="row" class="col-lg-6">
-            <div>
-                <label>Selectionnez la table des séances à planifiées</label>
-                <button id="choix" class="file"><input class="form-control" type="file" value="1"
-                        (change)="getFile($event)">Choix</button>
+            <div class="col-md-12">
+                <label>Selectionnez la table des séances à planifiées
+                    <input type="file" id="input-file-now-custom-2" class="file-upload" data-height="500" id="SP" #nom
+                        (change)="getFile($event,nom.id)">
+                </label>
             </div>
-            <button type="submit" class="Bimporter" value="SP" #file (click)="importer(file.value)">
-                <a>
-                    importer
-                </a>
-            </button>
+
+
         </div>
         <div id="row" class="col-lg-6">
-            <div>
-                <label>Selectionnez la table des disponibilités</label>
-                <button id="choix" class="file"><input class="form-control" type="file" value="2"
-                        (change)="getFile($event)">Choix</button>
+            <div class="col-md-12">
+                <label>Selectionnez la table des disponibilités
+                    <input class="form-control" type="file" id="TD" #nom1 (change)="getFile($event,nom1.id)">
+
+                </label>
             </div>
-            <button type="submit" class="Bimporter" value="TD" #file (click)="importer(file.value)">
-                <a>
-                    importer
-                </a>
-            </button>
         </div>
         <div id="row" class="col-lg-6">
-            <div>
-                <label>Selectionnez la table de préférence des disponibilités</label>
-                <button id="choix" class="file"><input class="form-control" type="file" value="3"
-                        (change)="getFile($event)">Choix</button>
+            <div class="col-md-12">
+                <label>Selectionnez la table de préférence des disponibilités
+                    <input class="form-control" type="file" id="PD" #nom2 (change)="getFile($event,nom2.id)">
+
+                </label>
             </div>
-            <button type="submit" class="Bimporter" value="PD" #file (click)="importer(file.value)">
-                <a>
-                    importer
-                </a>
-            </button>
+
         </div>
         <div id="row" class="col-lg-6">
-            <div>
-                <label>Selectionnez la table des salles</label>
-                <button id="choix" class="file"> <input class="form-control" type="file" value="4"
-                        (change)="getFile($event)">Choix</button>
+            <div class="col-md-12">
+                <label>Selectionnez la table des salles
+                    <input class="form-control" type="file" id="TS" #nom3 (change)="getFile($event,nom3.id)">
+
+                </label>
             </div>
-            <button type="submit" class="Bimporter" value="TS" #file (click)="importer(file.value)">
-                <a>
-                    importer
-                </a>
-            </button>
+
         </div>
     </div>
 
     <div id="envoyer">
 
+        <a routerLink="./PreTraitement">
 
-        <button type="submit" value="envoyer" (click)="traiter()">
-            <a routerLink="./PreTraitement">
-                Envoyer
-            </a>
-        </button>
+            <button type="submit" id="envoyer" (click)="traiter()">
+                <img src="./assets/img/traiter.png">
+                Traiter
+            </button>
+        </a>
+
     </div>
-<a routerLink=".."><button class="Bimporter">Retoure</button></a>
 
 </div>
 <div class="progress">

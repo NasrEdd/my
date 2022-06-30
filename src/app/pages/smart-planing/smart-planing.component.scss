@@ -2,14 +2,63 @@
     0% {
         background-color: rgb(254, 252, 252);
     }
+
     50% {
         background-color: #368;
     }
+
     100% {
         background-color: #369;
     }
 }
 
+.container-fluid{
+    margin-bottom: 10%;
+}
+
+.login {
+    display: flex;
+    margin: 5% auto 5% auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(51, 102, 153);
+    width: 350px;
+    height: 350px;
+    border-radius: 5px;
+}
+
+.login button {
+    background-color: rgb(248, 246, 246);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    transition: all 0.5s ease;
+    transform: scale(1);
+}
+
+.login:hover {
+    transition: all 0.5s ease;
+    transform: scale(1.1);
+    filter: brightness(110%);
+}
+
+.login img {
+    width: 100px;
+    height: 70px;
+    margin: 5% auto 5% auto;
+}
+
+.login input {
+    margin: 0;
+}
 
 ::ng-deep .carre {
     display: flex;
@@ -17,7 +66,7 @@
     justify-content: center;
     align-items: center;
     transition: all 0.5s ease;
-        transform: scale(1);
+    transform: scale(1);
 }
 
 .carre:hover {
@@ -25,18 +74,21 @@
     filter: brightness(120%);
 }
 
-
+.container-fluid {
+    width: 100%;
+}
 
 
 #row2 {
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 9%;
 
 }
 
 .mat-elevation-z4 {
-    background-color: #369;
+    background-color: rgb(51, 102, 153);
     border-radius: 5px;
+    
     animation-name: carre;
     animation-duration: 4s;
 }
@@ -58,7 +110,7 @@
 }
 
 ::ng-deep h1 {
-    color: #369;
+    color: rgb(51, 102, 153);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
@@ -99,8 +151,8 @@ input[type="text"],
 
 ::ng-deep #button:hover,
 #Lbutton:hover {
-    background-color: rgb(207, 237, 137);
-    color: white;
+    background-color: rgb(245, 246, 247);
+    color: rgb(51, 102, 153);
     cursor: pointer;
     transform: scale(1.1);
     filter: brightness(120%);
@@ -134,19 +186,4 @@ input[type="text"],
 
 
 
-#login {
-    margin-left: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    color: black;
-    box-shadow: 1px 1px 12px rgb(180, 179, 179);
-}
 
-.progress{
-    margin-top: 13%;
-}
-.Pourcentage{
-    width: 10%;
-    height: 100%;
-    background-color: rgb(148, 242, 140);}
-//::ng-deep force Css in my component

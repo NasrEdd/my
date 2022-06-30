@@ -3,51 +3,74 @@
     <app-loader></app-loader>
     <app-modules-menu-side-bar> </app-modules-menu-side-bar>
     <app-settings-menu-side-bar> </app-settings-menu-side-bar>
+
     <!-- Page Content -->
     <div id="content">
+
         <nav class="navbar navbar-expand-lg navbar-light px-0 px-md-1" style="margin-top: 2px !important;">
             <div class="container-fluid px-0 px-md-1">
-                <div class="col-12 d-block d-md-flex flex-column flex-md-row justify-content-md-between p-0"  id="DontCloseSideBars">
-                    <div class="ms-0 text-center text-md-start mb-2 mb-md-0" >
-                        <button type="button" (click)="openLeftSideBar()" id="openLeftSideBarBtn" class="btn navbar-btn rounded-15 mobileUnroundedRight py-2 px-3 navBar-btn-Fsize">
-                            <i class="fas fa-list-ul fa-lg"></i> 
-                            <span class="verticalDevider mx-1">|</span> 
+                <div class="col-12 d-block d-md-flex flex-column flex-md-row justify-content-md-between p-0"
+                    id="DontCloseSideBars">
+                    <div class="ms-0 text-center text-md-start mb-2 mb-md-0">
+                        <button type="button" (click)="openLeftSideBar()" id="openLeftSideBarBtn"
+                            class="btn navbar-btn rounded-15 mobileUnroundedRight py-2 px-3 navBar-btn-Fsize">
+                            <i class="fas fa-list-ul fa-lg"></i>
+                            <span class="verticalDevider mx-1">|</span>
                             <span class="navBar-btn-Fsize"> Registrariat {{ currentPage }} </span>
                         </button>
-                        <button type="button" (click)="openRightSideBar()" id="openRightSideBar" class="btn navbar-btn d-inline rightrounded py-2 px-3 px-sm-2 px-lg-3 d-md-none navBar-btn-Fsize">
+                        <button type="button" (click)="openRightSideBar()" id="openRightSideBar"
+                            class="btn navbar-btn d-inline rightrounded py-2 px-3 px-sm-2 px-lg-3 d-md-none navBar-btn-Fsize">
                             <span><i class="fas fa-cog"></i></span>
                         </button>
                     </div>
-                    <div class="navCenteredBG d-none d-lg-flex justify-content-between col-auto text-center mx-auto mx-lg-0 mb-2 mb-md-0 py-1 px-lg-2">
+                    <div
+                        class="navCenteredBG d-none d-lg-flex justify-content-between col-auto text-center mx-auto mx-lg-0 mb-2 mb-md-0 py-1 px-lg-2">
                         <div class="mb-2 mb-md-0" style="margin-left: 3px; margin-right: 10px;">
-                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainUndoBtn" style="margin-right: 2px;" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.UNDO' | translate " [disabled]="!gridservice.canUndo" (click)="undo()">
+                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainUndoBtn"
+                                style="margin-right: 2px;" data-bs-toggle="tooltip" data-placement="bottom"
+                                [title]=" 'MAINBTNS.UNDO' | translate " [disabled]="!gridservice.canUndo"
+                                (click)="undo()">
                                 <i class="fas fa-arrow-left"></i>
                             </button>
-                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainRedoBtn" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.REDO' | translate " [disabled]="!gridservice.canRedo" (click)="redo()">
+                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainRedoBtn"
+                                data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.REDO' | translate "
+                                [disabled]="!gridservice.canRedo" (click)="redo()">
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                         <div class="mb-2 mb-md-0" style="margin-left: 3px; margin-right: 10px;">
-                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainSearchBtn" style="margin-right: 2px;" [disabled]="!gridservice.canSearch" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.SRCH' | translate " (click)="showSearchArea()">
+                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainSearchBtn"
+                                style="margin-right: 2px;" [disabled]="!gridservice.canSearch" data-bs-toggle="tooltip"
+                                data-placement="bottom" [title]=" 'MAINBTNS.SRCH' | translate "
+                                (click)="showSearchArea()">
                                 <i class="fas fa-search"></i>
                             </button>
-                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainResetBtn" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.REINITIATE' | translate ">
+                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainResetBtn"
+                                data-bs-toggle="tooltip" data-placement="bottom"
+                                [title]=" 'MAINBTNS.REINITIATE' | translate ">
                                 <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainSyncBtn" style="margin-right: 2px;" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.SYNCHRONISE' | translate ">
+                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainSyncBtn"
+                                style="margin-right: 2px;" data-bs-toggle="tooltip" data-placement="bottom"
+                                [title]=" 'MAINBTNS.SYNCHRONISE' | translate ">
                                 <i class="fas fa-redo"></i>
                             </button>
-                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainSaveBtn" [disabled]="!gridservice.canUndo" data-bs-toggle="tooltip" data-placement="bottom" [title]=" 'MAINBTNS.SAVE' | translate " (click)="save()">
+                            <button type="button" class="btn btn-xs btn-darkPurple" id="mainSaveBtn"
+                                [disabled]="!gridservice.canUndo" data-bs-toggle="tooltip" data-placement="bottom"
+                                [title]=" 'MAINBTNS.SAVE' | translate " (click)="save()">
                                 <i class="fas fa-save"></i>
                             </button>
                         </div>
                     </div>
                     <div class="text-center text-md-start text-nowrap mb-2 mb-md-0 d-none d-md-inline">
-                        <button type="button" id="openRightSideBar2" (click)="openRightSideBar()" class="btn navbar-btn d-inline rounded-15 py-2 px-3 px-sm-2 px-lg-3 navBar-btn-Fsize">
-                            <span> {{ appService?.currentSchool!.keyName |translate }} </span> <span class="verticalDevider mx-1">|</span>
-                            <span> {{ appService?.currentYear!.yearStr }} </span>    <span class="verticalDevider mx-1">|</span>
+                        <button type="button" id="openRightSideBar2" (click)="openRightSideBar()"
+                            class="btn navbar-btn d-inline rounded-15 py-2 px-3 px-sm-2 px-lg-3 navBar-btn-Fsize">
+                            <span> {{ appService?.currentSchool!.keyName |translate }} </span> <span
+                                class="verticalDevider mx-1">|</span>
+                            <span> {{ appService?.currentYear!.yearStr }} </span> <span
+                                class="verticalDevider mx-1">|</span>
                             <span><i class="fas fa-cog"></i></span>
                         </button>
                     </div>
@@ -57,8 +80,9 @@
         <div class="realContent px-0 px-lg-1" id="realContent">
             <div class="col-12 ComponentHeight pt-0 pt-md-2 pb-0">
                 <router-outlet></router-outlet>
+                    <app-progress-barre></app-progress-barre>
+
             </div>
         </div>
     </div>
 </div>
-

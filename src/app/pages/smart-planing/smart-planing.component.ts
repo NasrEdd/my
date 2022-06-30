@@ -27,6 +27,14 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+
+      let EleHide: HTMLElement | null = document.getElementById("row2");
+      let EleHide2: HTMLElement | null = document.getElementById("progressbar");
+      if (EleHide !== null && EleHide2 !== null ){
+        EleHide.style.display = "none";
+        EleHide2.style.display = "none";
+      }
+       
     })
   }
 
@@ -40,14 +48,35 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
     alert();
   }
   login(even: string) {
-    
+
     const data: any = {
       user: even
     }
 
-    this.data = this.http.post(this.url + "Username", JSON.stringify(data));
-    console.log(this.data);
+    if ( even !== "") {
+      console.log(even)
+      this.data = this.http.post(this.url + "Username", JSON.stringify(data))
+        .subscribe(res => {
+          console.log(res);
+          alert('Post Successfully.');
+        });
+      console.log(JSON.stringify(data));
+      console.log(this.data);
+      console.log(this.url + "Username", "Content-Type: application/json;"+"\n"+{
+        "user": "khdhfd"})
+      
+
+      $(".login").hide(2000);
+      $("#row2").show(4000);
+      $(".ProgButton").hide();
+      $("#progressbar").show(4000);
+
+    }
+    else{
+      alert("Enter un utilisateur");
+    }
   }
+
 }
 
 

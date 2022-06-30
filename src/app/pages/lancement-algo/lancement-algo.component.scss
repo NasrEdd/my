@@ -5,16 +5,15 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 18%;
 
 }
 
 #row {
-    color: hsl(180, 100%, 1%);
+    color: hsl(0, 0%, 99%);
     width: auto;
     height: auto;
-    background-color: rgb(160, 162, 164, 0.3);
+    background-color:rgba(51, 102, 153, 0.81);
     border-radius: 5px;
     margin-left: 4%;
     margin-right: 4%;
@@ -23,7 +22,6 @@
     margin-bottom: auto;
     position: relative;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-    transition: all 0.5s ease;
     transform: scale(1);
 
 }
@@ -33,9 +31,7 @@
     filter: brightness(110%);
 }
 
-.Banim:hover {
-    width: 100%;
-}
+
 
 .buttonR {
     margin-top: 100% !important;
@@ -44,11 +40,12 @@
 
 .retoure,
 .continue {
-    background-color: rgb(148, 242, 140);
+    background-color: rgba(149, 242, 140, 0.675);
     border: none;
     color: white;
     padding: 10px 22px;
 }
+
 .continue {
     position: absolute;
     left: 80%;
@@ -71,6 +68,7 @@
 #root .Banim {
     background-color: rgb(148, 242, 140);
     border: none;
+    width: 100%;
     color: white;
     padding: 10px 22px;
     text-align: center;
@@ -99,7 +97,7 @@ h2 {
 
 span {
     font-size: 20px;
-    color: red;
+    color: rgb(7, 0, 0);
 }
 
 h1 {
@@ -113,17 +111,8 @@ h1 {
 }
 
 ::ng-deep .contenue p {
-    background-color: rgb(160, 162, 164, 0.3);
     border-radius: 5px;
     margin-top: 2%;
 
 }
 
-.progress {
-    margin-top: 17%;
-}
-
-.Pourcentage {
-    width: 90%;
-    height: 100%;
-    background-color: rgb(148, 242, 140);}

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoaderService } from 'src/app/services/loader-service/loader-service.service';
 import { HttpClient } from '@angular/common/http';
+
 import {
   trigger,
   state,
@@ -40,10 +41,10 @@ export class PreTraitementComponent implements OnInit {
   data: any = [{
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
     title: "Erreur de groupe",
-    erreur: this.ComingData.E_groupe,
+    erreur: 5,
     buttonID: "ErreurG",
     route: "./Resultat",
-    id:"A",
+    id:"El1",
   },
   {
     description: "Des séances quiazertyuiopmlkjhgfdsqwxcvbn,;: ont le champs de la durée vide ou non numérique ou incorrecte",
@@ -51,7 +52,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: this.ComingData["E_intrv"],
     buttonID: "ErreurI",
     route: "./Resultat",
-    id: "B",
+    id: "El2",
 
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
@@ -59,7 +60,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: this.ComingData["E_duree"],
     buttonID: "ErreurD",
     route: "./Resultat",
-    id: "C",
+    id: "El3",
 
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
@@ -67,7 +68,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: this.ComingData["E_nbEtud"],
     buttonID: "ErreurE",
     route: "./Resultat",
-    id: "D",
+    id: "El4",
 
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
@@ -75,15 +76,15 @@ export class PreTraitementComponent implements OnInit {
     erreur: this.ComingData["E_nbSea"],
     buttonID: "ErreurS",
     route: "./Resultat",
-    id: "E",
+    id: "ElI1",
 
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
     title: "Hors disponibilités",
-    erreur: this.ComingData["HorsDisp"],
+    erreur: 5,
     buttonID: "ErreurH",
     route: "./Resultat",
-    id: "F",
+    id: "ElI2",
 
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
@@ -91,7 +92,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: this.ComingData["NonSaisieDisp"],
     buttonID: "ErreurNS",
     route: "./Resultat",
-    id: "G",
+    id: "ElI3",
 
   }, {
     description: "Des séances qui ont le champs lz,ffezmmzkezmfkezkfezmkflezkfmlkezde la durée vide ou non numérique ou incorrecte",
@@ -99,7 +100,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: this.ComingData["SecNonPlanif"],
     buttonID: "ErreurSN",
     route: "./Resultat",
-    id: "H",
+    id: "ElI4",
 
   }]
 
@@ -110,11 +111,13 @@ export class PreTraitementComponent implements OnInit {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
     })
+
+    $("img").hide();
+    
   }
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-
   }
 
 
@@ -180,6 +183,15 @@ export class PreTraitementComponent implements OnInit {
 
     }
 
+
+  }
+
+
+  click(valeur: any) {
+    $("#" + valeur.id).show();
+  }
+  hide(valeur: any) {
+    $("#" + valeur.id).hide();
 
   }
 

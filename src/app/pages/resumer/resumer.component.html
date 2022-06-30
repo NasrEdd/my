@@ -1,32 +1,39 @@
 <h1>{{titre}}</h1>
-
 <div class="container-fluid " id="root">
     <div id="row" *ngFor="let element of data">
         <div class="row ">
             <div id="rowCol">
-                <button class="btn" data-bs-toggle="collapse" [attr.data-bs-target]="'#'+element.id"
-                    aria-expened="false" [attr.aria-controls]="element.id">{{element.title}}</button>
+
+
+                <div class="col" (mouseover)="click(valeur)" (mouseleave)="hide(valeur)" >
+                    <a routerLink={{element.route}}>
+                        <button class="btn Banim" #Bsubmit >
+                            {{element.title}}
+                        </button>
+                    </a>
+                <img src="./assets/img/click.png" id={{element.id}} width="30px" height="30px" #valeur>
+
+                </div>
+
+                <div class="contenue">
+                    <p>{{element.description}}</p>
+                </div>
+
+                <div id="err">
+                    <p id="ErrP">{{element.erreur}}</p>
+                </div>
+
             </div>
-            <div class="collapse multi-collapse contenue" id={{element.id}}>
-                <p>{{element.description}}</p>
-                <span>{{element.erreur}}</span>
-            </div>
-            <a routerLink={{element.route}}>
-                <button type="submit" class="fixed-bottom" value={{element.buttonID}} class="preTrai btn"
-                    #Bsubmit>Details</button>
-            </a>
+
+
         </div>
     </div>
-    <div class="buttonR">
-        <a routerLink="/smart-planing/importer"> <button id="corriger">Corriger les données</button></a>
-        <a routerLink="./Lancement"> <button id="corriger">Continue</button></a>
-        <a routerLink=".."> <button id="corriger">Retoure</button></a>
+    
+                    <app-progress-barre NewPage="smart-planing >> importer >> PreTraitement >> Resumer" Poucentage="70%">
+                    </app-progress-barre>
 
-    </div>
- 
 </div>
-<div class="progress">
-    <div class="Pourcentage">
-        <p></p>
-    </div>
-</div>
+
+                    <app-progress-barre NewPage="smart-planing >> importer >> PreTraitement >> Resumer" Poucentage="70%">
+                    </app-progress-barre>
+
