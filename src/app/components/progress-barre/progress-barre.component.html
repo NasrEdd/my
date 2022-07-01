@@ -6,13 +6,13 @@
     </div>
     <div class="ProgButton">
     
-        <a routerLink={{PathRetoure}}>
+        <a routerLink={{PathRetoure}} (click)="update()">
             <button>Retoure</button>
         </a>
         <a routerLink="/">
             <button>Home</button>
         </a>
-        <a routerLink={{PathContinue}}>
+        <a routerLink={{PathContinue}} (click)="update()">
             <button>Continuer</button>
         </a>
     </div>

@@ -20,6 +20,12 @@ export class AppService implements OnDestroy {
   yearEmitter : EventEmitter<{ yearId: string, yearStr:string}> = new EventEmitter<{ yearId: string, yearStr:string}>(); 
   private yearEmitterSubscription? : Subscription;
 
+  progressbarre?: { pathContinue: string, pathRetoure: string, pourcentage: number } = { pathContinue: '', pathRetoure: '', pourcentage:0 };
+  barreEmitter: EventEmitter<{ pathContinue: string, pathRetoure: string, pourcentage: number }> = new EventEmitter < { pathContinue: string, pathRetoure: string, pourcentage: number }>();
+  private barreEmitterSubscription? : Subscription;
+
+
+
   constructor() {
     this.themeEmitterSubscription = this.themeEmitter.subscribe( (newTheme:string) => {
       if(newTheme && newTheme.length)
@@ -33,11 +39,16 @@ export class AppService implements OnDestroy {
     this.yearEmitterSubscription = this.yearEmitter.subscribe( year=>{
       this.currentYear = year;
     });
+    this.barreEmitterSubscription = this.barreEmitter.subscribe( progBarre =>{
+        this.progressbarre = progBarre;
+        console.log(progBarre);
+    });
   }
 
   ngOnDestroy(){
     this.themeEmitterSubscription?.unsubscribe();
     this.schoolEmitterSubscription?.unsubscribe();
     this.yearEmitterSubscription?.unsubscribe();
+    this.barreEmitterSubscription?.unsubscribe();
   }
 }

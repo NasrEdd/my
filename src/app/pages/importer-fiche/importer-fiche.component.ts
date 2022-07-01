@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LoaderService } from 'src/app/services/loader-service/loader-service.service';
 import { formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs';
-
+import { Router } from '@angular/router';
+import { Subject, Observable } from "rxjs";
+import { AppService } from 'src/app/services/app-service/app-service.service';
 declare var $: any;
 var Data: any = [{
   "E_Groupe": 0,
@@ -23,7 +24,7 @@ var Data: any = [{
 })
 export class ImporterFicheComponent implements OnInit {
   url2: string = "https://smartplanning-backend.herokuapp.com/Generation/ResultatsPretraitement/";
-  titre : string = "titre general"
+  titre: string = "titre general"
   formData = new FormData();
 
   file: string = "";
@@ -31,12 +32,13 @@ export class ImporterFicheComponent implements OnInit {
   url: string = "https://smartplanning-backend.herokuapp.com/Generation";
   username: string = "nasr";
 
-  constructor(private http: HttpClient, private loader: LoaderService,) { }
+  constructor(private http: HttpClient, private loader: LoaderService, private router: Router, public appService: AppService) { }
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
 
     })
+    this.update();
   }
 
   ngOnDestroy(): void {
@@ -44,7 +46,7 @@ export class ImporterFicheComponent implements OnInit {
 
   }
 
-//colorer les div
+  //colorer les div
   checked(id: string) {
 
     $(document).ready(function () {
@@ -125,5 +127,41 @@ export class ImporterFicheComponent implements OnInit {
 
   }
 
+  update() {
+    var data: any;
+    var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat";
+    var Paths: string[] = path.split("/");
+    let Nele: any = this.router.url.split("/");
+    var pour: number;
+
+    if (Nele.length > 0) {
+      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
+      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
+      Nele.pop();
+
+      data = {
+        pathContinue: elem,
+        pathRetoure: Nele.join("/"),
+        pourcentage: pour
+      };
+    }
+    else {
+      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
+
+      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
+      Nele.pop();
+      data = {
+        pathContinue: elem,
+        pathRetoure: Nele.join("/"),
+        pourcentage: pour
+      };
+    }
+
+
+    console.log(data);
+    this.appService.barreEmitter.emit(data);
+
+
+  }
 
 }

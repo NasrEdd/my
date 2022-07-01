@@ -82,7 +82,7 @@ label {
 
 
 ::ng-deep .choses button {
-    background-color: rgb(148, 242, 140);
+    background-color: rgba(129, 133, 129, 0.758);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -129,7 +129,7 @@ label {
 
 
 ::ng-deep button:hover {
-    background-color: rgb(207, 237, 137);
+    background-color: rgba(207, 237, 137, 0.803);
     color: rgb(241, 231, 231);
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     filter: brightness(120%);

@@ -8,7 +8,7 @@ import { MyIndexedDbDataService } from 'src/app/services/myIndexedDbDataService/
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { AppService } from 'src/app/services/app-service/app-service.service';
-
+import { ProgressBarreComponent } from 'src/app/components/progress-barre/progress-barre.component'
 
 
 declare var $ :any;
@@ -25,7 +25,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewChecked, OnDestr
   // left side BarMenu props
   @ViewChild(ModulesMenuSideBarComponent) leftMenuSideBar ?: ModulesMenuSideBarComponent;
   @ViewChild( SettingsMenuSideBarComponent ) rightSettingsSideBar ?: SettingsMenuSideBarComponent;
-
+  @ViewChild(ProgressBarreComponent) ProgressBar ?: ProgressBarreComponent;
   // for each API request check token
   // every 1 min chech token here
   logedIn: boolean = true; // if token is expired turn this too false to get the auth-overlay
@@ -71,8 +71,8 @@ export class DefaultLayoutComponent implements OnInit, AfterViewChecked, OnDestr
       this.leftMenuSideBar?.closeMenu();
       
       this.rightSettingsSideBar?.closeMenu();
-        
 
+        
       let btn:any =  document.getElementById('btn');
       if( btn && !document.getElementById('menuFlottant')?.contains(e.target) && btn.checked )
         document.getElementById('btn')?.click();

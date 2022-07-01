@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoaderService } from 'src/app/services/loader-service/loader-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subject, Observable } from "rxjs";
+import { AppService } from 'src/app/services/app-service/app-service.service';
 
 declare var $: any;
 
@@ -19,7 +22,8 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
   posts: any;
   data: any;
 
-  constructor(private loader: LoaderService, private http: HttpClient) {
+
+  constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) {
     this.titles = ["Génération d'emploi du temps", "Evaluation"];
     this.descriptions = ["Pour generer un emploi du temps", "Pour evaluer l'emploi du temps"];
   }
@@ -30,12 +34,15 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
       let EleHide: HTMLElement | null = document.getElementById("row2");
       let EleHide2: HTMLElement | null = document.getElementById("progressbar");
-      if (EleHide !== null && EleHide2 !== null ){
+      if (EleHide !== null && EleHide2 !== null) {
         EleHide.style.display = "none";
         EleHide2.style.display = "none";
       }
-       
+
     })
+    this.update();
+
+
   }
 
   ngOnDestroy(): void {
@@ -53,7 +60,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
       user: even
     }
 
-    if ( even !== "") {
+    if (even !== "") {
       console.log(even)
       this.data = this.http.post(this.url + "Username", JSON.stringify(data))
         .subscribe(res => {
@@ -62,9 +69,10 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
         });
       console.log(JSON.stringify(data));
       console.log(this.data);
-      console.log(this.url + "Username", "Content-Type: application/json;"+"\n"+{
-        "user": "khdhfd"})
-      
+      console.log(this.url + "Username", "Content-Type: application/json;" + "\n" + {
+        "user": "khdhfd"
+      })
+
 
       $(".login").hide(2000);
       $("#row2").show(4000);
@@ -72,9 +80,46 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
       $("#progressbar").show(4000);
 
     }
-    else{
+    else {
       alert("Enter un utilisateur");
     }
+  }
+
+  update() {
+    var data: any;
+    var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat";
+    var Paths: string[] = path.split("/");
+    let Nele: any = this.router.url.split("/");
+    var pour: number;
+
+    if (Nele.length > 0) {
+      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28 + 5;
+      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
+      Nele.pop();
+
+      data = {
+        pathContinue: elem,
+        pathRetoure: Nele.join("/"),
+        pourcentage: pour
+      };
+    }
+    else {
+      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
+
+      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
+      Nele.pop();
+      data = {
+        pathContinue: elem,
+        pathRetoure: Nele.join("/"),
+        pourcentage: pour
+      };
+    }
+
+  
+      console.log(data);
+      this.appService.barreEmitter.emit(data);
+    
+
   }
 
 }
