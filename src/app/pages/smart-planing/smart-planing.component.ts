@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoaderService } from 'src/app/services/loader-service/loader-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subject, Observable } from "rxjs";
 import { AppService } from 'src/app/services/app-service/app-service.service';
 
 declare var $: any;
@@ -25,7 +24,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
   constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) {
     this.titles = ["Génération d'emploi du temps", "Evaluation"];
-    this.descriptions = ["Pour generer un emploi du temps", "Pour evaluer l'emploi du temps"];
+    this.descriptions = ["Pour générer un emploi du temps", "Pour évaluer l'emploi du temps"];
   }
 
   ngOnInit(): void {
@@ -39,8 +38,10 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
         EleHide2.style.display = "none";
       }
 
+      $(".Progroot").hide();
     })
     this.update();
+    
 
 
   }
@@ -51,9 +52,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
   }
 
 
-  go() {
-    alert();
-  }
+ 
   login(even: string) {
 
     const data: any = {
@@ -93,8 +92,8 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
     var pour: number;
 
     if (Nele.length > 0) {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28 + 5;
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
+      pour = 1 * 14.28 + 5;
+      var elem = this.router.url + "/" + "importer";
       Nele.pop();
 
       data = {
@@ -106,7 +105,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
     else {
       pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
 
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
+      var elem = this.router.url + "/" + "importer";
       Nele.pop();
       data = {
         pathContinue: elem,

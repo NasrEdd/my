@@ -14,27 +14,27 @@ var ids: number[] = [1, 2, 3];
 })
 export class ResumerComponent implements OnInit {
 
-  titre: string = "Resumer";
+  titre: string = "Resumer du Pre-traitement";
   data: any = [{
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-    title: "resumer",
+    title: "Seances non planifiables",
     erreur: 1,
     buttonID: "detail1",
-    route: "./Resultat",
+    route: "./Details",
     id: "A"
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-    title: "resumer",
+    title: "resumer 2",
     erreur: 1,
     buttonID: "detail1",
-    route: "./Resultat",
+    route: "./Details",
     id: "B"
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-    title: "resumer",
+    title: "resumer 3",
     erreur: 1,
     buttonID: "detail1",
-    route: "./Resultat",
+    route: "./Details",
     id: "C"
   }]
 

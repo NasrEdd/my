@@ -20,9 +20,8 @@ export class LancementAlgoComponent implements OnInit {
   data: any = [{
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
     title: "Nombre de seances planifiees",
-    erreur: "1",
+    erreur: "3",
     buttonID: "detail1",
-    route: "./Resultat",
     id: "A"
   } ,
     {
@@ -30,21 +29,18 @@ export class LancementAlgoComponent implements OnInit {
       title: "Nombre de seances non planifiees",
       erreur: "1",
       buttonID: "detail1",
-      route: "./Resultat",
       id: "A"
     }, {
       description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
       title: "Nombre de salles",
-      erreur: "1",
+      erreur: "5",
       buttonID: "detail1",
-      route: "./Resultat",
       id: "A"
     }, {
       description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
       title: "Temps estime",
-      erreur: "1",
+      erreur: "25min",
       buttonID: "detail1",
-      route: "./Resultat",
       id: "A"
     }]
 

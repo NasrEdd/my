@@ -30,6 +30,8 @@ import { ResumerComponent } from './pages/resumer/resumer.component';
 import { PreTraitementComponent } from 'src/app/pages/pre-traitement/pre-traitement.component';
 import { ResultatComponent } from './resultat/resultat.component';
 import { LancementAlgoComponent } from './pages/lancement-algo/lancement-algo.component';
+import { WaiterComponent } from './pages/waiter/waiter.component';
+import { PlchoixComponent } from './plchoix/plchoix.component';
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -116,6 +118,8 @@ const indexDbConfig: DBConfig  = {
     PreTraitementComponent,
     ResultatComponent,
     LancementAlgoComponent,
+    WaiterComponent,
+    PlchoixComponent,
     
     
   ],

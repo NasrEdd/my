@@ -9,6 +9,8 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { AppService } from 'src/app/services/app-service/app-service.service';
 import { ProgressBarreComponent } from 'src/app/components/progress-barre/progress-barre.component'
+import { WaiterComponent } from 'src/app/pages/waiter/waiter.component'
+
 
 
 declare var $ :any;
@@ -26,6 +28,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewChecked, OnDestr
   @ViewChild(ModulesMenuSideBarComponent) leftMenuSideBar ?: ModulesMenuSideBarComponent;
   @ViewChild( SettingsMenuSideBarComponent ) rightSettingsSideBar ?: SettingsMenuSideBarComponent;
   @ViewChild(ProgressBarreComponent) ProgressBar ?: ProgressBarreComponent;
+  @ViewChild(WaiterComponent) Waiter?: WaiterComponent;
   // for each API request check token
   // every 1 min chech token here
   logedIn: boolean = true; // if token is expired turn this too false to get the auth-overlay

@@ -44,7 +44,7 @@ export class PreTraitementComponent implements OnInit {
   }]
 
   data: any = [{
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Erreur de groupe",
     erreur: 5,
     buttonID: "ErreurG",
@@ -52,39 +52,39 @@ export class PreTraitementComponent implements OnInit {
     id:"El1",
   },
   {
-    description: "Des séances quiazertyuiopmlkjhgfdsqwxcvbn,;: ont le champs de la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Erreur d'intervenant",
-    erreur: this.ComingData["E_intrv"],
+    erreur: 3,
     buttonID: "ErreurI",
     route: "./Resultat",
     id: "El2",
 
   }, {
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Erreur de la durée",
-    erreur: this.ComingData["E_duree"],
+    erreur: 4,
     buttonID: "ErreurD",
     route: "./Resultat",
     id: "El3",
 
   }, {
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Erreur de Nombre d'etudiants",
-    erreur: this.ComingData["E_nbEtud"],
+    erreur: 1,
     buttonID: "ErreurE",
     route: "./Resultat",
     id: "El4",
 
   }, {
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Erreur de nombre de séances",
-    erreur: this.ComingData["E_nbSea"],
+    erreur: 1,
     buttonID: "ErreurS",
     route: "./Resultat",
     id: "ElI1",
 
   }, {
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Hors disponibilités",
     erreur: 5,
     buttonID: "ErreurH",
@@ -94,15 +94,15 @@ export class PreTraitementComponent implements OnInit {
   }, {
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
     title: "Non saisie de siponibilités",
-    erreur: this.ComingData["NonSaisieDisp"],
+    erreur: 2,
     buttonID: "ErreurNS",
     route: "./Resultat",
     id: "ElI3",
 
   }, {
-    description: "Des séances qui ont le champs lz,ffezmmzkezmfkezkfezmkflezkfmlkezde la durée vide ou non numérique ou incorrecte",
+    description: "Des informations sur l'erreur apprevue du traitement",
     title: "Erreur de la durée",
-    erreur: this.ComingData["SecNonPlanif"],
+    erreur: 4,
     buttonID: "ErreurSN",
     route: "./Resultat",
     id: "ElI4",

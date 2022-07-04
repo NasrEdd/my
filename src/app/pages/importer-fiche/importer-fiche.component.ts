@@ -24,7 +24,7 @@ var Data: any = [{
 })
 export class ImporterFicheComponent implements OnInit {
   url2: string = "https://smartplanning-backend.herokuapp.com/Generation/ResultatsPretraitement/";
-  titre: string = "titre general"
+  titre: string = "Importation des fichiers EXCEL"
   formData = new FormData();
 
   file: string = "";
@@ -36,7 +36,7 @@ export class ImporterFicheComponent implements OnInit {
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
-
+      $(".Progroot").show();
     })
     this.update();
   }
@@ -54,8 +54,8 @@ export class ImporterFicheComponent implements OnInit {
 
       element.css({
         color: "white",
-        background: "#399",
-        border: "1px solid white",
+        transform: "scale(1.1)",
+        border: "2px solid white",
         filter: "brightness(120%)"
       });
     });
@@ -116,7 +116,7 @@ export class ImporterFicheComponent implements OnInit {
   }
 
   traiter() {
-    console.log("hr")
+    console.log("hr");
     Data = this.http.post(this.url2 + this.username, null)
       .subscribe(res => {
         console.log(res);

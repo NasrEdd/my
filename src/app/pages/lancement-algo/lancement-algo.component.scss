@@ -13,7 +13,7 @@
     color: hsl(0, 0%, 99%);
     width: auto;
     height: auto;
-    background-color:rgba(51, 102, 153, 0.81);
+    background-color: rgba(51, 102, 153, 0.81);
     border-radius: 5px;
     margin-left: 4%;
     margin-right: 4%;
@@ -33,10 +33,7 @@
 
 
 
-.buttonR {
-    margin-top: 100% !important;
 
-}
 
 .retoure,
 .continue {
@@ -83,6 +80,7 @@
     transition-delay: 1s;
     transition-timing-function: ease;
     box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+    border: 0.5px solid white;
 }
 
 
@@ -97,7 +95,10 @@ h2 {
 
 span {
     font-size: 20px;
-    color: rgb(7, 0, 0);
+    font-size: bolder;
+    padding: 5px;
+    margin: 20px;
+    color: rgb(254, 254, 254);
 }
 
 h1 {
@@ -112,7 +113,8 @@ h1 {
 
 ::ng-deep .contenue p {
     border-radius: 5px;
-    margin-top: 2%;
+    margin-top: 10%;
+    margin-bottom: 9%;
 
 }
 

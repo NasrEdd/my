@@ -14,6 +14,9 @@ import { TableErreurComponent } from 'src/app/components/table-erreur/table-erre
 import { ResumerComponent } from 'src/app/pages/resumer/resumer.component';
 import { LancementAlgoComponent } from 'src/app/pages/lancement-algo/lancement-algo.component';
 import { ResultatComponent } from 'src/app/resultat/resultat.component';
+import { WaiterComponent } from 'src/app/pages/waiter/waiter.component';
+import { PlchoixComponent } from 'src/app/plchoix/plchoix.component'
+
 
 
 
@@ -28,11 +31,17 @@ const routes: Routes = [
   { path: 'smart-planing', component: SmartPlaningComponent },
   { path: 'smart-planing/importer', component: ImporterFicheComponent },
   { path: 'smart-planing/evaluer', component: EvaluerEmploitComponent },
+  { path: 'smart-planing/importer/Waiter', component: WaiterComponent },
   { path: 'smart-planing/importer/PreTraitement', component: PreTraitementComponent },
   { path: 'smart-planing/importer/PreTraitement/Resultat', component: TableErreurComponent },
   { path: 'smart-planing/importer/PreTraitement/Resumer', component: ResumerComponent },
+  { path: 'smart-planing/importer/PreTraitement/Resumer/Details', component: TableErreurComponent },
   { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement', component: LancementAlgoComponent }, 
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat', component: ResultatComponent }, 
+  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat', component: ResultatComponent },
+  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh', component: PlchoixComponent },
+
+
+  
 
 
 
