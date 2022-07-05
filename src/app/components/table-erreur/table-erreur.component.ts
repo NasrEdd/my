@@ -29,13 +29,13 @@ export class TableErreurComponent implements OnInit {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
     })
-
+    $(".Progroot").hide();
     
   }
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-
+    $(".Progroot").show();
   }
 
   key : any = [];

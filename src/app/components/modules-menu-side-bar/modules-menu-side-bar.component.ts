@@ -67,7 +67,7 @@ export class ModulesMenuSideBarComponent implements OnInit {
       elements:[] 
     },
     {
-      name: "Generer emploit",
+      name: "Générer Emploit",
       id: "genererSB",
       elements: [
         { textKey: "Smart Planing", url: "smart-planing", icon: 'far fa-folder-open' },

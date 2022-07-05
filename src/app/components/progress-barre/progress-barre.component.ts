@@ -12,7 +12,7 @@ declare var $: any;
   styleUrls: ['./progress-barre.component.scss']
 })
 export class ProgressBarreComponent implements OnInit {
-  path: string = "dossier-etudiant/smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat";
+  path: string = "dossier-etudiant/smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
   Paths: string[] = this.path.split("/");
   NomPage?: string ="";
 

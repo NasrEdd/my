@@ -1,11 +1,11 @@
 <h1>{{titre}}</h1>
-<div class="container-fluid " id="root">
-    <div id="row" *ngFor="let element of data">
-        <div class="row ">
-            <div id="rowCol">
+<div class="container-fluid " id="Rroot">
+    <div id="Rrow" *ngFor="let element of data">
+        <div class="Rrow ">
+            <div id="RrowCol">
 
 
-                <div class="col" >
+                <div class="Rcol" >
                     <a routerLink={{element.route}}>
                         <button class="btn Banim" #Bsubmit >
                             {{element.title}}
@@ -14,7 +14,7 @@
 
                 </div>
 
-                <div class="contenue">
+                <div class="Rcontenue">
                     <p>{{element.description}}</p>
                 </div>
 

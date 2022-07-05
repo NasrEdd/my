@@ -1,11 +1,11 @@
 <h1>{{titre}}</h1>
-<div class="container-fluid " id="root">
+<div class="container-fluid " id="Preroot">
 
-    <div id="row" *ngFor="let element of data">
-        <div class="row " (mouseover)="click(valeur)" (mouseleave)="hide(valeur)">
-            <div id="rowCol">
+    <div id="Prerow" *ngFor="let element of data">
+        <div class="Prerow ">
+            <div id="PrerowCol">
 
-                <div class="col" (mouseover)="click(valeur)" (mouseleave)="hide(valeur)">
+                <div class="col">
                     <a routerLink={{element.route}}>
                         <button class="btn Banim" #Bsubmit (click)="go(Bsubmit.value)">
                             {{element.title}}
@@ -15,7 +15,7 @@
                     </a>
                 </div>
 
-                <div class="contenue">
+                <div class="Precontenue">
                     <p>{{element.description}}</p>
                 </div>
 

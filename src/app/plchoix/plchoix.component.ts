@@ -10,7 +10,8 @@ declare var $:any;
   styleUrls: ['./plchoix.component.scss']
 })
 export class PlchoixComponent implements OnInit {
-
+  Titre : string = "La planification choisir";
+  choix : string = "Modifier"
   constructor(private loader: LoaderService,private router: Router, public appService: AppService) { }
 
   ngOnInit(): void {
@@ -18,11 +19,12 @@ export class PlchoixComponent implements OnInit {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
     })
 
-    $("#continue").css("content", "Processing...");
+    $(".Progroot #continue").hide();
     console.log($("#continue"))
   }
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
+    $(".Progroot #continue").show();
 
   }
 

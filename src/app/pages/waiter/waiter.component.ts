@@ -1,31 +1,35 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import { LoaderService } from 'src/app/services/loader-service/loader-service.service';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app-service/app-service.service';
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-waiter',
   templateUrl: './waiter.component.html',
   styleUrls: ['./waiter.component.scss']
 })
 export class WaiterComponent implements OnInit {
-  counter: number = 1;
+  counter: number = 7;
   constructor(private loader: LoaderService, private router: Router, public appService: AppService) {
 
     let intervalId = setInterval(() => {
       this.counter--;
       console.log(this.counter)
-      if (this.counter === 0){
-         clearInterval(intervalId);
+      if (this.counter === 0) {
+        clearInterval(intervalId);
         $('.H').hide(2000);
         $('.info').css({
-          "filter":"brightness(120%)",
-          'color':"white"
+          "filter": "brightness(120%)",
+          'color': "white"
         });
 
-        $('.fin').show(2000);      }
+        $('.fin').show(2000);
+        history.back();
+      }
     }, 1000);
+
+    
   }
   ngOnInit() {
     $(document).ready(() => {
@@ -33,6 +37,7 @@ export class WaiterComponent implements OnInit {
 
     })
     $(".fin").hide();
+    $(".Progroot").hide();
 
 
   }
@@ -43,7 +48,7 @@ export class WaiterComponent implements OnInit {
 
   update() {
     var data: any;
-    var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat";
+    var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
     var Paths: string[] = path.split("/");
     let Nele: any = this.router.url.split("/");
     var pour: number;

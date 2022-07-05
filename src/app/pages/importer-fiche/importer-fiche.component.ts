@@ -129,7 +129,7 @@ export class ImporterFicheComponent implements OnInit {
 
   update() {
     var data: any;
-    var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat";
+    var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
     var Paths: string[] = path.split("/");
     let Nele: any = this.router.url.split("/");
     var pour: number;
