@@ -1,11 +1,11 @@
 <h1>{{titre}}</h1>
 <div class="container-fluid " id="Rroot">
-    <div id="Rrow" *ngFor="let element of data">
+    <div id="Rrow" class="row" *ngFor="let element of data">
         <div class="Rrow ">
             <div id="RrowCol">
 
 
-                <div class="Rcol" >
+                <div class="col-lg-4" >
                     <a routerLink={{element.route}}>
                         <button class="btn Banim" #Bsubmit >
                             {{element.title}}
@@ -14,11 +14,11 @@
 
                 </div>
 
-                <div class="Rcontenue">
+                <div class=" Rcontenue col-lg-4">
                     <p>{{element.description}}</p>
                 </div>
 
-                <div id="err">
+                <div id="err" class="col-lg-4">
                     <p id="ErrP">{{element.erreur}}</p>
                 </div>
 
@@ -28,11 +28,5 @@
         </div>
     </div>
     
-                    <app-progress-barre NewPage="smart-planing >> importer >> PreTraitement >> Resumer" Poucentage="70%">
-                    </app-progress-barre>
-
-</div>
-
-                    <app-progress-barre NewPage="smart-planing >> importer >> PreTraitement >> Resumer" Poucentage="70%">
-                    </app-progress-barre>
+                  
 

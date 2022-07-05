@@ -1,11 +1,11 @@
 <h1>{{titre}}</h1>
 <div class="container-fluid " id="Preroot">
 
-    <div id="Prerow" *ngFor="let element of data">
+    <div id="Prerow" class="row" *ngFor="let element of data">
         <div class="Prerow ">
             <div id="PrerowCol">
 
-                <div class="col">
+                <div class="col-lg-4">
                     <a routerLink={{element.route}}>
                         <button class="btn Banim" #Bsubmit (click)="go(Bsubmit.value)">
                             {{element.title}}
@@ -15,11 +15,11 @@
                     </a>
                 </div>
 
-                <div class="Precontenue">
+                <div class="Precontenue col-lg-4">
                     <p>{{element.description}}</p>
                 </div>
 
-                <div id={{element.id}}>
+                <div id={{element.id}} class="col-lg-4">
                     <p id="ErrP">{{element.erreur}}</p>
                 </div>
 

@@ -48,6 +48,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
+    this.update();
 
   }
 

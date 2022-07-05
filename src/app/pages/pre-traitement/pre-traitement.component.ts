@@ -123,6 +123,7 @@ export class PreTraitementComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
+     this.update();
   }
 
 
@@ -225,7 +226,7 @@ export class PreTraitementComponent implements OnInit {
       Nele.pop();
       data = {
         pathContinue: elem,
-        pathRetoure: Nele.join("/"),
+        pathRetoure: "..",
         pourcentage: pour
       };
     }

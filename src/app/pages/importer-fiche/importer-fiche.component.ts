@@ -38,6 +38,7 @@ export class ImporterFicheComponent implements OnInit {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
       $(".Progroot").show();
     })
+    $(".row img").hide();
     this.update();
   }
 
@@ -51,7 +52,10 @@ export class ImporterFicheComponent implements OnInit {
 
     $(document).ready(function () {
       let element = $("#" + id).parent().parent().parent();
-
+      let img = element.children()[1];
+      $("#"+img.id).show(500);
+      console.log(img.id)
+      img.id.show();
       element.css({
         color: "white",
         transform: "scale(1.1)",
@@ -141,7 +145,7 @@ export class ImporterFicheComponent implements OnInit {
 
       data = {
         pathContinue: elem,
-        pathRetoure: Nele.join("/"),
+        pathRetoure:"..",
         pourcentage: pour
       };
     }

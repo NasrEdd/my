@@ -1,5 +1,3 @@
-
-
 <h1>{{titre}}</h1>
 
 <div class="container-fluid choses ">
@@ -11,6 +9,7 @@
                         (change)="getFile($event,nom.id)">
                 </label>
             </div>
+            <img src="./assets/img/checked.png" id="im1">
 
 
         </div>
@@ -18,9 +17,11 @@
             <div class="col-md-12">
                 <label>Selectionnez la table des disponibilités
                     <input class="form-control" type="file" id="TD" #nom1 (change)="getFile($event,nom1.id)">
-
                 </label>
+
             </div>
+            <img src="./assets/img/checked.png" id="im2">
+
         </div>
         <div id="row" class="col-lg-6">
             <div class="col-md-12">
@@ -29,6 +30,7 @@
 
                 </label>
             </div>
+            <img src="./assets/img/checked.png" id="im3">
 
         </div>
         <div id="row" class="col-lg-6">
@@ -37,7 +39,9 @@
                     <input class="form-control" type="file" id="TS" #nom3 (change)="getFile($event,nom3.id)">
 
                 </label>
+
             </div>
+            <img src="./assets/img/checked.png" id="im4">
 
         </div>
     </div>
