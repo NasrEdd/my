@@ -20,8 +20,8 @@ export class AppService implements OnDestroy {
   yearEmitter : EventEmitter<{ yearId: string, yearStr:string}> = new EventEmitter<{ yearId: string, yearStr:string}>(); 
   private yearEmitterSubscription? : Subscription;
 
-  progressbarre?: { pathContinue: string, pathRetoure: string, pourcentage: number } = { pathContinue: '', pathRetoure: '', pourcentage:0 };
-  barreEmitter: EventEmitter<{ pathContinue: string, pathRetoure: string, pourcentage: number }> = new EventEmitter < { pathContinue: string, pathRetoure: string, pourcentage: number }>();
+  progressbarre?:{ index: number, id: string, title: string, isCurrent: boolean, isValide: boolean, url: string, hasNext: boolean, hasPrevisous: boolean };
+  barreEmitter: EventEmitter<{ index: number, id: string, title: string, isCurrent: boolean, isValide: boolean, url: string, hasNext: boolean, hasPrevisous: boolean }> = new EventEmitter<{ index: number, id: string, title: string, isCurrent: boolean, isValide: boolean, url: string, hasNext: boolean, hasPrevisous: boolean }>();
   private barreEmitterSubscription? : Subscription;
 
 
@@ -40,8 +40,8 @@ export class AppService implements OnDestroy {
       this.currentYear = year;
     });
     this.barreEmitterSubscription = this.barreEmitter.subscribe( progBarre =>{
+
         this.progressbarre = progBarre;
-        console.log(progBarre);
     });
   }
 

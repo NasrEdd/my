@@ -16,6 +16,19 @@ export class ProgressBarreComponent implements OnInit {
   Paths: string[] = this.path.split("/");
   NomPage?: string ="";
 
+  progressbarre:any =
+    [
+      { index: 1, id: "login", title: "Login", isCurrent: false, isValide: false, url: "/login", hasNext: true, hasPrevisous: false, },
+      { index: 2, id: "smart-planing", title: "smart-planing", isCurrent: false, isValide: false, url: "smart-planing", hasNext: true, hasPrevisous: false, },
+      { index: 3, id: "importer", title: "importer", isCurrent: false, isValide: false, url: "smart-planing/importer", hasNext: true, hasPrevisous: false, },
+      { index: 4, id: "PreTraitement", title: "PreTraitement", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement", hasNext: true, hasPrevisous: false, },
+      { index: 5, id: "Resumer", title: "Resumer", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer", hasNext: true, hasPrevisous: false, },
+      { index: 6, id: "Lancement", title: "Lancement", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer/Lancement", hasNext: true, hasPrevisous: false, },
+      { index: 7, id: "Resultat", title: "Resultat", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat", hasNext: true, hasPrevisous: false, },
+      { index: 8, id: "PlanificationCh", title: "PlanificationCh", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh", hasNext: false, hasPrevisous: false, },
+
+    ];
+
   NewPage     ?: string[]  ;
   Poucentage  ?: number = 0;
   PathContinue?: string = "";
@@ -24,12 +37,8 @@ export class ProgressBarreComponent implements OnInit {
   constructor(private router: Router, public appService : AppService) { }
 
   ngOnInit(): void {
-    $(document).ready(() => {
-      
-      // console.log(this.NomPage);
-
-     this.update();
-    })
+    $(document).ready(() => {})
+    this.update();
   }
 
   ngOnDestroy(){
@@ -39,15 +48,14 @@ export class ProgressBarreComponent implements OnInit {
   }
 
   update(){
-    this.PathContinue = this.appService.progressbarre?.pathContinue;
-    this.PathRetoure  = this.appService.progressbarre?.pathRetoure;
-    this.Poucentage   = this.appService.progressbarre?.pourcentage;
+    var index: number | undefined = this.appService.progressbarre?.index;
 
-    this.NewPage = this.PathContinue?.split("/");
-    this.NewPage?.shift();
-    this.NewPage?.pop();
-    this.NomPage = this.NewPage?.join(" >> ");
-    $(".Progpourcentage").css("width", (this.Poucentage?.toString() + "%"));
+    if (this.appService.progressbarre?.isValide && index && index <= this.progressbarre.length ){
+      console.log(index-1," ",index," ",index+2);
+      this.PathContinue = this.progressbarre[index+1].url;
+      this.PathRetoure = this.progressbarre[index-1].url;
 
+    }
   }
+
 }

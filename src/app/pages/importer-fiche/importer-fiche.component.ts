@@ -39,7 +39,7 @@ export class ImporterFicheComponent implements OnInit {
       $(".Progroot").show();
     })
     $(".row img").hide();
-    this.update();
+    this.update2();
   }
 
   ngOnDestroy(): void {
@@ -75,8 +75,8 @@ export class ImporterFicheComponent implements OnInit {
     this.checked(nom);
 
 
-    this.formData.append("name", this.name);
-    this.formData.append("file", this.file);
+    this.formData.append("name","name", this.name);
+    this.formData.append("file","file",this.file);
 
     console.log(this.formData);
 
@@ -131,41 +131,45 @@ export class ImporterFicheComponent implements OnInit {
 
   }
 
-  update() {
-    var data: any;
-    var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
-    var Paths: string[] = path.split("/");
-    let Nele: any = this.router.url.split("/");
-    var pour: number;
+  // update() {
+  //   var data: any;
+  //   var path: string = "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
+  //   var Paths: string[] = path.split("/");
+  //   let Nele: any = this.router.url.split("/");
+  //   var pour: number;
 
-    if (Nele.length > 0) {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
-      Nele.pop();
+  //   if (Nele.length > 0) {
+  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
+  //     var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
+  //     Nele.pop();
 
-      data = {
-        pathContinue: elem,
-        pathRetoure:"..",
-        pourcentage: pour
-      };
-    }
-    else {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
+  //     data = {
+  //       pathContinue: elem,
+  //       pathRetoure:"..",
+  //       pourcentage: pour
+  //     };
+  //   }
+  //   else {
+  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
 
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
-      Nele.pop();
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
-
-
-    console.log(data);
-    this.appService.barreEmitter.emit(data);
+  //     var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
+  //     Nele.pop();
+  //     data = {
+  //       pathContinue: elem,
+  //       pathRetoure: Nele.join("/"),
+  //       pourcentage: pour
+  //     };
+  //   }
 
 
+  //   console.log(data);
+  //   this.appService.barreEmitter.emit(data);
+
+
+  // }
+
+  update2() {
+    this.appService.barreEmitter.emit({ index: 2, id: "importer", title: "importer", isCurrent: true, isValide: true, url: "/smart-planing/importer", hasNext: true, hasPrevisous: true })
   }
 
 }

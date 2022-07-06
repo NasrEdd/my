@@ -25,7 +25,7 @@ export class WaiterComponent implements OnInit {
         });
 
         $('.fin').show(2000);
-        history.back();
+        setTimeout(()=> history.back(),3000);
       }
     }, 1000);
 
@@ -45,7 +45,9 @@ export class WaiterComponent implements OnInit {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
 
   }
-
+ sleep(ms:number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
   update() {
     var data: any;
     var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";

@@ -1,16 +1,15 @@
 .case {
-    display: block;
+    display: flex;
     justify-content: center;
-    margin: 5% 45% 19% 40%;
+    margin: 5% 45% 7% 39%;
     color: hsl(180, 100%, 1%);
-    width: 25%;
+    width: 30%;
     height: auto;
     background-color: rgba(51, 102, 153, 0.8);
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 4% 4% 4% 4%;
 
-    position: relative;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     transition: all 0.5s ease;
     transform: scale(1);
@@ -24,7 +23,7 @@
 
 h2 {
     margin: 4%;
-    font-size: 30px;
+    font-size: 2vw;
     font-weight: bolder;
     color: rgb(254, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
@@ -36,29 +35,17 @@ h1 {
         margin-bottom: auto;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bolder;
-        font-size: 40px;
+        font-size: 300%;
         color: #369;
 }
 
-.info {
-    margin-top: 10%;
-    font-size: 20px;
-    color: rgb(195, 194, 194);
 
-}
-
-.fin h2 {
-    filter: brightness(120%);
-    font-size: 70px;
-    margin-left: 0;
-}
 
 .button {
     border-radius: 7px;
     display: flex;
-    position: absolute;
-    left: 52%;
-    top: 60%;
+    margin-top: 10%;
+    margin-left: 62%;
     transform: translate(-50%, -50%);
 
 }
@@ -78,12 +65,12 @@ img {
         border-radius: 4px;
         cursor: pointer;
         color: white;
-        font-size: 1.2rem;
+        font-size: 1vw;
         padding: 1rem;
         margin-right: 1rem;
         margin-bottom: 1rem;
         margin-top: 1rem;
         margin-left: 4%;
-        width: 150px;
+        width: 250%;
         border: 1px solid white;
 }

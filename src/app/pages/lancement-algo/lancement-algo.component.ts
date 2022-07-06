@@ -49,49 +49,15 @@ export class LancementAlgoComponent implements OnInit {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
     })
-    this.update();
+    this.update2(6);
   }
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-
+    this.update2(1);
   }
 
-  update() {
-    var data: any;
-    var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
-    var Paths: string[] = path.split("/");
-    let Nele: any = this.router.url.split("/");
-    var pour: number;
-
-    if (Nele.length > 0) {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14. + 10;
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
-      Nele.pop();
-
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
-    else {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
-
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
-      Nele.pop();
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
-
-
-    console.log(data);
-    this.appService.barreEmitter.emit(data);
-
-
+  update2(index: number) {
+    this.appService.barreEmitter.emit({ index: index, id: "PreTraitement", title: "PreTraitement", isCurrent: true, isValide: true, url: "/smart-planing/importer/PreTraitement", hasNext: true, hasPrevisous: true })
   }
-
 }

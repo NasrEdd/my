@@ -2,8 +2,9 @@
     height: 20%;
     border-radius: 7px;
     width: 80%;
-    margin: auto auto auto 13%;
-    display: flex;
+    position: fixed;
+    margin: auto auto auto 15%;
+    display: block;
 }
 
 ::ng-deep.Progbarre {
@@ -31,7 +32,7 @@
 
 ::ng-deep.ProgButton {
     padding: 10px 22px;
-    margin: auto auto auto 13%;
+    margin: auto 13% auto 13%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -39,7 +40,7 @@
 }
 
 ::ng-deep.ProgButton button {
-    font-size: 16px;
+    font-size: 1.1vw;
     border-radius: 4px;
     text-decoration: none;
     box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);

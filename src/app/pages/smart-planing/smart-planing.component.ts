@@ -40,7 +40,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
       $(".Progroot").hide();
     })
-    this.update();
+    this.update2(1);
     
 
 
@@ -48,78 +48,81 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-    this.update();
-
+    this.update2(1);
   }
 
 
  
-  login(even: string) {
+  // login(even: string) {
 
-    const data: any = {
-      user: even
-    }
+  //   const data: any = {
+  //     user: even
+  //   }
 
-    if (even !== "") {
-      console.log(even)
-      this.data = this.http.post(this.url + "Username", JSON.stringify(data))
-        .subscribe(res => {
-          console.log(res);
-          alert('Post Successfully.');
-        });
-      console.log(JSON.stringify(data));
-      console.log(this.data);
-      console.log(this.url + "Username", "Content-Type: application/json;" + "\n" + {
-        "user": "khdhfd"
-      })
+  //   if (even !== "") {
+  //     console.log(even)
+  //     this.data = this.http.post(this.url + "Username", JSON.stringify(data))
+  //       .subscribe(res => {
+  //         console.log(res);
+  //         alert('Post Successfully.');
+  //       });
+  //     console.log(JSON.stringify(data));
+  //     console.log(this.data);
+  //     console.log(this.url + "Username", "Content-Type: application/json;" + "\n" + {
+  //       "user": "khdhfd"
+  //     })
 
 
-      $(".login").hide(2000);
-      $("#row2").show(4000);
-      $(".ProgButton").hide();
-      $("#progressbar").show(4000);
+  //     $(".login").hide(2000);
+  //     $("#row2").show(4000);
+  //     $(".ProgButton").hide();
+  //     $("#progressbar").show(4000);
 
-    }
-    else {
-      alert("Enter un utilisateur");
-    }
-  }
+  //   }
+  //   else {
+  //     alert("Enter un utilisateur");
+  //   }
+  // }
 
-  update() {
-    var data: any;
-    var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
-    var Paths: string[] = path.split("/");
-    let Nele: any = this.router.url.split("/");
-    var pour: number;
+  // update() {
+  //   var data: any;
+  //   var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
+  //   var Paths: string[] = path.split("/");
+  //   let Nele: any = this.router.url.split("/");
+  //   var pour: number;
 
-    if (Nele.length > 0) {
-      pour = 1 * 14.28 + 5;
-      var elem = this.router.url + "/" + "importer";
-      Nele.pop();
+  //   if (Nele.length > 0) {
+  //     pour = 1 * 14.28 + 5;
+  //     var elem = this.router.url + "/" + "importer";
+  //     Nele.pop();
 
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
-    else {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
+  //     data = {
+  //       pathContinue: elem,
+  //       pathRetoure: Nele.join("/"),
+  //       pourcentage: pour
+  //     };
+  //   }
+  //   else {
+  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
 
-      var elem = this.router.url + "/" + "importer";
-      Nele.pop();
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
+  //     var elem = this.router.url + "/" + "importer";
+  //     Nele.pop();
+  //     data = {
+  //       pathContinue: elem,
+  //       pathRetoure: Nele.join("/"),
+  //       pourcentage: pour
+  //     };
+  //   }
 
   
-      console.log(data);
-      this.appService.barreEmitter.emit(data);
+  //     console.log(data);
+  //     this.appService.barreEmitter.emit(data);
     
 
+  // }
+
+  update2(index : number){
+    this.appService.barreEmitter.emit({ index: index, id: "smart-planing", title: "smart-planing", isCurrent: true, isValide: true, url: "/smart-planing", hasNext: true, hasPrevisous: false })
   }
 
 }
