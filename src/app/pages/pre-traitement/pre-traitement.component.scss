@@ -16,7 +16,7 @@
     color: hsl(180, 100%, 1%);
     width: 75%;
     height: auto;
-    background-color: rgba(51, 102, 153, 0.8);
+    background-color: rgba(253, 253, 254, 0.8);
     border-radius: 5px;
     margin-left: 12%;
     margin-right: 4%;
@@ -28,7 +28,7 @@
     transition: all 0.5s ease;
     transform: scale(1);
     font-family: Arial, Helvetica, sans-serif;
-
+    border: .5px solid gray;
 }
 
 #PrerowCol {
@@ -48,9 +48,38 @@
     border-radius: 7px;
     width: .4%;
     padding: 0 1% 0 1%;
-    background-color: rgba(129, 133, 129, 0.758);
+    background-color: #369;
     box-shadow: 0 2px 8px 0 rgba(56, 42, 42, 0.24);
     color: rgb(241, 155, 155);
+    display: table;
+}
+
+
+.echelle {
+    z-index: 1000; // or any value higher than your other elements
+    position: absolute;
+    background-color: #369;
+    padding: 1%;
+    border-radius: 7px;
+        box-shadow: 0 2px 8px 0 rgba(56, 42, 42, 0.24);
+
+}
+
+.couleurR {
+    border-radius: 7px;
+    margin:2%;
+    width: .4%;
+    padding: 0 1% 0 1%;
+    color: red;
+    display: table;
+}
+
+.couleurJ {
+    border-radius: 7px;
+    margin:2%;
+    width: .4%;
+    padding: 0 1% 0 1%;
+    color: yellow;
     display: table;
 }
 
@@ -60,7 +89,7 @@
 #El4 {
     border-radius: 7px;
     width: .4%;
-    background-color: rgba(129, 133, 129, 0.758);
+    background-color: #369;
     padding: 0 1% 0 1%;
     text-align: center;
     box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
@@ -88,7 +117,7 @@
 }
 
 #Preroot .Banim {
-    background-color: rgba(129, 133, 129, 0.758);
+    background-color: #369;
     border: none;
     color: white;
     padding: 10px 22px;
@@ -127,6 +156,7 @@
     background-color: rgba(207, 237, 137, 0.803);
     color: rgb(241, 231, 231);
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .continue:disabled,
@@ -162,7 +192,7 @@ h1 {
 }
 
 ::ng-deep .Precontenue p {
-    color: white;
+    color: black;
     border-radius: 5px;
     margin-top: 1%;
     font-size: 15px;

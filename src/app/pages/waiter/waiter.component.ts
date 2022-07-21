@@ -25,7 +25,7 @@ export class WaiterComponent implements OnInit {
         });
 
         $('.fin').show(2000);
-        setTimeout(()=> history.back(),3000);
+        setTimeout(()=> this.router.navigateByUrl("smart-planing/importer/PreTraitement"),3000);
       }
     }, 1000);
 
@@ -43,6 +43,8 @@ export class WaiterComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
+    $(".Progroot").show();
+
 
   }
  sleep(ms:number) {

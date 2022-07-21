@@ -2,11 +2,11 @@
 
 <div class="root">
     <table id="table" class="table">
-        <tr>
-            <th *ngFor="let ele of key">{{ele}}</th>
+        <tr class="row thead-dark">
+            <th class="col" *ngFor="let ele of key">{{ele}}</th>
         </tr>
-        <tr *ngFor="let elem of value" scope="row">
-            <td *ngFor="let val of elem">{{val}}</td>
+        <tr class="row" *ngFor="let elem of value" scope="row">
+            <td class="col" *ngFor="let val of elem">{{val}}</td>
         </tr>
 
     </table>

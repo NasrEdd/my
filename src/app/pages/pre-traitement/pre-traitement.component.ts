@@ -30,18 +30,19 @@ export class PreTraitementComponent implements OnInit {
 
   titre: string = "Resultat Pre-Traitement";
   url: string = "URL";
-  username: string ="";
+  username: string = "";
 
-  ComingData: any = [{
-    E_Groupe: 1000,
+  ComingData: any = {
+    E_Groupe: 0,
     E_duree: 0,
     E_intrv: 0,
     E_nbEtud: 0,
     E_nbSea: 0,
     HorsDisp: 0,
-    NonSaisieDisp: 0,
+    NonSaisieDisp: 1,
     SecNonPlanif: 0
-  }]
+
+  }
 
   data: any = [{
     description: "Des informations sur l'erreur apprevue du traitement",
@@ -49,7 +50,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: 5,
     buttonID: "ErreurG",
     route: "./Resultat",
-    id:"El1",
+    id: "El1",
   },
   {
     description: "Des informations sur l'erreur apprevue du traitement",
@@ -115,15 +116,26 @@ export class PreTraitementComponent implements OnInit {
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+      this.update2(3);
+
+      
+      $("img").hide();
     })
 
-    $("img").hide();
-    this.update2(3);
+    this.ComingData = this.http.post("https://smartplanning-backend.herokuapp.com/Generation/ResultatsPretraitement/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+          console.log("Response: ", response);
+
+        },
+        (error) => {
+          console.error("Erreur: ", error)
+        })
+
   }
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-     this.update2(1);
   }
 
 
@@ -131,59 +143,59 @@ export class PreTraitementComponent implements OnInit {
     switch (Bsubmit) {
       case "ErreurG":
         this.http.post(this.url + "/Generation/AffichageErreurGroupe/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurD":
         this.http.post(this.url + "/Generation/AffichageErreurDuree/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurS":
         this.http.post(this.url + " /Generation/AffichageErreurNbSeance/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurI":
         this.http.post(this.url + "/Generation/AffichageErreurIntrv/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurE":
         this.http.post(this.url + " /Generation/AffichageErreurNbEtud/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurH":
         this.http.post(this.url + "/Generation/AffichageHorsDisp/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurSN":
         this.http.post(this.url + "/Generation/AffichageSectionNonPlanif/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
       case "ErreurNS":
         this.http.post(this.url + "/Generation/AffichageNonSaisieDisp/" + this.username, null)
-        .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+          .subscribe(res => {
+            console.log(res);
+            alert('Post Successfully.');
+          });
         break;
 
 
@@ -201,44 +213,9 @@ export class PreTraitementComponent implements OnInit {
 
   }
 
-  // update(){
-  //   var data: any;
-  //   var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
-  //   var Paths: string[] = path.split("/");
-  //   let Nele: any = this.router.url.split("/");
-  //   var pour: number;
-
-  //   if (Nele.length > 0) {
-  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28+10;
-  //     var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
-  //     Nele.pop();
-
-  //     data = {
-  //       pathContinue: elem,
-  //       pathRetoure: Nele.join("/"),
-  //       pourcentage: pour
-  //     };
-  //   }
-  //   else {
-  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
-
-  //     var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
-  //     Nele.pop();
-  //     data = {
-  //       pathContinue: elem,
-  //       pathRetoure: "..",
-  //       pourcentage: pour
-  //     };
-  //   }
-
-
-  //   console.log(data);
-  //   this.appService.barreEmitter.emit(data);
-
-
-  // }
-  update2(index :number) {
-    this.appService.barreEmitter.emit({ index: index, id: "PreTraitement", title: "PreTraitement", isCurrent: true, isValide: true, url: "/smart-planing/importer/PreTraitement", hasNext: true, hasPrevisous: true })
+  
+  update2(index: number) {
+    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " " ,isValide:true})
   }
 
-  }
+}

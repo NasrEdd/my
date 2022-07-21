@@ -34,6 +34,7 @@
 
 .Sroot {
     width: 100%;
+    overflow-x: none;
 }
 
 
@@ -105,7 +106,6 @@ input[type="text"],
 
 }
 
-::ng-deep #button:hover,
 #Lbutton:hover {
     background-color: rgb(245, 246, 247);
     color: rgb(51, 102, 153);

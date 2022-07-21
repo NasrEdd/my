@@ -24,12 +24,26 @@ export class ResultatComponent implements OnInit {
     Err: "2",
     id: "1",
   }]
+
+  data !: any;
   constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) { }
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+      $(".visual").click(()=>{
+        alert("Visualisation des donnees");
+      })
     })
-    this.update2(7);
+    this.update2(6);
+    this.data = this.http.post("https://smartplanning-backend.herokuapp.com/Generation/ResumePreTPlanificationGenerees/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+          console.log("Response: ", response);
+
+        },
+        (error) => {
+          console.error("Erreur: ", error)
+        })
   }
 
   ngOnDestroy(): void {
@@ -38,44 +52,18 @@ export class ResultatComponent implements OnInit {
 
   }
 
-  // update() {
-  //   var data: any;
-  //   var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
-  //   var Paths: string[] = path.split("/");
-  //   let Nele: any = this.router.url.split("/");
-  //   var pour: number;
-
-  //   if (Nele.length > Paths.indexOf(Nele[Nele.length - 1])) {
-  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
-  //     var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
-  //     Nele.pop();
-
-  //     data = {
-  //       pathContinue: elem,
-  //       pathRetoure: Nele.join("/"),
-  //       pourcentage: pour
-  //     };
-  //   }
-  //   else {
-  //     pour = (Paths.indexOf(Nele[Nele.length - 1]) ) * 14.28;
-
-  //     var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
-  //     Nele.pop();
-  //     data = {
-  //       pathContinue: elem,
-  //       pathRetoure: Nele.join("/"),
-  //       pourcentage: pour
-  //     };
-  //   }
-
-
-  //   console.log(data);
-  //   this.appService.barreEmitter.emit(data);
-
-
-  // }
+ 
 
   update2(index :number) {
-    this.appService.barreEmitter.emit({ index: index, id: "PreTraitement", title: "PreTraitement", isCurrent: true, isValide: true, url: "/smart-planing/importer/PreTraitement", hasNext: true, hasPrevisous: true })
+    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " ",isValide:true })
+  }
+
+  go(chemin: string) {
+    if(chemin === "TB")
+      this.router.navigateByUrl("https://public.tableau.com/app/profile/amadou.mboup/viz/Dashboard_EDT_V3/Tableaudeborddesplanificationsnombre?publish=yes")
+    else if(chemin ==="CL")
+      this.router.navigateByUrl("http://srvprod/UniversiaPulse/Account/Login?ReturnUrl=%2FUniversiaPulse%2FHome%2FCalendar")
   }
 }
+
+

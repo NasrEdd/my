@@ -1,47 +1,93 @@
 <h1>{{titre}}</h1>
 
 <div class="container">
-    <div class="calendrier">
         <div class="Tbord">
-            <button class="btn">
-                <img src="./assets/img/Tbord.png" width="30px" height="35px">
+            <button class="btn" (click)="go('TB')">
+                <img href="https://public.tableau.com/app/profile/amadou.mboup/viz/Dashboard_EDT_V3/Tableaudeborddesplanificationsnombre?publish=yes"
+                    src="./assets/img/Tbord.png" width="30px" height="35px">
                 Tableau Bord</button>
         </div>
+
+    <div id="row" class=" row container-fluid">
+
+
+        <div class="row d-flex justify-content-between">
+            <div class="col rowL col-lg-6 col-md-6 ">
+                <input type="radio" id="1" name="Erreur" value="1" checked>
+                <label for="1"> Planification {{Erreur[0].Err}} : {{Erreur[0].id}}</label>
+            </div>
+            <div class=" col-lg-3 col-md-6  ">
+                <a id="visual">
+                    <button class="visual container-fluid ">
+                        <img src="./assets/img/vue.gif" width="60px" height="60px">
+                        
+                    </button>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-between">
+            <div class="col rowL col-lg-6 col-md-6 ">
+                <input type="radio" id="2" name="Erreur" value="2">
+                <label for="2"> Planification {{Erreur[1].Err}} : {{Erreur[1].id}}</label>
+            </div>
+            <div class=" col-lg-3 col-md-6  ">
+                <a id="visual">
+                    <button class="visual container-fluid  ">
+                        <img src="./assets/img/vue.gif" width="60px" height="60px">
+                        
+
+                    </button> 
+                </a>
+
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-between">
+            <div class="col rowL col-lg-6 col-md-6 ">
+                <input type="radio" id="3" name="Erreur" value="3">
+                <label for="3"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
+            </div>
+            <div class=" col-lg-3 col-md-6  ">
+                <a id="visual">
+                    <button class="visual container-fluid ">
+                        <img src="./assets/img/vue.gif" width="60px" height="60px">
+                        
+
+                    </button> 
+                </a>
+
+            </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+            <div class="col rowL col-lg-6 col-md-6 ">
+                <input type="radio" id="4" name="Erreur" value="4">
+                <label for="4"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
+            </div>
+            <div class=" col-lg-3 col-md-6  ">
+                <a id="visual">
+                    <button class="visual container-fluid ">
+                        <img src="./assets/img/vue.gif" width="60px" height="60px">
+                        
+
+                    </button> 
+                </a>
+
+            </div>
+        </div>
     </div>
 
-    <div class="row">
-
-
-        <div class="Plan">
-            <input type="radio" id="1" name="Erreur" value="1" checked>
-            <label for="1"> Planification {{Erreur[0].Err}} : {{Erreur[0].id}}</label>
-        </div>
-
-        <div class="Plan">
-            <input type="radio" id="2" name="Erreur" value="2">
-            <label for="2"> Planification {{Erreur[1].Err}} : {{Erreur[1].id}}</label>
-        </div>
-
-        <div class="Plan">
-            <input type="radio" id="3" name="Erreur" value="3">
-            <label for="3"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
-        </div>
-        <div class="Plan">
-            <input type="radio" id="4" name="Erreur" value="4">
-            <label for="4"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
-        </div>
 
 
 
-    </div>
 
     <div class="calendrier">
-        <div class="col">
-            <button class="btn">
-                <img src="./assets/img/calend.png" width="30px" height="35px">
+            <button class="btn" (click)="go('CL')">
+                <img href=" http://srvprod/UniversiaPulse/Account/Login?ReturnUrl=%2FUniversiaPulse%2FHome%2FCalendar"
+                    src="./assets/img/calend.png" width="30px" height="35px">
                 Calendrier</button>
 
-        </div>
 
     </div>
 

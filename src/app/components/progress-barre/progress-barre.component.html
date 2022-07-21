@@ -1,19 +1,24 @@
 <div class="Progroot">
-    <!-- <div class="Progbarre">
-        <div class="Progpourcentage">
-            {{NomPage}}
-        </div>
-    </div> -->
     <div class="ProgButton">
-    
-        <a routerLink={{PathRetoure}} (click)="update()" id="retoure">
-            <button id="retoure">Précèdent</button>
+
+        <a id="retoure">
+            <button class="ps-3 pe-3 pb-2 pt-2" id="retoure" (click)="previous()">Précèdent</button>
         </a>
-        <a routerLink="/">
-            <button>Accueil</button>
+        <a routerLink="/smart-planing">
+            <button class="ps-3 pe-3 pb-2 pt-2 ">Quitter</button>
         </a>
-        <a routerLink={{PathContinue}} (click)="update()" >
-            <button id="continue">Suivant</button>
+        <a>
+            <button class="ps-3 pe-3 pb-2 pt-2" id="continue" (click)="next()">Suivant</button>
         </a>
+    </div>
+    <div class="casebarre">
+        <div class="navbar pages navbar-expand-lg mt-4">
+            <div class="container-fluid page " id={{etap.index}} *ngFor='let etap of etaps'>
+                <p>
+                    {{etap.title}}
+                </p>
+
+            </div>
+        </div>
     </div>
 </div>

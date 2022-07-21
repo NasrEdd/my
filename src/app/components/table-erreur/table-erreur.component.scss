@@ -12,6 +12,7 @@
 
 table {
     border-collapse: collapse;
+    border: 1px solid white;
     font-size: 1.1em;
     font-family: Arial, Helvetica, sans-serif;
     min-width: 1000px;
@@ -21,21 +22,22 @@ table {
 
 tr {
     background-color: #254D91;
-    color: #ffffff;
+    color: #254D91;
     text-align: left;
     transition: all 1s ease-in-out;
-    &.slide-out {
-            transform: translateX(100%);}
+    
 }
 
 td {
     padding: 12px 15px;
-            background-color: rgb(52, 52, 59);
+            background-color: rgb(248, 248, 250);
 }
 
 th {
     padding: 12px 15px;
         background-color: rgba(129, 133, 129, 0.758);
+        color:white;
+        font-size: large;
             
 }
 

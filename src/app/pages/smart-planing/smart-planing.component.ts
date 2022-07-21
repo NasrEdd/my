@@ -25,11 +25,13 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
   constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) {
     this.titles = ["Génération d'emploi du temps", "Evaluation"];
     this.descriptions = ["Pour générer un emploi du temps", "Pour évaluer l'emploi du temps"];
+
   }
 
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+      this.update2(1);
 
       let EleHide: HTMLElement | null = document.getElementById("row2");
       let EleHide2: HTMLElement | null = document.getElementById("progressbar");
@@ -40,7 +42,7 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
       $(".Progroot").hide();
     })
-    this.update2(1);
+    this.login("nasr")
     
 
 
@@ -48,31 +50,31 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-    this.update2(1);
   }
 
 
  
-  // login(even: string) {
+   login(even: string) {
 
-  //   const data: any = {
-  //     user: even
-  //   }
+    const data: any = {
+      user: even
+    }
 
-  //   if (even !== "") {
-  //     console.log(even)
-  //     this.data = this.http.post(this.url + "Username", JSON.stringify(data))
-  //       .subscribe(res => {
-  //         console.log(res);
-  //         alert('Post Successfully.');
-  //       });
-  //     console.log(JSON.stringify(data));
-  //     console.log(this.data);
-  //     console.log(this.url + "Username", "Content-Type: application/json;" + "\n" + {
-  //       "user": "khdhfd"
-  //     })
-
-
+    if (even !== "") {
+      console.log(even);
+      const headers = { "Content-Type": "application/json"  }
+      this.http.post<any>(this.url + "Username", {"user":"nasr"}, { headers })
+        .subscribe(res => {
+          console.log(res);
+          alert('Post Successfully.');
+        
+        })
+       ;
+      console.log();
+      
+    }
+  }
+    
   //     $(".login").hide(2000);
   //     $("#row2").show(4000);
   //     $(".ProgButton").hide();
@@ -122,9 +124,9 @@ export class SmartPlaningComponent implements OnInit, OnDestroy {
   // }
 
   update2(index : number){
-    this.appService.barreEmitter.emit({ index: index, id: "smart-planing", title: "smart-planing", isCurrent: true, isValide: true, url: "/smart-planing", hasNext: true, hasPrevisous: false })
+    this.appService.barreEmitter.emit({ index: index, PathContinue:" ", PathRetoure:" ",isValide:true})
   }
 
+
+
 }
-
-

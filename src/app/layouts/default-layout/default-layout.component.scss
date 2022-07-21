@@ -65,10 +65,13 @@
     background-color: #e6e6e6d9;
     font-family: 'Poppins', sans-serif;
 }
-
+app-progress-barre{
+    position: sticky;
+}
 .realContent{
     padding: 2px 0px;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .rounded-18{
@@ -98,7 +101,9 @@
 
 .ComponentHeight{
     margin-top: -5px;
-    overflow-y: hidden;
+    overflow-y: auto;
+    background-color: rgb(243,241,237);
+    
 }
 
 @media (max-width: 768px){

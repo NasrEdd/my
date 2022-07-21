@@ -5,9 +5,9 @@
             <div id="RrowCol">
 
 
-                <div class="col-lg-4" >
+                <div class="col-lg-4">
                     <a routerLink={{element.route}}>
-                        <button class="btn Banim" #Bsubmit >
+                        <button class="btn Banim" #Bsubmit>
                             {{element.title}}
                         </button>
                     </a>
@@ -24,9 +24,16 @@
 
             </div>
 
-
         </div>
-    </div>
-    
-                  
 
+    </div>
+    <div class="modification">
+        <a routerLink="/smart-planing/importer">
+            <button class="btn btn-danger p-3 mt-5 ">
+                <img src="./assets/img/edit.png" width="40px" height="30px">
+
+                <div class="pt-2">Corriger</div>
+            </button>
+        </a>
+    </div>
+</div>

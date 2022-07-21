@@ -15,7 +15,7 @@ var ids: number[] = [1, 2, 3];
   styleUrls: ['./lancement-algo.component.scss']
 })
 export class LancementAlgoComponent implements OnInit {
-
+  public shouldWait:boolean = false;
   titre: string = "Lancement de l'algorithme";
   data: any = [{
     description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
@@ -44,20 +44,28 @@ export class LancementAlgoComponent implements OnInit {
       id: "A"
     }]
 
-  constructor(private loader: LoaderService, private http: HttpClient,private router: Router, public appService: AppService) { }
+  constructor(private loader: LoaderService, private http: HttpClient,private router: Router, public appService: AppService) {
+
+   }
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
-    })
-    this.update2(6);
+      this.update2(5);
+      $("#continue").html("Lancer");
+    //   $("#continue").click(()=>{
+    //     this.shouldWait = true;
+      
+    // })
+  })
   }
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-    this.update2(1);
+    $("#continue").html("Continuer");
+
   }
 
   update2(index: number) {
-    this.appService.barreEmitter.emit({ index: index, id: "PreTraitement", title: "PreTraitement", isCurrent: true, isValide: true, url: "/smart-planing/importer/PreTraitement", hasNext: true, hasPrevisous: true })
+    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " " ,isValide:true})
   }
 }
