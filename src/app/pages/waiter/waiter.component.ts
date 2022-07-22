@@ -13,27 +13,27 @@ export class WaiterComponent implements OnInit {
   counter: number = 7;
   constructor(private loader: LoaderService, private router: Router, public appService: AppService) {
 
-    let intervalId = setInterval(() => {
-      this.counter--;
-      console.log(this.counter)
-      if (this.counter === 0) {
-        clearInterval(intervalId);
-        $('.H').hide(2000);
-        $('.info').css({
-          "filter": "brightness(120%)",
-          'color': "white"
-        });
-
-        $('.fin').show(2000);
-        setTimeout(()=> this.router.navigateByUrl("smart-planing/importer/PreTraitement"),3000);
-      }
-    }, 1000);
-
+    
     
   }
   ngOnInit() {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+      let intervalId = setInterval(() => {
+        this.counter--;
+        console.log(this.counter)
+        if (this.counter === 0) {
+          clearInterval(intervalId);
+          $('.H').hide(2000);
+          $('.info').css({
+            "filter": "brightness(120%)",
+            'color': "white"
+          });
+
+          $('.fin').show(2000);
+          setTimeout(() => this.router.navigateByUrl("smart-planing/importer/PreTraitement"), 3000);
+        }
+      }, 1000);
 
     })
     $(".fin").hide();
@@ -47,45 +47,8 @@ export class WaiterComponent implements OnInit {
 
 
   }
- sleep(ms:number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-  update() {
-    var data: any;
-    var path: string = "smart-planing/importer/Waiter/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh";
-    var Paths: string[] = path.split("/");
-    let Nele: any = this.router.url.split("/");
-    var pour: number;
-
-    if (Nele.length > 0) {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28 + 5;
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1]) + 1];
-      Nele.pop();
-
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
-    else {
-      pour = (Paths.indexOf(Nele[Nele.length - 1]) + 1) * 14.28;
-
-      var elem = this.router.url + "/" + Paths[Paths.indexOf(Nele[Nele.length - 1])];
-      Nele.pop();
-      data = {
-        pathContinue: elem,
-        pathRetoure: Nele.join("/"),
-        pourcentage: pour
-      };
-    }
 
 
-    console.log(data);
-    this.appService.barreEmitter.emit(data);
-
-
-  }
 }
 
 

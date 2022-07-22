@@ -25,14 +25,18 @@ export class ResumerComponent implements OnInit {
   }]
 
   constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) { 
-    this.update2(4);
 
   }
   ngOnInit(): void {
     $(document).ready(() => {
+      this.update2(4,true);
 
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
       $(".img").hide();
+
+      $(".modification button").click(()=>{
+        this.update2(1,true)
+      })
     })
     
   }
@@ -50,8 +54,8 @@ export class ResumerComponent implements OnInit {
 
   }
   
-  update2(index : number) {
-    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " ",isValide:true })
+  update2(index : number, validite:boolean) {
+    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " ",isValide:validite })
   }
 
 }

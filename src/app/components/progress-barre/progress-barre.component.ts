@@ -43,14 +43,20 @@ export class ProgressBarreComponent implements OnInit {
   currentRoute?: string;
   Index_prev: number = 0;
   validite !: boolean;
+  Index_old!:number ;
   constructor(private router: Router, public appService: AppService) {
 
   }
 
   ngOnInit(): void {
     $(document).ready(() => {
+     
+        
+   
+      console.log(window.location.pathname)
     })
     this.appService.barreEmitter.subscribe(element => {
+      this.Index_old = element.index;
       if (element.index >= this.Index_prev)
         this.Index_prev = element.index;
 
@@ -102,6 +108,23 @@ export class ProgressBarreComponent implements OnInit {
 
       }
 
+      if(!this.PathContinue && !this.PathRetoure){
+        window.location.reload();
+
+      }
+      let temp: number = this.Index_old;
+      while (temp != 0) {
+
+        $("#" + temp.toString()).css(
+          {
+
+            "filter": "brightness(140%)"
+          }
+        )
+        temp--;
+        console.log(temp)
+      }
+
     });
   }
 
@@ -116,14 +139,15 @@ export class ProgressBarreComponent implements OnInit {
 
   }
   next() {
+   
     if (this.PathContinue) {
       if (this.PathContinue === "smart-planing/importer/PreTraitement")
         this.router.navigateByUrl("smart-planing/importer/Waiter");
       else
         this.router.navigateByUrl(this.PathContinue)
     }
-    else
-      this.router.navigateByUrl("smart-planing")
+    
+      
 
 
   }
@@ -134,8 +158,7 @@ export class ProgressBarreComponent implements OnInit {
     }
     if (this.PathRetoure)
       this.router.navigateByUrl(this.PathRetoure);
-    else
-      this.router.navigateByUrl("smart-planing")
+      
 
   }
 

@@ -1,12 +1,30 @@
 <h1>{{titre}}</h1>
+<div id="dialog" title="Tableau de Bord">
+    <div class='tableauPlaceholder' id='viz1658486490626' style='position: relative'><noscript><a href='#'><img
+                    alt='Tableau de bord des planifications '
+                    src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Dashboard_EDT_V3&#47;Tableaudeborddesplanificationsnombre&#47;1_rss.png'
+                    style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='Dashboard_EDT_V3&#47;Tableaudeborddesplanificationsnombre' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image'
+                value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Dashboard_EDT_V3&#47;Tableaudeborddesplanificationsnombre&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+            <param name='filter' value='publish=yes' />
+        </object></div>
+</div>
+<button id="opener">Visualiser</button>
 
 <div class="container">
-        <div class="Tbord">
-            <button class="btn" (click)="go('TB')">
-                <img href="https://public.tableau.com/app/profile/amadou.mboup/viz/Dashboard_EDT_V3/Tableaudeborddesplanificationsnombre?publish=yes"
-                    src="./assets/img/Tbord.png" width="30px" height="35px">
-                Tableau Bord</button>
-        </div>
+
 
     <div id="row" class=" row container-fluid">
 
@@ -17,12 +35,6 @@
                 <label for="1"> Planification {{Erreur[0].Err}} : {{Erreur[0].id}}</label>
             </div>
             <div class=" col-lg-3 col-md-6  ">
-                <a id="visual">
-                    <button class="visual container-fluid ">
-                        <img src="./assets/img/vue.gif" width="60px" height="60px">
-                        
-                    </button>
-                </a>
 
             </div>
         </div>
@@ -33,13 +45,6 @@
                 <label for="2"> Planification {{Erreur[1].Err}} : {{Erreur[1].id}}</label>
             </div>
             <div class=" col-lg-3 col-md-6  ">
-                <a id="visual">
-                    <button class="visual container-fluid  ">
-                        <img src="./assets/img/vue.gif" width="60px" height="60px">
-                        
-
-                    </button> 
-                </a>
 
             </div>
         </div>
@@ -50,13 +55,6 @@
                 <label for="3"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
             </div>
             <div class=" col-lg-3 col-md-6  ">
-                <a id="visual">
-                    <button class="visual container-fluid ">
-                        <img src="./assets/img/vue.gif" width="60px" height="60px">
-                        
-
-                    </button> 
-                </a>
 
             </div>
         </div>
@@ -66,13 +64,6 @@
                 <label for="4"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
             </div>
             <div class=" col-lg-3 col-md-6  ">
-                <a id="visual">
-                    <button class="visual container-fluid ">
-                        <img src="./assets/img/vue.gif" width="60px" height="60px">
-                        
-
-                    </button> 
-                </a>
 
             </div>
         </div>
@@ -82,13 +73,7 @@
 
 
 
-    <div class="calendrier">
-            <button class="btn" (click)="go('CL')">
-                <img href=" http://srvprod/UniversiaPulse/Account/Login?ReturnUrl=%2FUniversiaPulse%2FHome%2FCalendar"
-                    src="./assets/img/calend.png" width="30px" height="35px">
-                Calendrier</button>
 
-
-    </div>
 
 </div>
+

@@ -63,6 +63,7 @@ export class ImporterFicheComponent implements OnInit {
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
     $("#continue").off("click")
+    this.update2(false,2);
 
   }
 
