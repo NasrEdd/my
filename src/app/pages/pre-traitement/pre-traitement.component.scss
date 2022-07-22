@@ -9,6 +9,12 @@
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
     overflow: auto;
+}
+
+@media (max-width: 1000px) {
+    #Preroot {
+        margin-bottom: -34%;
+    }
 
 }
 
@@ -61,13 +67,13 @@
     background-color: #369;
     padding: 1%;
     border-radius: 7px;
-        box-shadow: 0 2px 8px 0 rgba(56, 42, 42, 0.24);
+    box-shadow: 0 2px 8px 0 rgba(56, 42, 42, 0.24);
 
 }
 
 .couleurR {
     border-radius: 7px;
-    margin:2%;
+    margin: 2%;
     width: .4%;
     padding: 0 1% 0 1%;
     color: red;
@@ -76,7 +82,7 @@
 
 .couleurJ {
     border-radius: 7px;
-    margin:2%;
+    margin: 2%;
     width: .4%;
     padding: 0 1% 0 1%;
     color: yellow;

@@ -5,7 +5,7 @@
         <div id="row" class="col-lg-6">
             <div class="col-md-12">
                 <label>Selectionnez la table des séances à planifiées
-                    <input type="file" id="input-file-now-custom-2" class="file-upload" data-height="500" id="SP" #nom
+                    <input type="file" accept=".xlsx" required id="input-file-now-custom-2" class="file-upload" data-height="500" id="SP" #nom
                         (change)="getFile($event,nom.id)">
                 </label>
             </div>
@@ -16,7 +16,7 @@
         <div id="row" class="col-lg-6">
             <div class="col-md-12">
                 <label>Selectionnez la table des disponibilités
-                    <input class="form-control" type="file" id="TD" #nom1 (change)="getFile($event,nom1.id)">
+                    <input class="form-control" type="file" accept=".xlsx" required id="TD" #nom1 (change)="getFile($event,nom1.id)">
                 </label>
 
             </div>
@@ -26,7 +26,7 @@
         <div id="row" class="col-lg-6">
             <div class="col-md-12">
                 <label>Selectionnez la table de préférence disponibilités
-                    <input class="form-control" type="file" id="PD" #nom2 (change)="getFile($event,nom2.id)">
+                    <input class="form-control" type="file" accept=".xlsx" id="PD" #nom2 (change)="getFile($event,nom2.id)">
 
                 </label>
             </div>
@@ -36,7 +36,7 @@
         <div id="row" class="col-lg-6">
             <div class="col-md-12">
                 <label>Selectionnez la table des salles
-                    <input class="form-control" type="file" id="TS" #nom3 (change)="getFile($event,nom3.id)">
+                    <input class="form-control" type="file" accept=".xlsx" required id="TS" #nom3 (change)="getFile($event,nom3.id)">
 
                 </label>
 
