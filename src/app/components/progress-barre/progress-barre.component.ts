@@ -31,7 +31,7 @@ export class ProgressBarreComponent implements OnInit {
   etaps: any =
     [
       { index: 1, title: "Génération" },
-      { index: 4, title: "Pre-traitement " },
+      { index: 3, title: "Pre-traitement " },
       { index: 5, title: "Post-Traitement " },
       { index: 6, title: "Planifications" }
     ]
@@ -149,9 +149,7 @@ export class ProgressBarreComponent implements OnInit {
     
   }
 
-quitter(){
-  window.location.reload();
-}
+
   previous() {
     if (this.PathRetoure == "smart-planing/importer") {
       alert("Vous ne pouvez pas accder a cette page!!");
