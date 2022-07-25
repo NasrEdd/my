@@ -147,10 +147,11 @@ export class ProgressBarreComponent implements OnInit {
         this.router.navigateByUrl(this.PathContinue)
     }
     
-      
-
-
   }
+
+quitter(){
+  window.location.reload();
+}
   previous() {
     if (this.PathRetoure == "smart-planing/importer") {
       alert("Vous ne pouvez pas accder a cette page!!");

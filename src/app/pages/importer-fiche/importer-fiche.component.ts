@@ -50,7 +50,6 @@ export class ImporterFicheComponent implements OnInit {
         else if (this.Numberfile < 2) {
           alert("Le nombre des fichiers est insuffisante!!"+this.Numberfile);
           this.Numberfile = 0;
-          window.location.reload();
 
         }
       });
