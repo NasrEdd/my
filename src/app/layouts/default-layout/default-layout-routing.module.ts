@@ -16,6 +16,7 @@ import { LancementAlgoComponent } from 'src/app/pages/lancement-algo/lancement-a
 import { ResultatComponent } from 'src/app/resultat/resultat.component';
 import { WaiterComponent } from 'src/app/pages/waiter/waiter.component';
 import { PlchoixComponent } from 'src/app/plchoix/plchoix.component'
+import { DetailsComponent } from 'src/app/pages/details/details.component';
 
 
 
@@ -38,10 +39,10 @@ const routes: Routes = [
   { path: 'smart-planing/importer/PreTraitement/Resumer/Details', component: TableErreurComponent },
   { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement', component: LancementAlgoComponent }, 
   { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat', component: ResultatComponent },
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/PlanificationCh', component: PlchoixComponent },
+  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/Details', component: DetailsComponent },
+  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/Details/PlanificationCh', component: PlchoixComponent },
 
 
-  
 
 
 

@@ -17,6 +17,7 @@ import { ChoseComponent } from 'src/app/components/chose/chose.component';
 import { ImporterFicheComponent } from 'src/app/pages/importer-fiche/importer-fiche.component';
 import { EvaluerEmploitComponent } from 'src/app/pages/evaluer-emploit/evaluer-emploit.component';
 import { ProgressBarreComponent } from 'src/app/components/progress-barre/progress-barre.component'
+import { DetailsComponent } from 'src/app/pages/details/details.component';
 
 import { TableErreurComponent } from 'src/app/components/table-erreur/table-erreur.component';
 
@@ -75,6 +76,7 @@ import { CustomRouteReuseStrategy } from '../../Classes/custom-route-reuse-strat
     EvaluerEmploitComponent,
     TableErreurComponent,
     ProgressBarreComponent,
+    DetailsComponent,
 
   ],
   imports: [
