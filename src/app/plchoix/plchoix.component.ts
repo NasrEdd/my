@@ -21,22 +21,8 @@ export class PlchoixComponent implements OnInit {
 
     })
 
-    var divElement = document.getElementById('viz1658486490626');
-    if(divElement != null){
-      var vizElement = divElement.getElementsByTagName('object')[0];
-      
-        vizElement.style.width = '100%';
-        vizElement.style.height = '100%';
-      
-      var scriptElement = document.createElement('script');
-      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-        vizElement.parentNode?.insertBefore(scriptElement, vizElement); 
-
-
-    }
     
-   
-
+    
     $(".Progroot #continue").hide();
     console.log($("#continue"))
   }
