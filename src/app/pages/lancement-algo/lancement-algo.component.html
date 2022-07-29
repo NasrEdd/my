@@ -1,19 +1,18 @@
 <h1>{{titre}}</h1>
 <app-waiter *ngIf="shouldWait"></app-waiter>
-<div class=" container-fluid " id="root" >
-    <div id="row"  *ngFor="let element of data">
-        <div >
-            <div id="rowCol">
-                <button class="btn Banim ">{{element.title}}</button>
-            </div>
-            <div class="contenue " id={{element.id}}>
-                <p>{{element.description}}</p>
-                <span>{{element.erreur}}</span>
+<div class=" container-fluid " id="root">
+    <div id="row" *ngFor="let element of data" >
+
+        <div id="rowCol ">
+            <div class="btn Banim ">
+                {{element.title}} : {{element.erreur}}
             </div>
 
         </div>
-      
+     
+
+
+
     </div>
 
 </div>
-

@@ -1,33 +1,117 @@
 <h1>{{titre}}</h1>
-<div class="container-fluid " id="Preroot">
-   
-    <div id="Prerow" class="row" *ngFor="let element of data">
-        <div class="Prerow ">
-            <div id="PrerowCol">
+<div class="container-fluid col-lg-10" id="Preroot">
 
-                <div class="col-lg-4">
-                    <a routerLink={{element.route}}>
-                        <button class="btn Banim" #Bsubmit (click)="go(Bsubmit.value)">
-                            {{element.title}}
-                        </button>
-                        <img src="./assets/img/click.png" id={{element.id}} width="30px" height="30px" #valeur>
+    <div class="part container-fluid">
+        <div class="title">
+            <h2 id="title0">
+                Erreurs des salles
+            </h2>
 
-                    </a>
+        </div>
+        <div *ngFor="let element of data">
+            <div id="Prerow " class="col-lg-12 ">
+                <div id="PrerowCol">
+
+                    <div class="col-sm-4">
+                        <a routerLink={{element.route}}>
+                            <button class="btn Banim d-inline-flex " #Bsubmit (click)="go(Bsubmit.value)">
+                                {{element.title}}
+                            </button>
+                            <div class="btnPi">
+                                <button [title]="'Details sur l\''+element.title" data-toggle="popover" data-placement="top"
+                                    attr.data-bs-content={{element.description}}>i</button>
+                            </div>
+                        </a>
+                     
+                    </div>
+
+                    <div class="btnP">
+                        <div>
+                            {{element.erreur}}
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="Precontenue col-lg-4">
-                    <p>{{element.description}}</p>
-                </div>
-
-                <div id={{element.id}} class="col-lg-4">
-                    <p id="ErrP">{{element.erreur}}</p>
-                </div>
-
             </div>
-
-
         </div>
     </div>
 
+    <div class="part container-fluid">
+
+        <div class="title">
+            <h2 id="title1">
+                Problemes de disponibilite
+            </h2>
+
+        </div>
+        <div *ngFor="let element of data2">
+            <div id="Prerow " class="col-lg-12 ">
+                <div id="PrerowCol">
+
+                    <div class="col-sm-4">
+                        <a routerLink={{element.route}}>
+                            <button class="btn Banim d-inline-flex " #Bsubmit (click)="go(Bsubmit.value)">
+                                {{element.title}}
+                            </button>
+                        </a>
+                        <div class="btnPi">
+                            <button [title]="'Details sur l\''+element.title" data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{element.description}}>i</button>
+                        </div>
+                    </div>
+
+                    <div class="btnP">
+                        <div>
+                            {{element.erreur}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="Prerow " class="col-lg-12 ">
+            <div class="title">
+                <h2 id="title2">
+                    Resumer des erreurs
+                </h2>
+            </div>
+            <div id="PrerowCol">
+
+
+
+                <div class="col-sm-4 ps-3 ">
+                    <a routerLink={{seancNP.route}} class="col-sm-4">
+                        <button class="btn Banim d-inline-flex " #Bsubmit (click)="go(Bsubmit.value)">
+                            {{seancNP.title}}
+                        </button>
+                    </a>
+                    <div class="btnPi">
+                        <button [title]="'Details sur l\''+seancNP.title" data-toggle="popover"
+                            data-placement="top" attr.data-bs-content={{seancNP.description}}>i</button>
+                    </div>
+                </div>
+
+
+                <div class="btnP">
+                    <div>
+                        {{seancNP.erreur}}
+                    </div>
+                </div>
+
+                <!-- <div class="btnP">
+                        <button id="corrige">
+                            Corriger
+                        </button>
+                    </div> -->
+
+
+
+
+            </div>
+        </div>
+    </div>
 </div>
 <!-- l'echelle!!!!!!!!!!!! -->

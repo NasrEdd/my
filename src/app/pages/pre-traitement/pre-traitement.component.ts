@@ -50,6 +50,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: 5,
     buttonID: "ErreurG",
     route: "./Resultat",
+    type:true,
     id: "El1",
   },
   {
@@ -58,6 +59,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: 3,
     buttonID: "ErreurI",
     route: "./Resultat",
+    type:true,
     id: "El2",
 
   }, {
@@ -66,6 +68,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: 4,
     buttonID: "ErreurD",
     route: "./Resultat",
+    type:true,
     id: "El3",
 
   }, {
@@ -74,6 +77,7 @@ export class PreTraitementComponent implements OnInit {
     erreur: 1,
     buttonID: "ErreurE",
     route: "./Resultat",
+    type:true,
     id: "El4",
 
   }, {
@@ -82,34 +86,42 @@ export class PreTraitementComponent implements OnInit {
     erreur: 1,
     buttonID: "ErreurS",
     route: "./Resultat",
+    type:false,
     id: "ElI1",
 
-  }, {
+  }]
+
+  data2: any = [{
     description: "Des informations sur l'erreur apprevue du traitement",
     title: "Hors disponibilités",
     erreur: 5,
     buttonID: "ErreurH",
     route: "./Resultat",
+    type: false,
     id: "ElI2",
 
   }, {
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-    title: "Non saisie de siponibilités",
-    erreur: 2,
-    buttonID: "ErreurNS",
-    route: "./Resultat",
-    id: "ElI3",
+      description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
+      title: "Non saisie disiponibilités",
+      erreur: 2,
+      buttonID: "ErreurNS",
+      route: "./Resultat",
+      type: false,
+      id: "ElI3",
 
-  }, {
+    }]
+
+
+  seancNP: any = {
     description: "Des informations sur l'erreur apprevue du traitement",
-    title: "Erreur de la durée",
+    title: "Seances non planifiables",
     erreur: 4,
     buttonID: "ErreurSN",
     route: "./Resultat",
+    type: false,
     id: "ElI4",
 
-  }]
-
+  }
   constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) {
 
   }
@@ -117,8 +129,13 @@ export class PreTraitementComponent implements OnInit {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
       this.update2(3);
+      $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+          trigger:'hover',
+        });
+      });
 
-      
+      $("#co").show();
       $("img").hide();
     })
 
@@ -136,6 +153,8 @@ export class PreTraitementComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
+    $("#co").hide();
+
   }
 
 

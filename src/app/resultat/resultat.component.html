@@ -21,51 +21,85 @@
             <param name='filter' value='publish=yes' />
         </object></div>
 </div>
-<button id="opener">Visualiser</button>
 
 <div class="container">
 
+    <div class="row1">
+        <div class="tempEs d-flex">
+            <p>Temps Decouler : </p>
+            <span id="Temp">{{TempsEstimer}}</span>
+        </div>
+        <div class="MieuPlan d-flex">
+            <p>Meilleur planification: </p>
+            <span id="MPlan">{{MilleuPlan}}</span>
+        </div>
+    </div>
+    <div class="row2">
+       
+        <div id="row" class=" row container-fluid">
 
-    <div id="row" class=" row container-fluid">
 
+            <div class="row d-flex justify-content-between">
+                <div class="col rowL d-flex col-lg-6 col-md-6 ">
 
-        <div class="row d-flex justify-content-between">
-            <div class="col rowL col-lg-6 col-md-6 ">
-                <input type="radio" id="1" name="Erreur" value="1" checked>
-                <label for="1"> Planification {{Erreur[0].Err}} : {{Erreur[0].id}}</label>
+                    <label for="1"> Planification {{Erreur[0].id}} : {{Erreur[0].Err}} Erreur</label>
+                    <div class="btnR">
+                        <button id="visualiser1" #visualiser (click)="do(visualiser)"><img src="./assets/img/vue.png"></button>
+                        <button id="telecharger1" #telecharger (click)="do(telecharger)"><img src="./assets/img/download.png"></button>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6  ">
+
+                </div>
             </div>
-            <div class=" col-lg-3 col-md-6  ">
 
+            <div class="row d-flex justify-content-between">
+                <div class="col rowL d-flex col-lg-6 col-md-6 ">
+
+                    <label for="2"> Planification {{Erreur[1].id}} : {{Erreur[1].Err}} Erreur</label>
+                    <div class="btnR">
+                        <button id="visualiser2" #visualiser (click)="do(visualiser)"><img src="./assets/img/vue.png"></button>
+                        <button id="telecharger2" #telecharger (click)="do(telecharger)"><img src="./assets/img/download.png"></button>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6  ">
+
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-between">
+                <div class="col rowL d-flex col-lg-6 col-md-6 ">
+
+                    <label for="3"> Planification {{Erreur[2].id}} : {{Erreur[2].Err}} Erreur</label>
+                    <div class="btnR">
+                        <button id="visualiser3" #visualiser (click)="do(visualiser)"><img src="./assets/img/vue.png"></button>
+                        <button id="telecharger3" #telecharger (click)="do(telecharger)"><img src="./assets/img/download.png"></button>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6  ">
+
+                </div>
+            </div>
+            <div class="row d-flex justify-content-between">
+                <div class="col rowL d-flex col-lg-6 col-md-6 ">
+
+                    <label for="4"> Planification {{Erreur[3].id}} : {{Erreur[3].Err}} Erreur</label>
+                    <div class="btnR">
+                        <button id="visualiser4" #visualiser (click)="do(visualiser)"><img src="./assets/img/vue.png"></button>
+                        <button id="telecharger4" #telecharger (click)="do(telecharger)"><img src="./assets/img/download.png"></button>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6  ">
+
+                </div>
             </div>
         </div>
+        <div class="arreter">
+            <button id="arreter" (click)="hide()" class="btn btn-danger p-4">
+                Arreter
+            </button>
+            <button id="opener" class="btn btn-primary p-4" style="display:none;">Comparer</button>
 
-        <div class="row d-flex justify-content-between">
-            <div class="col rowL col-lg-6 col-md-6 ">
-                <input type="radio" id="2" name="Erreur" value="2">
-                <label for="2"> Planification {{Erreur[1].Err}} : {{Erreur[1].id}}</label>
-            </div>
-            <div class=" col-lg-3 col-md-6  ">
-
-            </div>
-        </div>
-
-        <div class="row d-flex justify-content-between">
-            <div class="col rowL col-lg-6 col-md-6 ">
-                <input type="radio" id="3" name="Erreur" value="3">
-                <label for="3"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
-            </div>
-            <div class=" col-lg-3 col-md-6  ">
-
-            </div>
-        </div>
-        <div class="row d-flex justify-content-between">
-            <div class="col rowL col-lg-6 col-md-6 ">
-                <input type="radio" id="4" name="Erreur" value="4">
-                <label for="4"> Planification {{Erreur[2].Err}} : {{Erreur[2].id}}</label>
-            </div>
-            <div class=" col-lg-3 col-md-6  ">
-
-            </div>
         </div>
     </div>
 
@@ -76,4 +110,3 @@
 
 
 </div>
-

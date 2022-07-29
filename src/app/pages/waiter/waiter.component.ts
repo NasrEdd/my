@@ -17,8 +17,13 @@ export class WaiterComponent implements OnInit {
     
   }
   ngOnInit() {
+    
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
+      this.appService.barreEmitter.subscribe((route) => { console.log("donnes " + route) }
+        
+      )
+
       let intervalId = setInterval(() => {
         this.counter--;
         console.log(this.counter)
@@ -31,7 +36,9 @@ export class WaiterComponent implements OnInit {
           });
 
           $('.fin').show(2000);
-          setTimeout(() => this.router.navigateByUrl("smart-planing/importer/PreTraitement"), 3000);
+          setTimeout(() => {
+            
+          }, 3000);
         }
       }, 1000);
 

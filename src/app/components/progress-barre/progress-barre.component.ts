@@ -22,18 +22,17 @@ export class ProgressBarreComponent implements OnInit {
       { index: 2, id: "smart-planing", title: "smartPlaning", isCurrent: false, isValide: false, url: "smart-planing", hasNext: true, hasPrevisous: false, },
       { index: 3, id: "importer", title: "importer", isCurrent: false, isValide: false, url: "smart-planing/importer", hasNext: true, hasPrevisous: false, },
       { index: 4, id: "PreTraitement", title: "PreTraitement", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement", hasNext: true, hasPrevisous: false, },
-      { index: 5, id: "Resumer", title: "Resumer", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer", hasNext: true, hasPrevisous: false, },
-      { index: 6, id: "Lancement", title: "Lancement", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer/Lancement", hasNext: true, hasPrevisous: false, },
-      { index: 7, id: "Resultat", title: "Resultat", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat", hasNext: true, hasPrevisous: false, },
-      { index: 8, id: "PlanificationCh", title: "PlanificationCh", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/Details/PlanificationCh", hasNext: false, hasPrevisous: false, },
+      { index: 5, id: "Lancement", title: "Lancement", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Lancement", hasNext: true, hasPrevisous: false, },
+      { index: 6, id: "Resultat", title: "Resultat", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Lancement/Resultat", hasNext: true, hasPrevisous: false, },
+      { index: 7, id: "PlanificationCh", title: "PlanificationCh", isCurrent: false, isValide: false, url: "smart-planing/importer/PreTraitement/Lancement/Resultat/Details/PlanificationCh", hasNext: false, hasPrevisous: false, },
 
     ];
   etaps: any =
     [
       { index: 1, title: "Génération" },
-      { index: 3, title: "Pre-traitement " },
-      { index: 5, title: "Post-Traitement " },
-      { index: 6, title: "Planifications" }
+      { index: 2, title: "Pre-traitement " },
+      { index: 4, title: "Post-Traitement " },
+      { index: 5, title: "Planifications" }
     ]
 
   NewPage?: string[];
@@ -43,16 +42,16 @@ export class ProgressBarreComponent implements OnInit {
   currentRoute?: string;
   Index_prev: number = 0;
   validite !: boolean;
-  Index_old!:number ;
+  Index_old!: number;
   constructor(private router: Router, public appService: AppService) {
 
   }
 
   ngOnInit(): void {
     $(document).ready(() => {
-     
-        
-   
+
+
+
       console.log(window.location.pathname)
     })
     this.appService.barreEmitter.subscribe(element => {
@@ -62,7 +61,7 @@ export class ProgressBarreComponent implements OnInit {
 
       $("#" + element.index.toString()).css(
         {
-         
+
           "filter": "brightness(140%)"
         }
       )
@@ -73,7 +72,7 @@ export class ProgressBarreComponent implements OnInit {
 
         $("#" + this.Index_prev.toString()).css(
           {
-            "transition":"scale(1.2)",
+            "transition": "scale(1.2)",
             "filter": "brightness(100%)"
 
           }
@@ -108,21 +107,21 @@ export class ProgressBarreComponent implements OnInit {
 
       }
 
-      if(!this.PathContinue && !this.PathRetoure){
+      if (!this.PathContinue && !this.PathRetoure) {
         window.location.reload();
 
       }
       let temp: number = this.Index_old;
       while (temp != 0) {
 
-        $("#" + temp.toString()).css(
+        $(".casebarre " + '#' + temp.toString()).css(
           {
 
             "filter": "brightness(140%)"
           }
         )
         temp--;
-        console.log(temp)
+        console.log("hani " + temp)
       }
 
     });
@@ -139,14 +138,21 @@ export class ProgressBarreComponent implements OnInit {
 
   }
   next() {
-   
+
     if (this.PathContinue) {
       if (this.PathContinue === "smart-planing/importer/PreTraitement")
         this.router.navigateByUrl("smart-planing/importer/Waiter");
+
+      if (this.PathContinue === "smart-planing/importer/PreTraitement/Lancement/Resultat")
+        this.router.navigateByUrl("smart-planing/importer/Waiter");
+
       else
         this.router.navigateByUrl(this.PathContinue)
+
+
     }
-    
+
+
   }
 
 
@@ -157,7 +163,7 @@ export class ProgressBarreComponent implements OnInit {
     }
     if (this.PathRetoure)
       this.router.navigateByUrl(this.PathRetoure);
-      
+
 
   }
 

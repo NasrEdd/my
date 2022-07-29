@@ -1,14 +1,17 @@
 <div class="Progroot">
     <div class="ProgButton">
 
-        <a id="retoure">
-            <button class="ps-3 pe-3 pb-2 pt-2" id="retoure" (click)="previous()">Précèdent</button>
+        <a id="lien">
+            <button class="ps-3 pe-3 pb-2 pt-2 " id="retoure" (click)="previous()">
+
+                Précèdent</button>
         </a>
-        <a routerLink="/smart-planing">
-            <button class="ps-3 pe-3 pb-2 pt-2 " >Quitter</button>
+        <a routerLink="/smart-planing/importer" style="display:none" id="co">
+            <button class="ps-3 pe-3 pb-2 pt-2 ms-2 me-2 " style="background-color:red;">Corriger</button>
         </a>
-        <a>
-            <button class="ps-3 pe-3 pb-2 pt-2" id="continue" (click)="next()">Suivant</button>
+        <a id="lien">
+            <button class="ps-3 pe-3 pb-2 pt-2 " id="continue" (click)="next()">Suivant
+            </button>
         </a>
     </div>
     <div class="casebarre">
@@ -17,6 +20,7 @@
                 <p>
                     {{etap.title}}
                 </p>
+
 
             </div>
         </div>

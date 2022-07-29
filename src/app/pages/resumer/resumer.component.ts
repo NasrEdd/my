@@ -24,39 +24,52 @@ export class ResumerComponent implements OnInit {
     id: "A"
   }]
 
-  constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) { 
+  constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) {
 
   }
   ngOnInit(): void {
     $(document).ready(() => {
-      this.update2(4,true);
+      this.update2(4, true);
 
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
       $(".img").hide();
 
-      $(".modification button").click(()=>{
-        this.update2(1,true)
+      $(".modification button").click(() => {
+        this.update2(1, true)
+      })
+
+      var oldWidth = $('#RrowCol').width();
+      $(".btn").click(function () {
+        $(".row").animate({
+          width: 0
+        });
+      });
+      $(".slide-right").click(function () {
+        $("#RrowCol").animate({
+          width: oldWidth
+        });
+
       })
     })
-    
   }
+  
 
   ngOnDestroy(): void {
-    this.loader.loaderDialogEmitter.emit({ isOpen: true });
+      this.loader.loaderDialogEmitter.emit({ isOpen: true });
 
-  }
+    }
 
   click(valeur: any) {
-    $("#" + valeur.id).show();
+      $("#" + valeur.id).show();
   }
   hide(valeur: any) {
     $("#" + valeur.id).hide();
 
   }
-  
-  update2(index : number, validite:boolean) {
-    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " ",isValide:validite })
+
+  update2(index: number, validite: boolean) {
+    this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " ", isValide: validite })
   }
 
-}
 
+}

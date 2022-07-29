@@ -2,7 +2,7 @@
     height: 20%;
     border-radius: 7px;
     width: 80%;
-    position: fixed;
+    position: static;
     margin: auto auto auto 10%;
     display: block;
 }
@@ -73,3 +73,4 @@ clip-path: polygon(90% 1%, 100% 50%, 91% 100%, 0% 100%, 11% 49%, 0% 0%);
     align-items: center;
     justify-content: center;
 }
+

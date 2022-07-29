@@ -4,17 +4,51 @@
     text-align: center;
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 7%;
-    margin-bottom: 11.5%;
+    margin-top:2%;
+    margin-bottom: 10.5%;
     padding-top: 1%;
-    width: 30%;
+    width: 60%;
 }
 
-.container div {
-    display: flex;
+.row1 {
+    display: block;
+    width: 45%;
+    color: #369;
+    padding: 20px;
+    margin-right: 10%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.1s ease;
+    font-size: large;
+    border: 1px solid white;
 }
 
-input {
+.row2{
+    display:block;
+    width: 60%;
+}
+.row button {
+    font-size: medium;
+    width: 20%;
+    height: 100%;
+    margin-left: 9%;
+    border-radius: 10%;
+    background-color: white;
+    border: .5px solid white;
+
+
+}
+
+.btnR {
+    margin-left: 60%;
+
+}
+
+.chos {
     display: flex;
     margin-right: 1%;
 }
@@ -30,46 +64,52 @@ h1 {
 
 }
 
-#opener{
+#opener {
     border: 1px solid rgb(251, 247, 247);
     padding: 1% 1.2% 1% 1.2%;
     font-size: larger;
     color: white;
     background-color: rgba(128, 128, 128, 0.807);
     border-radius: 0p x;
-    
+
 
 }
 
 #row {
+    display: block;
     border: none;
-        padding: 20px;
-        margin: 5px;
-        border-radius: 10px;
-        background-color: #369;
-        text-align: start;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-        transition: all 0.1s ease;
-        transform: scale(1);
-        border: 1px solid white;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: white;
+    text-align: start;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.1s ease;
+    transform: scale(1);
+    border: 1px solid gray;
 
 }
 
 #row div {
-    margin-left: 10%;
     padding-top: 1%;
     font-size: larger;
-    width: 80%;
+    width: 105%;
+    margin-left: 2%;
+    color: #369;
 }
 
-label{
-    margin-left: 2%;
+label {
+    margin-left: 1%;
+    font-size: medium;
+    width: 130%;
 }
-.p1 {
-    text-align: center;
-    padding-top: 10%;
+
+p {
+   
+    text-align: start;
+    width: 70%;
 }
 
 .p2 {
@@ -96,12 +136,12 @@ label{
 }
 
 .rowL:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-        transform: scale(1.1);
-        filter: brightness(130%);
-        color: white;
+    transform: scale(1.1);
+    filter: brightness(130%);
+    color: white;
 }
 
-#modification {
-    display: flex;
+.btnR button:hover {
+    border-radius: 7px;
+    background-color: aquamarine;
 }

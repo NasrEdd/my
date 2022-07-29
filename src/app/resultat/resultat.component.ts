@@ -11,19 +11,26 @@ declare var $: any;
   styleUrls: ['./resultat.component.scss']
 })
 export class ResultatComponent implements OnInit {
+
+  TempsEstimer:number=4;
+  MilleuPlan:number=5;
   titre = "Meilleurs planifications"
   Erreur: any = [{
-    Err: "2",
-    id: "1",
+    Err: "1",
+    id: this.TempsEstimer - 1,
   },
   {
     Err: "2",
-    id: "1",
+    id: this.TempsEstimer -2,
   },
   {
-    Err: "2",
-    id: "1",
-  }]
+    Err: "3",
+    id: this.TempsEstimer -3,
+  },
+    {
+      Err: "4",
+      id: this.TempsEstimer -4,
+    }]
 
   data !: any;
   constructor(private loader: LoaderService, private http: HttpClient, private router: Router, public appService: AppService) { }
@@ -33,8 +40,8 @@ export class ResultatComponent implements OnInit {
       $(function () {
         $("#dialog").dialog({
           autoOpen: false,
-          width: 1050,
-          height: 709,
+          width: 1500,
+          height: 1000,
           show: {
             effect: "blind",
             duration: 1000,
@@ -50,6 +57,9 @@ export class ResultatComponent implements OnInit {
           $("#dialog").dialog("open");
         });
       }); 
+      $(".Progroot #continue").hide();
+
+      this.test();
       })
 
     var divElement = document.getElementById('viz1658486490626');
@@ -64,7 +74,7 @@ export class ResultatComponent implements OnInit {
       vizElement.parentNode?.insertBefore(scriptElement, vizElement);
     }
 
-    this.update2(6);
+    this.update2(5);
     this.data = this.http.post("https://smartplanning-backend.herokuapp.com/Generation/ResumePreTPlanificationGenerees/" + "nasr", null)
       .subscribe(
         (response: any) => {
@@ -78,8 +88,9 @@ export class ResultatComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.loader.loaderDialogEmitter.emit({ isOpen: true });
-    this.update2(1);
     $("#dialog").hide();
+    $(".Progroot #continue").show();
+
 
   }
 
@@ -89,12 +100,39 @@ export class ResultatComponent implements OnInit {
     this.appService.barreEmitter.emit({ index: index, PathContinue: " ", PathRetoure: " ",isValide:true })
   }
 
-  go(chemin: string) {
-    if(chemin === "TB")
-      this.router.navigateByUrl("https://public.tableau.com/app/profile/amadou.mboup/viz/Dashboard_EDT_V3/Tableaudeborddesplanificationsnombre?publish=yes")
-    else if(chemin ==="CL")
-      this.router.navigateByUrl("http://srvprod/UniversiaPulse/Account/Login?ReturnUrl=%2FUniversiaPulse%2FHome%2FCalendar")
+  hide(){
+    $('.row1').hide(1000);
+
+    $("#arreter").hide();
+    $("#opener").show(1000);
+    $('.container').css("margin-bottom","9%");
   }
+
+  test(){
+    let i:number = 10;
+
+    
+      setInterval(() => {
+        this.TempsEstimer = i;
+        this.Erreur[0].Err = Math.floor(Math.random() * 10);
+        this.Erreur[1].Err = Math.floor(Math.random() * 10);
+        this.Erreur[2].Err = Math.floor(Math.random() * 10);
+        this.Erreur[3].Err = Math.floor(Math.random() * 10);
+      
+
+        
+       
+      }, 100)
+    
+
+    clearInterval(20000)
+
+  }
+
+do(element : any){
+
+  alert("element: "+element.id)
+}  
 }
 
 

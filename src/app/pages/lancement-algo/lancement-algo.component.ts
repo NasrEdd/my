@@ -15,47 +15,45 @@ var ids: number[] = [1, 2, 3];
   styleUrls: ['./lancement-algo.component.scss']
 })
 export class LancementAlgoComponent implements OnInit {
-  public shouldWait:boolean = false;
+  shouldWait:boolean = false;
   titre: string = "Lancement de l'algorithme";
   data: any = [{
-    description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-    title: "Nombre de seances planifiees",
+    title: "Nombre de professeurs",
     erreur: "3",
     buttonID: "detail1",
     id: "A"
   } ,
     {
-      description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-      title: "Nombre de seances non planifiees",
+        title: "Nombre de seances planifiables",
       erreur: "1",
       buttonID: "detail1",
       id: "A"
     }, {
-      description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-      title: "Nombre de salles",
+        title: "Nombre de salles",
       erreur: "5",
       buttonID: "detail1",
       id: "A"
     }, {
-      description: "Des séances qui ont le champs de la durée vide ou non numérique ou incorrecte",
-      title: "Temps estime",
-      erreur: "25min",
+        title: "Nombre de groupes",
+      erreur: "5",
+      buttonID: "detail1",
+      id: "A"
+    }, {
+      title: "nombre de seances non planifiables",
+      erreur: "5",
       buttonID: "detail1",
       id: "A"
     }]
-
+      
   constructor(private loader: LoaderService, private http: HttpClient,private router: Router, public appService: AppService) {
 
    }
   ngOnInit(): void {
     $(document).ready(() => {
       this.loader.loaderDialogEmitter.emit({ isOpen: false });
-      this.update2(5);
+      this.update2(4);
       $("#continue").html("Lancer");
-    //   $("#continue").click(()=>{
-    //     this.shouldWait = true;
       
-    // })
   })
   }
 

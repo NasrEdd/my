@@ -35,12 +35,11 @@ const routes: Routes = [
   { path: 'smart-planing/importer/Waiter', component: WaiterComponent },
   { path: 'smart-planing/importer/PreTraitement', component: PreTraitementComponent },
   { path: 'smart-planing/importer/PreTraitement/Resultat', component: TableErreurComponent },
-  { path: 'smart-planing/importer/PreTraitement/Resumer', component: ResumerComponent },
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Details', component: TableErreurComponent },
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement', component: LancementAlgoComponent }, 
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat', component: ResultatComponent },
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/Details', component: DetailsComponent },
-  { path: 'smart-planing/importer/PreTraitement/Resumer/Lancement/Resultat/Details/PlanificationCh', component: PlchoixComponent },
+  { path: 'smart-planing/importer/PreTraitement/Details', component: TableErreurComponent },
+  { path: 'smart-planing/importer/PreTraitement/Lancement', component: LancementAlgoComponent }, 
+  { path: 'smart-planing/importer/PreTraitement/Lancement/Resultat', component: ResultatComponent },
+  { path: 'smart-planing/importer/PreTraitement/Lancement/Resultat/Details', component: DetailsComponent },
+  { path: 'smart-planing/importer/PreTraitement/Lancement/Resultat/Details/PlanificationCh', component: PlchoixComponent },
 
 
 
