@@ -14,8 +14,8 @@ declare var $: any;
 
 
 export class SmartPlaningComponent implements OnInit, OnDestroy {
-  titles: string[];
-  descriptions: string[];
+  public titles: string[] = ["Génération d'emploi du temps", "Evaluation"];
+  public descriptions: string[] = ["Pour générer un emploi du temps", "Pour évaluer l'emploi du temps"];
   username: string = "";
   url: string = "https://smartplanning-backend.herokuapp.com/";
   posts: any;

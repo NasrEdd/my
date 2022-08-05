@@ -32,6 +32,11 @@ import { ResultatComponent } from './resultat/resultat.component';
 import { LancementAlgoComponent } from './pages/lancement-algo/lancement-algo.component';
 import { WaiterComponent } from './pages/waiter/waiter.component';
 import { PlchoixComponent } from './plchoix/plchoix.component';
+import { PlanificationPageComponent } from './planification-page/planification-page.component';
+import { IgxStepperModule } from 'igniteui-angular';
+import { FormsModule } from "@angular/forms";
+import { ChoseComponent } from './components/chose/chose.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -119,9 +124,11 @@ const indexDbConfig: DBConfig  = {
     ResultatComponent,
     LancementAlgoComponent,
     WaiterComponent,
+    ChoseComponent,
     PlchoixComponent,
-    
-    
+    PlanificationPageComponent,
+
+  
   ],
   imports: [
     HttpClientModule,
@@ -146,6 +153,8 @@ const indexDbConfig: DBConfig  = {
     MatToolbarModule,
     MatGridListModule,
     ScrollingModule,
+    IgxStepperModule,
+    FormsModule,
     
    
   ],  

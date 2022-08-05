@@ -1,0 +1,386 @@
+<igx-stepper #stepper [linear]="true">
+
+
+
+    <igx-step #step1 [isValid]="StepperConfig[0].isValide">
+
+
+        <span igxStepTitle>{{StepperConfig[0].StepTitle}}</span>
+        <div igxStepContent>
+
+            <!-- smart-planing page 1 -->
+
+            <div class="Sroot">
+                <div class="row  " id="row2">
+                    <div class="col-md-6">
+                        <div class="carre">
+                            <div class="mat-elevation-z4">
+                                <img src="./assets/img/buid.png" width="70px" height="75px" id="img1">
+
+                                <div igxButton="raised" id="button" style="color:black"
+                                    (click)="login() ;stepper.next()">
+                                    <app-chose [title]="PageData[0].Title[0]"
+                                        [description]="PageData[0].descriptions[0]"></app-chose>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-4">
+                        <div class="carre">
+                            <div class=" mat-elevation-z4">
+                                <img src="./assets/img/test.png" width="80px" height="75px" id="img2">
+
+                                <div igxButton="raised" id="button" style="color:black" (click)="stepper.next()">
+                                    <app-chose [title]="PageData[0].Title[1]"
+                                        [description]="PageData[0].descriptions[1]"></app-chose>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ------------------------------------------ -->
+
+        </div>
+    </igx-step>
+
+    <igx-step #step2 [isValid]="StepperConfig[1].isValide">>
+
+
+        <span igxStepTitle>{{StepperConfig[1].StepTitle}}</span>
+        <div igxStepContent>
+
+
+            <!--------------------Importer-------------------------------------->
+            <h1 id="Title2HideImporter">{{StepperConfig[1].PageTitle}}</h1>
+
+            <div class="container-fluid choses ">
+                <div class="row  import">
+                    <div id="row" class="col-lg-6">
+                        <div class="col-md-12">
+                            <label>Selectionnez la table des séances à planifiées
+                                <input type="file" accept=".xlsx" required id="input-file-now-custom-2"
+                                    class="file-upload" data-height="500" id="SP" #nom
+                                    (change)="getFile($event,nom.id)">
+                            </label>
+                        </div>
+                        <img src="./assets/img/checked.png" style="display:none" id="im1">
+
+
+                    </div>
+                    <div id="row" class="col-lg-6">
+                        <div class="col-md-12">
+                            <label>Selectionnez la table des disponibilités
+                                <input class="form-control" type="file" accept=".xlsx" required id="TD" #nom1
+                                    (change)="getFile($event,nom1.id)">
+                            </label>
+
+                        </div>
+                        <img src="./assets/img/checked.png" style="display:none" id="im2">
+
+                    </div>
+                    <div id="row" class="col-lg-6">
+                        <div class="col-md-12">
+                            <label>Selectionnez la table de préférence disponibilités
+                                <input class="form-control" type="file" accept=".xlsx" id="PD" #nom2
+                                    (change)="getFile($event,nom2.id)">
+
+                            </label>
+                        </div>
+                        <img src="./assets/img/checked.png" style="display:none" id="im3">
+
+                    </div>
+                    <div id="row" class="col-lg-6">
+                        <div class="col-md-12">
+                            <label>Selectionnez la table des salles
+                                <input class="form-control" type="file" accept=".xlsx" required id="TS" #nom3
+                                    (change)="getFile($event,nom3.id)">
+
+                            </label>
+
+                        </div>
+                        <img src="./assets/img/checked.png" style="display:none" id="im4">
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="case" style="display:none">
+                <div class="timing ">
+                    <div class="counter">
+                    </div>
+                    <div class="fin">
+                        <h2>Terminer</h2>
+                    </div>
+                    <div class="classic-1"></div>
+                </div>
+
+            </div>
+            <!-------------------------------------------->
+
+            <div class="sample-step-actions">
+                <button igxButton="raised" class="btn btn-secondary arreter" (click)="stepper.prev()">Précèdent</button>
+                <button igxButton="raised" class="btn btn-secondary"
+                    (click)="LancerPreTraitement();importer(stepper)">Suivant</button>
+            </div>
+        </div>
+    </igx-step>
+
+    <igx-step #step3 [isValid]="StepperConfig[2].isValide">>
+
+
+        <span igxStepTitle>{{StepperConfig[2].StepTitle}}</span>
+        <div igxStepContent>
+
+            <!---------------------Pre-Traitement------------------------->
+            <!---------------------------Tableu des erreurs--------------->
+            <div id="dialog" title="Basic dialog" style="display:none">
+                <h1 class="title">{{TitreTableau}}</h1>
+
+                <div class="root">
+                    <table id="table" class="table">
+                        <tr class="row thead-dark">
+                            <th class="col" *ngFor="let ele of key">{{ele}}</th>
+                        </tr>
+                        <tr #exist class="row" *ngFor="let elem of value" scope="row">
+                            <td class="col" *ngFor="let val of elem">{{val}}</td>
+                        </tr>
+                        <tr #none class="row" *ngFor="let elem of value" scope="row">
+                            <td class="col" *ngFor="let val of elem">{{val}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+            <!---------------------------Tableu des erreurs--------------->
+            <h1>{{StepperConfig[2].PageTitle}}</h1>
+            <div class="container-fluid col-lg-10" id="Preroot">
+
+                <div class="container-fluid ">
+                    <div class="d-flex w-100">
+                        <h2>
+                            Erreurs des salles
+                        </h2>
+
+                    </div>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,element.title)"*ngFor="let element of PageData[2].data">
+                        
+                        <li #Erreur id={{element.buttonID}}  class="list-group-item d-flex w-50 justify-content-between align-items-center ">
+                            {{element.title}}
+                            <span class="badge text-dark">{{element.lenght}}</span>
+                        </li>
+                        <div class="btnPi  ">
+                            <button class="w-100" [title]="'Details sur l\''+element.title" data-toggle="popover"
+                                data-placement="top" attr.data-bs-content={{element.description}}>i</button>
+                        </div>
+
+                    </ul>
+                </div>
+
+                <div class="container-fluid">
+
+                    <div class="d-flex w-100 title">
+                        <h2>
+                            Problemes de disponibilite
+                        </h2>
+
+                    </div>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,element.title)"*ngFor="let element of PageData[2].data2" >
+                            <li #Erreur id={{element.buttonID}}  class="list-group-item d-flex w-50 justify-content-between align-items-center">
+                                {{element.title}}
+                                <span class="badge text-dark">{{element.erreur}}</span>
+                            </li>
+                            <div class="btnPi">
+                                <button class="w-100" [title]="'Details sur l\''+element.title" data-toggle="popover"
+                                    data-placement="top" attr.data-bs-content={{element.description}}>i</button>
+                        </div>
+                    </ul>
+
+
+
+                    <div class="col-lg-12 ">
+                        <div class=" d-flex w-100">
+                            <h2>
+                                Resumer des erreurs
+                            </h2>
+                            
+                        </div>
+                        <div class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].seancNP.title)">
+                            <li #Erreur id={{PageData[2].seancNP.buttonID}}  class="list-group-item d-flex w-50 justify-content-between align-items-center">
+                                {{PageData[2].seancNP.title}}
+                                <span class="badge text-dark ">{{PageData[2].seancNP.erreur}}</span>
+                            </li>
+                            <div class="btnPi">
+                                <button class="w-100" [title]="'Details sur l\''+PageData[2].seancNP.title"
+                                    data-toggle="popover" data-placement="top"
+                                    attr.data-bs-content={{PageData[2].seancNP.description}}>i</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------->
+            <div class="sample-step-actions">
+                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.prev()">Précèdent</button>
+                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.next()">Suivant</button>
+            </div>
+        </div>
+    </igx-step>
+
+    <igx-step #step4 [isValid]="StepperConfig[3].isValide">
+
+
+        <span igxStepTitle>{{StepperConfig[3].StepTitle}}</span>
+        <div igxStepContent>
+
+            <!----------------------------Lancement de l'algo--------------------------->
+            <h1 id="Titre2Hide">{{StepperConfig[3].PageTitle}}</h1>
+            <div class=" container-fluid " id="rootLancer">
+                <div id="rowLancer" *ngFor="let element of PageData[3].data">
+
+                    <div id="rowCol ">
+                        <div class="btn Banim ">
+                            {{element.title}} : {{element.erreur}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="case" style="display:none">
+                <div class="timing ">
+                    <div class="counter">
+                    </div>
+                    <div class="fin">
+                        <h2>Terminer</h2>
+                    </div>
+
+                    <div class="classic-1"></div>
+
+
+                </div>
+                <div class="info">
+                    <p>Les informations: {{counter}}</p>
+                    <p>Les informations: {{counter}}</p>
+                    <p>Les informations: {{counter}}</p>
+                </div>
+            </div>
+
+
+            <!-------------------------------------------------------------------------->
+            <div class="sample-step-actions">
+                <!------------------------Loader-------------------------------------->
+                <button igxButton="raised" class="btn btn-secondary " (click)="stepper.prev()">Précèdent</button>
+                <button igxButton="raised" class="btn btn-secondary" id="btnLancer"
+                    (click)="Lancer(stepper)">Lancer</button>
+            </div>
+        </div>
+    </igx-step>
+
+    <igx-step #step5 [isValid]="StepperConfig[4].isValide">
+        <span igxStepTitle>{{StepperConfig[4].StepTitle}}</span>
+
+        <div igxStepContent>
+
+
+
+            <!-------------------------Resultat------------------------------>
+            <h1>{{StepperConfig[4].PageTitle}}</h1>
+            <!-- <div class="container ">
+            <ul class="list-group resultat">
+                <li #Erreur id={{PagaData[2].seancNP.buttonID} class="list-group-item ">
+                    <label class="form-check-label w-100" for="firstRadio">
+                        Planification {{PageData[4].Erreur[0].id}} :
+                        {{PageData[4].Erreur[0].Err}} Erreur</label>
+                    <div class="">
+                        <button id="visualiser2" #visualiser (click)="AfficheVisualise(visualiser)">
+                            <img src="./assets/img/vue.png"  width="3%" height="3%" />
+                        </button>
+                        <button id="telecharger2" #telecharger (click)="AfficheVisualise(telecharger)">
+                            <img src="./assets/img/download.png" width="3%" height="3%" />
+                        </button>
+                    </div>
+                </li>
+                <li #Erreur id={{PagaData[2].seancNP.buttonID} class="list-group-item ">
+                    <label class="form-check-label w-100" for="secondRadio">
+                        Planification {{PageData[4].Erreur[0].id}} :
+                        {{PageData[4].Erreur[0].Err}} Erreur</label>
+                    <div class="">
+                        <button id="visualiser2" #visualiser (click)="AfficheVisualise(visualiser)">
+                            <img src="./assets/img/vue.png"  width="3%" height="3%" />
+                        </button>
+                        <button id="telecharger2" #telecharger (click)="AfficheVisualise(telecharger)">
+                            <img src="./assets/img/download.png" width="3%" height="3%" />
+                        </button>
+                    </div>
+                </li>
+                <li #Erreur id={{PagaData[2].seancNP.buttonID} class="list-group-item ">
+                    <label class="form-check-label w-100" for="thirdRadio">
+                        Planification {{PageData[4].Erreur[0].id}} :
+                        {{PageData[4].Erreur[0].Err}} Erreur</label>
+                    <div class="">
+                        <button id="visualiser2" #visualiser (click)="AfficheVisualise(visualiser)">
+                            <img src="./assets/img/vue.png"  width="3%" height="3%" />
+                        </button>
+                        <button id="telecharger2" #telecharger (click)="AfficheVisualise(telecharger)">
+                            <img src="./assets/img/download.png" width="3%" height="3%" />
+                        </button>
+                    </div>
+                </li>
+                <li #Erreur id={{PagaData[2].seancNP.buttonID} class="list-group-item ">
+                    <label class="form-check-label w-100" for="thirdRadio">
+                        Planification {{PageData[4].Erreur[0].id}} :
+                        {{PageData[4].Erreur[0].Err}} Erreur</label>
+                    <div class="">
+                        <button id="visualiser2" #visualiser (click)="AfficheVisualise(visualiser)">
+                            <img src="./assets/img/vue.png"  width="3%" height="3%" />
+                        </button>
+                        <button id="telecharger2" #telecharger (click)="AfficheVisualise(telecharger)">
+                            <img src="./assets/img/download.png" width="3%" height="3%" />
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            </div> -->
+
+
+
+            <div class=" container-fluid " id="root">
+                <div id="row">
+
+                    <div id="rowCol ">
+                        <div class="btn Banim ">
+                            Planification {{PageData[4].Erreur[0].id}} :
+                            {{PageData[4].Erreur[0].Err}} Erreur
+                        </div>
+                    </div>
+                    <div class="">
+                        <button id="visualiser2" #visualiser (click)="AfficheVisualise(visualiser)">
+                            <img src="./assets/img/vue.png" width="3%" height="3%" />
+                        </button>
+                        <button id="telecharger2" #telecharger (click)="AfficheVisualise(telecharger)">
+                            <img src="./assets/img/download.png" width="3%" height="3%" />
+                        </button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <!-------------------------Resultat------------------------------>
+
+            <div class="sample-step-actions">
+                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.prev()">Précèdent</button>
+                <button igxButton="raised" class="btn btn-secondary" (click)="ArreterAlgo()">Terminer</button>
+            </div>
+        </div>
+    </igx-step>
+
+
+
+</igx-stepper>

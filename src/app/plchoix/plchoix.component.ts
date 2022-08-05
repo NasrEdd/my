@@ -23,7 +23,6 @@ export class PlchoixComponent implements OnInit {
 
     
     
-    $(".Progroot #continue").hide();
     console.log($("#continue"))
   }
   ngOnDestroy(): void {

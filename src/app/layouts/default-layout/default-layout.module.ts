@@ -1,7 +1,12 @@
 // IgxExcelExporterService no longer need to be manually provided and can be safely removed.
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {
+  IgxIconModule,
+  IgxButtonModule,
+  IgxButtonGroupModule,
+  IgxRadioModule
+} from "igniteui-angular";
 import { DefaultLayoutRoutingModule } from './default-layout-routing.module';
 import { DefaultLayoutComponent } from './default-layout.component';
 import { SettingsMenuSideBarComponent } from '../../components/settings-menu-side-bar/settings-menu-side-bar.component';
@@ -13,7 +18,6 @@ import { DocumentsAdministratifsComponent } from '../../pages/documents-administ
 import { DiplomesComponent } from '../../pages/diplomes/diplomes.component';
 import { GridTransactionsComponent } from 'src/app/components/grid-transactions.component';
 import { SmartPlaningComponent } from 'src/app/pages/smart-planing/smart-planing.component';
-import { ChoseComponent } from 'src/app/components/chose/chose.component';
 import { ImporterFicheComponent } from 'src/app/pages/importer-fiche/importer-fiche.component';
 import { EvaluerEmploitComponent } from 'src/app/pages/evaluer-emploit/evaluer-emploit.component';
 import { ProgressBarreComponent } from 'src/app/components/progress-barre/progress-barre.component'
@@ -41,7 +45,7 @@ import { AbsenceSectionComponent } from 'src/app/pages/dossier-etudiant/grid-sec
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomRouteReuseStrategy } from '../../Classes/custom-route-reuse-strategy';
@@ -71,12 +75,15 @@ import { CustomRouteReuseStrategy } from '../../Classes/custom-route-reuse-strat
     PaiementSectionComponent,
     AbsenceSectionComponent,
     SmartPlaningComponent,
-    ChoseComponent,
+    
     ImporterFicheComponent,
+
     EvaluerEmploitComponent,
+
     TableErreurComponent,
     ProgressBarreComponent,
     DetailsComponent,
+    
 
   ],
   imports: [
@@ -89,7 +96,15 @@ import { CustomRouteReuseStrategy } from '../../Classes/custom-route-reuse-strat
     TranslateModule,
     FormsModule,
     NgSelectModule,
-    IgxInputGroupModule
+    IgxInputGroupModule,
+    
+    IgxButtonModule,
+    IgxButtonGroupModule,
+    BrowserAnimationsModule
+    
+    
+    
+    
   ],
   providers: [
     /* // sticky routes feature, to save routes states

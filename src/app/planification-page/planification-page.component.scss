@@ -1,0 +1,928 @@
+$sample-gap: 20px;
+
+:host {
+    display: block;
+    padding: $sample-gap;
+}
+
+.sample-split,
+.sample-step-actions {
+    display: flex;
+    gap: $sample-gap;
+    justify-content: center;
+}
+
+.sample-step-actions {
+    margin-top: $sample-gap * 2;
+}
+
+.sample-split {
+    >* {
+        max-width: 380px;
+        flex: 1;
+    }
+
+    margin-bottom: $sample-gap;
+}
+
+form {
+    >* {
+        margin-bottom: calc(#{$sample-gap} / 2);
+    }
+
+    margin-bottom: $sample-gap;
+}
+
+igx-radio {
+    margin-bottom: $sample-gap;
+}
+
+.igx-stepper__body-content {
+    overflow: none;
+}
+
+/////////////////////////////////////////////////////////Loader/////////////////////////////////////////////////////////
+// #LoaderBox{
+//     width: 100%;
+//     height: 100%;
+//     background-color: red;
+// }
+// #loader {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     z-index: 1;
+//     width: 120px;
+//     height: 120px;
+//     margin: -76px 0 0 -76px;
+
+//     border: 16px solid #f3f3f3;
+//     border-radius: 50%;
+//     border-top: 16px solid #3498db;
+//     -webkit-animation: spin 2s linear infinite;
+//     animation: spin 2s linear infinite;
+// }
+
+// @-webkit-keyframes spin {
+//     0% {
+//         -webkit-transform: rotate(0deg);
+//     }
+
+//     100% {
+//         -webkit-transform: rotate(360deg);
+//     }
+// }
+
+// @keyframes spin {
+//     0% {
+//         transform: rotate(0deg);
+//     }
+
+//     100% {
+//         transform: rotate(360deg);
+//     }
+// }
+
+
+
+.case {
+    display: block;
+    justify-content: center;
+    margin: 5% 60% 7% 35%;
+    color: hsl(180, 100%, 1%);
+    width: 30%;
+    height: auto;
+    background-color: rgba(51, 102, 153, 0.8);
+    border-radius: 5px;
+
+    padding: 1% 4% 4% 4%;
+
+    position: relative;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.5s ease;
+    transform: scale(1);
+
+}
+
+::ng-deep .fin h2 {
+    filter: brightness(120%);
+    font-size: 350%;
+    margin-top: 30%;
+    color: rgb(246, 250, 246);
+}
+
+.timing {
+    display: flex;
+
+}
+
+
+.info {
+    margin-top: 10%;
+    font-size: 150%;
+    color: rgb(195, 194, 194);
+
+}
+
+
+
+[class*=classic]:before {
+    content: "Processing...";
+    color: rgb(253, 253, 253);
+}
+
+.classic-1 {
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top: 13%;
+    margin-left: 5%;
+    position: static;
+    font-size: 200%;
+    animation: c1 1s linear infinite alternate;
+}
+
+@keyframes c1 {
+    to {
+        opacity: 0
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+#myDiv {
+    display: none;
+    text-align: center;
+}
+
+
+/////////////////////////////////////////Smart-planing/////////////////////////////////////////////////////////////////
+
+@keyframes carre {
+    0% {
+        background-color: rgb(254, 252, 252);
+    }
+
+    50% {
+        background-color: #368;
+    }
+
+    100% {
+        background-color: rgba(51, 102, 153, 0.8);
+    }
+}
+
+.Sroot {
+    margin-bottom: 10%;
+}
+
+
+
+::ng-deep .Sroot .carre {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    transform: scale(1);
+}
+
+#button:hover {
+    transform: scale(1.1);
+    filter: brightness(120%);
+}
+
+
+.Sroot {
+    width: 100%;
+    overflow-x: none;
+}
+
+
+.Sroot #row2 {
+    margin-top: 10%;
+    margin-left: 9%;
+
+}
+
+.Sroot .mat-elevation-z4 {
+    background-color: rgb(51, 102, 153);
+    border-radius: 5px;
+
+    animation-name: carre;
+    animation-duration: 4s;
+}
+
+
+::ng-deep #bar {
+    color: hsl(184, 12%, 75%);
+    background-color: rgb(193, 193, 226);
+    padding: 20px 0px 20px;
+    margin: 0px 0px 20px;
+    box-shadow: rgba(209, 200, 200, 0.279)
+}
+
+::ng-deep #img1,
+#img2 {
+    margin-left: 40%;
+    margin-top: 5%;
+
+}
+
+::ng-deep h1 {
+    color: rgb(51, 102, 153);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+::ng-deep h2,
+h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+
+}
+
+
+
+::ng-deep body,
+input[type="text"],
+
+
+::ng-deep #button {
+    background-color: rgb(238, 238, 238);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(237, 236, 237);
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 4%;
+    transition: all 0.5s ease;
+    transform: scale(1);
+
+
+}
+
+
+
+
+
+
+
+::ng-deep * {
+    font-family: Georgia, serif;
+}
+
+
+/////////////////////////////////////////////Importer/////////////////////////////////////////////////////////////
+/// 
+@keyframes mymove {
+    from {
+
+        left: 0px;
+    }
+
+    to {
+
+        left: 50px;
+    }
+
+
+}
+
+
+.choses {
+    margin-top: 3%;
+    width: auto;
+    height: auto;
+}
+
+.import>div {
+    border: none;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #369;
+    text-align: start;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.1s ease;
+    transform: scale(1);
+    border: 1px solid white;
+
+}
+
+
+input[type="file"] {
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+
+
+a {
+    color: rgb(253, 252, 252) !important;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
+
+label {
+    font-size: 120%;
+    width: 120%;
+    height: 100%;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    text-align: start !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+#row:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.1);
+    filter: brightness(130%);
+    color: white;
+}
+
+
+
+
+
+
+::ng-deep body {
+    margin: 2em;
+}
+
+
+::ng-deep .choses button {
+    background-color: rgba(129, 133, 129, 0.758);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(251, 252, 253);
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-decoration: none;
+
+}
+
+
+
+::ng-deep body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+//::ng-deep force Css in my component
+
+::ng-deep .choses {
+    display: flex;
+    background-color: rgb(243, 241, 237);
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.col-md-12 {
+    width: 90%;
+}
+
+#choix {
+    position: relative;
+    overflow: none;
+    color: white;
+}
+
+
+
+
+h1 {
+    font-size: 300%;
+    text-align: center;
+    font-weight: bold;
+    color: #369;
+    margin-top: 3%;
+}
+
+.import {
+    display: block;
+}
+
+#row {
+    display: flex;
+    width: 300%;
+    margin: 10px;
+    position: relative;
+    animation: mymove 1s;
+    position: relative;
+    overflow: none;
+    margin-left: 3%;
+    height: 100px;
+}
+
+#envoyer button {
+    border: 1px solid white;
+}
+
+#row button {
+    position: relative;
+    margin-right: 3%;
+    text-align: center;
+    justify-content: center;
+
+}
+
+
+
+
+//////////////////////////////////PreTraitement///////////////////////////////////////////
+
+#Preroot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 62vh;
+    margin-left: 15%;
+}
+@media screen and (max-width: 800) {
+    #Preroot {
+            margin-left: 0%;     
+    }
+        .part {
+            width: 210%;
+        }
+        li{
+            width: 200%;
+        }
+}
+.part {
+    width: 110%;
+}
+
+
+
+.btnP {
+    width: 10%;
+}
+
+li span {
+
+    border: .5px solid white;
+    color: white;
+    padding: .5% 2% .5% 2%;
+    background-color: rgba(129, 133, 129, 0.758);
+    border-radius: 5px;
+
+}
+
+li {
+    color: #369;
+    background-color: rgba(253, 253, 254, 0.8);
+    border-radius: 7px;
+    padding-right: 9px;
+    padding-left: 9px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24);
+    transition: all 0.5s ease;
+    transform: scale(1);
+    font-family: Arial, Helvetica, sans-serif;
+    border: .5px solid gray;
+}
+
+#Prerow {
+    color: hsl(180, 100%, 1%);
+    width: 55%;
+    height: auto;
+    display: inline-block;
+    background-color: rgba(253, 253, 254, 0.8);
+    border-radius: 5px;
+    padding: 9px;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.5s ease;
+    transform: scale(1);
+    font-family: Arial, Helvetica, sans-serif;
+    border: .5px solid gray;
+}
+
+#PrerowCol {
+    display: flex;
+    width: 160%;
+
+}
+
+.Banim:hover,
+li:hover {
+    transform: scale(1);
+    filter: brightness(120%);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
+
+#Preroot .Banim {
+    background-color: white;
+    border: none;
+    color: #369;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 90%;
+    box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+    border: 1px solid gray;
+}
+
+
+
+#Preroot h2 {
+    font-size: 200%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    color: #369;
+    text-decoration: underline;
+}
+
+#Preroot span {
+    font-size: 20px;
+    color: red;
+    text-align: center;
+}
+
+
+#Preroot h1 {
+    font-size: 300%;
+    text-align: center;
+    font-weight: bold;
+    color: #369;
+    margin-bottom: auto;
+    padding-bottom: 2%;
+}
+
+::ng-deep .Precontenue p {
+    color: black;
+    border-radius: 5px;
+    margin-top: 1%;
+    font-size: 15px;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btnPi {
+    background-color: rgba(51, 102, 153, 0.674);
+    color: rgb(255, 255, 255);
+    border-radius: 30%;
+    width: 3%;
+    height:3%;
+}
+
+
+
+#corrige {
+    background-color: red;
+}
+
+
+
+///////////////////////////////////////////////////Lancement de l'algo///////////////////////////////////////////
+
+
+#rootLancer {
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 15.5%;
+
+}
+
+#rootLancer #rowLancer {
+    color: black;
+    width: 30%;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 33%;
+    margin-right: 4%;
+    margin-bottom: auto;
+    position: relative;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1);
+    border: .5px solid gray;
+
+}
+
+#rootLancerLancer #rowLancer:hover {
+    transform: scale(1.1);
+    filter: brightness(110%);
+}
+
+
+
+
+
+
+
+.continue {
+    position: absolute;
+    left: 80%;
+}
+
+
+
+
+
+#rootLancer .Banim {
+    display: flex;
+    justify-content: start;
+    background-color: white;
+    width: 100%;
+    color: #369;
+    padding: 10px 22px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: auto;
+    box-shadow: 0 2px 8px 0 rgba(66, 65, 65, 0.24);
+    border: 0.5px solid white;
+}
+
+
+#rootLancer h2 {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    color: #ece9e9;
+}
+
+
+
+#rootLancer h1 {
+    font-size: 300%;
+    text-align: center;
+    font-weight: bold;
+    color: #369;
+    margin-top: 5%;
+    margin-bottom: auto;
+    padding-bottom: 2%;
+}
+
+::ng-deep .contenue p {
+    border-radius: 5px;
+    margin-top: 10%;
+    margin-bottom: 9%;
+
+}
+
+
+//////////////////////////////////////Resultat///////////////////////////////////////////////////////////
+
+.container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 2%;
+    margin-bottom: 13.8%;
+    padding-top: 1%;
+    width: 60%;
+}
+.resultat li{
+    width: 40%;
+}
+.ResultatRow1 {
+    display: block;
+    width: 65%;
+    color: #369;
+    padding-top: 1.8%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    margin-right: 10%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.1s ease;
+    font-size: large;
+    border: 1px solid white;
+}
+.ResultatRow1 p{
+    margin-top: 1%;
+}
+.ResultatRow2 {
+    display: block;
+    width: 60%;
+}
+
+.ResultatRow2 button {
+    font-size: medium;
+    width: 20%;
+    height: 100%;
+    margin-left: 9%;
+    border-radius: 10%;
+    background-color: white;
+    border: .5px solid white;
+
+
+}
+
+
+
+.chos {
+    display: flex;
+    margin-right: 1%;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 40px;
+    color: #369;
+
+}
+
+#opener {
+    border: 1px solid rgb(251, 247, 247);
+    padding: 1% 1.2% 1% 1.2%;
+    font-size: larger;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.807);
+    border-radius: 0p x;
+
+
+}
+
+#ResultatRow {
+    display: block;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    width: auto;
+    background-color: white;
+    text-align: start;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.1s ease;
+    transform: scale(1);
+    border: 1px solid gray;
+
+}
+
+#ResultatRow div {
+    padding-top: 1%;
+    font-size: larger;
+    width: 105%;
+    margin-left: 2%;
+    color: #369;
+}
+
+
+p {
+
+    text-align: start;
+    width: 70%;
+}
+
+.p2 {
+    text-align: center;
+    padding-top: 2.5%;
+}
+
+#opener:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Plan {
+    border-radius: 5px;
+    width: 90%;
+
+}
+
+.rowL label {
+    margin-top: 2%;
+}
+
+#ResultatRow label:hover {
+    filter: brightness(130%);
+}
+
+.btnR button:hover {
+    background-color: aquamarine;
+}
+
+
+////////////////////////////////////////Tableau///////////////////////////////////////
+.root {
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 1.1em;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 50px 0px 20px 10px rgba(5, 1, 1, 0.174);
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: .5% 0 .5% 0;
+    padding: 0% 0 0% .5%;
+
+}
+
+tr {
+    color: #254D91;
+    text-align: center;
+    transition: all 1s ease-in-out;
+
+}
+
+td {
+    padding: .5% 0 .5% 0;
+    background-color: rgb(248, 248, 250);
+}
+
+th {
+    padding: .5% 0 .5% 0;
+    background-color: rgba(129, 133, 129, 0.758);
+    color: white;
+    font-size: large;
+
+}
+
+td:hover {
+    background-color: rgb(156, 160, 156);
+    color: white;
+}

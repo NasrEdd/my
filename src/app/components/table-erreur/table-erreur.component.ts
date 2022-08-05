@@ -19,7 +19,7 @@ declare var $: any;
 ]
 })
 export class TableErreurComponent implements OnInit {
-  titre : string = "Tableau";
+  TitreTableau : string = "Tableau";
   
   
   constructor(private loader: LoaderService) {

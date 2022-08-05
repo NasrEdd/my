@@ -10,7 +10,7 @@
     width: 60%;
 }
 
-.row1 {
+.ResultatRow1 {
     display: block;
     width: 45%;
     color: #369;
@@ -27,11 +27,11 @@
     border: 1px solid white;
 }
 
-.row2{
+.ResultatRow2{
     display:block;
     width: 60%;
 }
-.row button {
+.ResultatRow2 button {
     font-size: medium;
     width: 20%;
     height: 100%;
@@ -75,7 +75,7 @@ h1 {
 
 }
 
-#row {
+.ResultatRow {
     display: block;
     border: none;
     padding: 20px;
@@ -92,7 +92,7 @@ h1 {
 
 }
 
-#row div {
+.ResultatRow div {
     padding-top: 1%;
     font-size: larger;
     width: 105%;
