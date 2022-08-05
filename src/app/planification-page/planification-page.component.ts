@@ -43,7 +43,7 @@ export class PlanificationPageComponent implements OnInit {
     },
     {
       ComingData: {
-      
+
       },
       data: [{
         description: "Des informations sur l'erreur apprevue du traitement",
@@ -205,11 +205,8 @@ export class PlanificationPageComponent implements OnInit {
 
 
 
-  CreatTable(choix : string , Title : string) {
-    this.data = [];
-    this.key = [];
-    this.value = [];
-    this.TitreTableau = Title;
+  CreatTable(choix: string, Title: string) {
+
     this.data.forEach((element: any) => {
       this.key = Object.keys(element);
       this.value.push(Object.values(element));
@@ -229,7 +226,7 @@ export class PlanificationPageComponent implements OnInit {
         }
       });
 
-      $("#"+choix).on("click", function () {
+      $("#" + choix).on("click", function () {
         $("#dialog").dialog("open");
 
       });
@@ -359,7 +356,7 @@ export class PlanificationPageComponent implements OnInit {
   }
 
   ResultatPreTraitement() {
-     this.http.post(this.PageData[1].urlGeneration + "/ResultatsPretraitement/" + "nasr", null)
+    this.http.post(this.PageData[1].urlGeneration + "/ResultatsPretraitement/" + "nasr", null)
       .subscribe({
         next: (response: any) => {
           this.PageData[2].ComingData = response;
@@ -467,14 +464,18 @@ export class PlanificationPageComponent implements OnInit {
 
   }
 
-  ErreursDetails(Bsubmit: string,Titre : string) {
+  ErreursDetails(Bsubmit: string, Title: string) {
     switch (Bsubmit) {
       case "ErreurG":
         this.http.post(this.PageData[1].url + "/Generation/AffichageErreurGroupe/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit,Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -486,8 +487,12 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageErreurDuree/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit, Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -499,8 +504,12 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageErreurNbSeance/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit, Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -512,8 +521,12 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageErreurIntrv/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit, Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -525,8 +538,12 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageErreurNbEtud/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit, Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -538,8 +555,12 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageHorsDisp/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit, Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -551,8 +572,12 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageSectionNonPlanif/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
               this.data = response;
-              this.CreatTable(Bsubmit, Titre);
+              this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
             },
             error: (error) => {
@@ -564,60 +589,64 @@ export class PlanificationPageComponent implements OnInit {
         this.http.post(this.PageData[1].url + "/Generation/AffichageNonSaisieDisp/" + this.PageData[1].username, null)
           .subscribe({
             next: (response: any) => {
-        this.data = response;
-              this.CreatTable(Bsubmit,Titre);
-              console.log("Response: ", response);
-            },
-            error: (error) => {
-              console.error("Erreur: ", error)
-            }
-          })
-        break;
+              this.data = [];
+              this.key = [];
+              this.value = [];
+              this.TitreTableau = Title;
+          this.data = response;
+          this.CreatTable(Bsubmit, Title);
+          console.log("Response: ", response);
+        },
+        error: (error) => {
+          console.error("Erreur: ", error)
+        }
+    })
+    break;
 
 
+  }
+
+
+}
+
+
+
+showLoaderImportation(stepper: any) {
+  $(".fin").hide();
+  $("#Title2HideImporter").hide(500);
+  $("#btnLancer").hide(100);
+  $(".choses").hide(2000);
+  $(".case").show(2000);
+
+  let intervalId = setInterval(() => {
+    $(".arreter").html("Arreter");
+    $(".arreter").click(() => {
+      this.ArreterPreTraitement();
+    })
+    this.counter--;
+    if (this.counter === 0) {
+      clearInterval(intervalId);
+      setTimeout(() => {
+        stepper.next();
+        $("#Title2HideImporter").show();
+        $(".fin").hide();
+        $(".choses").show();
+        $(".case").hide();
+        $('.classic-1').show();
+        $(".arreter").html("Suivant");
+        $(".arreter").off("click")
+
+      }, 3000);
+
+      $('.classic-1').hide(1000);
+      $('.info').css({
+        "filter": "brightness(120%)",
+        'color': "white"
+      });
+      $('.fin').show(1000);
     }
-
-
-  }
-
-
-
-  showLoaderImportation(stepper: any) {
-    $(".fin").hide();
-    $("#Title2HideImporter").hide(500);
-    $("#btnLancer").hide(100);
-    $(".choses").hide(2000);
-    $(".case").show(2000);
-
-    let intervalId = setInterval(() => {
-      $(".arreter").html("Arreter");
-      $(".arreter").click(() => {
-        this.ArreterPreTraitement();
-      })
-      this.counter--;
-      if (this.counter === 0) {
-        clearInterval(intervalId);
-        setTimeout(() => {
-          stepper.next();
-          $("#Title2HideImporter").show();
-          $(".fin").hide();
-          $(".choses").show();
-          $(".case").hide();
-          $('.classic-1').show();
-          $(".arreter").html("Suivant");
-          $(".arreter").off("click")
-
-        }, 3000);
-
-        $('.classic-1').hide(1000);
-        $('.info').css({
-          "filter": "brightness(120%)",
-          'color': "white"
-        });
-        $('.fin').show(1000);
-      }
-    }, 1000);
-  }
+  }, 1000);
+}
 
 
 }
