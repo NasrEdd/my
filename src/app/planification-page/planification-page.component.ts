@@ -28,11 +28,12 @@ export class PlanificationPageComponent implements OnInit {
     ]
 
 
+  ComingData!: any;
 
 
   PageData: any[] = [
     {
-      Title: ["Génération d'emploi du temps", "Evaluation"],
+      Title: ["Généreration", "Evaluation"],
       descriptions: ["Pour générer un emploi du temps", "Pour évaluer l'emploi du temps"],
     },
     {
@@ -42,13 +43,10 @@ export class PlanificationPageComponent implements OnInit {
       username: "nasr",
     },
     {
-      ComingData: {
-
-      },
       data: [{
         description: "Des informations sur l'erreur apprevue du traitement",
         title: "Erreur de groupe",
-        erreur: 1,
+        erreur: 0,
         buttonID: "ErreurG",
         type: true,
         id: "El1",
@@ -173,6 +171,24 @@ export class PlanificationPageComponent implements OnInit {
   data: any = [];
   TitreTableau: string = "Tableau";
 
+  TempsEstimer: number = 4;
+  MilleuPlan: number = 5;
+  erreur: any = [{
+    Err: "1",
+    id:  1,
+  },
+  {
+    Err: "2",
+    id:  2,
+  },
+  {
+    Err: "3",
+    id:  3,
+  },
+  {
+    Err: "4",
+    id:  4,
+  }]
 
 
 
@@ -201,7 +217,7 @@ export class PlanificationPageComponent implements OnInit {
 
   public linear = false;
   public validate = false;
-
+  waiter: number = 4;
 
 
 
@@ -232,7 +248,9 @@ export class PlanificationPageComponent implements OnInit {
       });
     });
 
-    console.log(this.key);
+    console.log(this.ComingData["E_Groupe"]);
+
+
   };
 
 
@@ -331,44 +349,69 @@ export class PlanificationPageComponent implements OnInit {
     }
   }
 
-  LancerPreTraitement() {
-    this.http.post(this.PageData[1].urlGeneration + "/LancementPretraitement/" + "nasr", null)
+  LancerPreTraitement(stepper: any) {
+    let sub = this.http.post(this.PageData[1].urlGeneration + "/LancementPretraitement/" + "nasr", null)
       .subscribe(
+        (response: any) => {
+
+          console.log("Response: ", response);
+          this.ResultatPreTraitement(stepper);
+        },
         (error) => {
           console.error("Erreur: ", error)
-        },
-        (response: any) => {
-          console.log("Response: ", response);
         })
-
-    this.ResultatPreTraitement();
   }
+  checkPreTraitement(stepper : any) {
+    let sub = this.http.post(this.PageData[1].urlGeneration + "/LancementPretraitement/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+
+          console.log("Response de Check: ", response);
+        },
+        (erreur) => {
+          console.error("Erreur de check: ", erreur)
+          setTimeout(()=>this.ResultatPreTraitement(stepper),3000);
+        })
+  }
+
 
   ArreterPreTraitement() {
     this.http.post(this.PageData[1].url + "/ArretPreTraitement/" + "nasr", null)
       .subscribe(
         (response: any) => {
+          this.counter = 0;
           console.log("Response: ", response);
+
         },
         (error) => {
+          this.counter = 0;
+
           console.error("Erreur: ", error)
         })
+
+        
   }
 
-  ResultatPreTraitement() {
+  ResultatPreTraitement(stepper : any) {
+
     this.http.post(this.PageData[1].urlGeneration + "/ResultatsPretraitement/" + "nasr", null)
-      .subscribe({
-        next: (response: any) => {
-          this.PageData[2].ComingData = response;
-          this.PageData[2].ComingData.forEach((element: any) => {
-            console.log(Object.values(element));
-          });
-          console.log("Response: ", response);
+      .subscribe(
+        (response) => {
+            console.log(response)
+            console.log("response") 
+            stepper.next();
         },
-        error: (error) => {
-          console.error("Erreur: ", error)
+        (error: any) => {
+          if(error instanceof Object) {
+            setTimeout(() => {
+              console.log("1")
+              this.ResultatPreTraitement(stepper)
+            }, 5 * 1000);
+
+          }   
+          console.log("error : " , error)
         }
-      })
+      )
 
   }
 
@@ -412,8 +455,7 @@ export class PlanificationPageComponent implements OnInit {
   }
 
   Lancer(stepper: any) {
-
-    let a = setTimeout(() => this.showLoaderLancement(stepper), 2000);
+    this.showLoaderImportation(stepper);
     this.counter = 5;
   }
 
@@ -436,7 +478,7 @@ export class PlanificationPageComponent implements OnInit {
           $("#rootLancer").show();
           $(".case").hide();
 
-        }, 3000);
+        }, this.waiter);
 
         $('.classic-1').hide(1000);
         $('.info').css({
@@ -477,6 +519,10 @@ export class PlanificationPageComponent implements OnInit {
               this.data = response;
               this.CreatTable(Bsubmit, Title);
               console.log("Response: ", response);
+
+
+
+              // console.log(this.ComingData)
             },
             error: (error) => {
               console.error("Erreur: ", error)
@@ -593,60 +639,59 @@ export class PlanificationPageComponent implements OnInit {
               this.key = [];
               this.value = [];
               this.TitreTableau = Title;
-          this.data = response;
-          this.CreatTable(Bsubmit, Title);
-          console.log("Response: ", response);
-        },
-        error: (error) => {
-          console.error("Erreur: ", error)
-        }
-    })
-    break;
+              this.data = response;
+              this.CreatTable(Bsubmit, Title);
+              console.log("Response: ", response);
+            },
+            error: (error) => {
+              console.error("Erreur: ", error)
+            }
+          })
+        break;
+
+
+    }
 
 
   }
 
 
-}
 
+  showLoaderImportation(stepper: any) {
+    $(".fin").hide();
+    $("#Title2HideImporter").hide(500);
+    $("#btnLancer").hide(100);
+    $(".choses").hide(2000);
+    $(".case").show(2000);
+    this.checkPreTraitement(stepper);
+    let intervalId = setInterval(() => {
+      $(".arreter").html("Arreter");
+      $(".arreter").click(() => {
+        this.ArreterPreTraitement();
+      })
+      this.counter--;
+      if (this.counter === 0) {
+        clearInterval(intervalId);
+        setTimeout(() => {
+          $("#Title2HideImporter").show();
+          $(".fin").hide();
+          $(".choses").show();
+          $(".case").hide();
+          $('.classic-1').show();
+          $(".arreter").html("Suivant");
+          $(".arreter").off("click")
 
+        }, 3000);
 
-showLoaderImportation(stepper: any) {
-  $(".fin").hide();
-  $("#Title2HideImporter").hide(500);
-  $("#btnLancer").hide(100);
-  $(".choses").hide(2000);
-  $(".case").show(2000);
-
-  let intervalId = setInterval(() => {
-    $(".arreter").html("Arreter");
-    $(".arreter").click(() => {
-      this.ArreterPreTraitement();
-    })
-    this.counter--;
-    if (this.counter === 0) {
-      clearInterval(intervalId);
-      setTimeout(() => {
-        stepper.next();
-        $("#Title2HideImporter").show();
-        $(".fin").hide();
-        $(".choses").show();
-        $(".case").hide();
-        $('.classic-1').show();
-        $(".arreter").html("Suivant");
-        $(".arreter").off("click")
-
-      }, 3000);
-
-      $('.classic-1').hide(1000);
-      $('.info').css({
-        "filter": "brightness(120%)",
-        'color': "white"
-      });
-      $('.fin').show(1000);
-    }
-  }, 1000);
-}
+        $('.classic-1').hide(1000);
+        $('.info').css({
+          "filter": "brightness(120%)",
+          'color': "white"
+        });
+        $('.fin').show(1000);
+      }
+    }, 1000);
+  }
 
 
 }

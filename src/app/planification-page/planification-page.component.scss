@@ -20,10 +20,24 @@ $sample-gap: 20px;
     >* {
         max-width: 380px;
         flex: 1;
+
     }
 
     margin-bottom: $sample-gap;
 }
+
+:ng-deep .igx-stepper__step-header {
+    flex-direction: column;
+    border-radius: 50%;
+}
+
+.igx-stepper__step-title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #369;
+    font-weight: bold;
+}
+
+
 
 form {
     >* {
@@ -38,7 +52,7 @@ igx-radio {
 }
 
 .igx-stepper__body-content {
-    overflow: none;
+    overflow: hidden;
 }
 
 /////////////////////////////////////////////////////////Loader/////////////////////////////////////////////////////////
@@ -187,6 +201,12 @@ igx-radio {
 
 
 /////////////////////////////////////////Smart-planing/////////////////////////////////////////////////////////////////
+@media screen and (max-width: 1000px) {
+    .carre {
+        margin-left: 2%;
+        margin-right: 20%;
+    }
+}
 
 @keyframes carre {
     0% {
@@ -202,19 +222,32 @@ igx-radio {
     }
 }
 
-.Sroot {
-    margin-bottom: 10%;
+.carre {
+    width: 30%;
 }
 
+#Pdescr {
+    width: 100%;
+    font-size: large;
+}
 
+#Ptitle {
+    width: 100%;
+    font-size: xx-large;
+}
 
-::ng-deep .Sroot .carre {
-    display: flex;
+::ng-deep .Sroot {
+    display: inline-flex;
     height: 100%;
     justify-content: center;
     align-items: center;
     transition: all 0.5s ease;
     transform: scale(1);
+    margin-bottom: 10%;
+    margin-top: 10%;
+    width: 100%;
+    overflow-x: none;
+    margin-left: 5%;
 }
 
 #button:hover {
@@ -223,17 +256,10 @@ igx-radio {
 }
 
 
-.Sroot {
-    width: 100%;
-    overflow-x: none;
-}
 
 
-.Sroot #row2 {
-    margin-top: 10%;
-    margin-left: 9%;
 
-}
+
 
 .Sroot .mat-elevation-z4 {
     background-color: rgb(51, 102, 153);
@@ -254,18 +280,18 @@ igx-radio {
 
 ::ng-deep #img1,
 #img2 {
-    margin-left: 40%;
+    margin-left: 26%;
     margin-top: 5%;
 
 }
 
-::ng-deep h1 {
+h1 {
     color: rgb(51, 102, 153);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
 
-::ng-deep h2,
+h2,
 h3 {
     color: #444;
     font-family: Arial, Helvetica, sans-serif;
@@ -326,7 +352,7 @@ input[type="text"],
 
 
 .choses {
-    margin-top: 3%;
+    margin-top: 1%;
     width: auto;
     height: auto;
 }
@@ -488,20 +514,24 @@ h1 {
     justify-content: center;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    height: 62vh;
+    height: 59vh;
     margin-left: 15%;
 }
-@media screen and (max-width: 800) {
+
+@media screen and (max-width: 1000px) {
     #Preroot {
-            margin-left: 0%;     
+        margin-left: 0%;
     }
-        .part {
-            width: 210%;
-        }
-        li{
-            width: 200%;
-        }
+
+    .part {
+        width: 200%;
+    }
+
+    ul {
+        width: 180%;
+    }
 }
+
 .part {
     width: 110%;
 }
@@ -630,7 +660,7 @@ li:hover {
     color: rgb(255, 255, 255);
     border-radius: 30%;
     width: 3%;
-    height:3%;
+    height: 3%;
 }
 
 
@@ -642,7 +672,16 @@ li:hover {
 
 
 ///////////////////////////////////////////////////Lancement de l'algo///////////////////////////////////////////
+@media screen and (max-width: 1000px) {
+    #rootLancer {
+        width: 170%;
+        margin-left: -35%;
+        margin-top: 15% !important;
+        margin-bottom: 29.5% !important;
+    }
 
+
+}
 
 #rootLancer {
 
@@ -650,7 +689,7 @@ li:hover {
     justify-content: center;
     text-align: center;
     margin-top: 5%;
-    margin-bottom: 15.5%;
+    margin-bottom: 14%;
 
 }
 
@@ -660,7 +699,7 @@ li:hover {
     height: auto;
     background-color: white;
     border-radius: 5px;
-    margin-left: 33%;
+    margin-left: 36%;
     margin-right: 4%;
     margin-bottom: auto;
     position: relative;
@@ -749,9 +788,11 @@ li:hover {
     padding-top: 1%;
     width: 60%;
 }
-.resultat li{
+
+.resultat li {
     width: 40%;
 }
+
 .ResultatRow1 {
     display: block;
     width: 65%;
@@ -770,9 +811,11 @@ li:hover {
     font-size: large;
     border: 1px solid white;
 }
-.ResultatRow1 p{
+
+.ResultatRow1 p {
     margin-top: 1%;
 }
+
 .ResultatRow2 {
     display: block;
     width: 60%;
@@ -925,4 +968,88 @@ th {
 td:hover {
     background-color: rgb(156, 160, 156);
     color: white;
+}
+
+
+.form-check .btn {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.form-check label {
+    color: #369;
+    padding: 1.8% 0 1.2% 0;
+    margin-left: 5%;
+    font-size: bolder;
+
+    font-family: Arial,
+        Helvetica,
+        sans-serif;
+    ;
+    background-color: white;
+}
+
+.form-check .btn:hover {
+    background-color: RoyalBlue;
+}
+
+.planification {
+    border-radius: 7px;
+    width: 40%;
+    background-color: white;
+    border: .5 solid gray;
+}
+
+
+#Partie1 {
+    margin-left: 38%;
+    margin-top: 4%;
+}
+
+#Partie2 {
+    margin-left: 38%;
+}
+
+#Partie2 label {
+    font-weight: bolder;
+    color: white;
+    width: 70%;
+    
+}
+#Partie2 .planification{
+    border-radius: 7px;
+        width: 40%;
+        background-color: #369;
+        border: .5 solid gray;
+        margin-top: 2%;
+}
+.rootPlanification {
+    margin-top: 7%;
+    margin-bottom: 11%;
+}
+@media screen and (max-width: 1000px) {
+
+#Partie1 {
+    margin-left: 26%;
+    margin-top: 10%;
+}
+#Partie2 {
+    margin-left: 26%;
+    margin-top: 4%;
+}
+.planification {
+    width: 65%;
+}
+#Partie2 .planification {
+        width: 65%;
+}
+.rootPlanification{
+    margin-top: 13%;
+    margin-bottom: 17%;
+}
 }
