@@ -14,7 +14,7 @@
                 <div class="carre">
                     <img src="./assets/img/buid.png" width="70px" height="75px" id="img1">
 
-                    <div igxButton="raised" style="color:black" (click)="login() ;stepper.next()">
+                    <div igxButton="raised" style="color:black" (click)="login(stepper)">
 
                         <button id="button">
                             <h1>
@@ -34,7 +34,7 @@
                 <div class="carre">
                     <img src="./assets/img/test.png" width="80px" height="75px" id="img2">
 
-                    <div igxButton="raised" style="color:black" (click)="stepper.next()">
+                    <div igxButton="raised" style="color:black">
 
                         <button id="button">
                             <h1>
@@ -117,9 +117,11 @@
 
 
             </div>
+            <!----------------------Timer--------------------------->
             <div class="case" style="display:none">
                 <div class="timing ">
                     <div class="counter">
+                        {{counter}}
                     </div>
                     <div class="fin">
                         <h2>Terminer</h2>
@@ -175,20 +177,77 @@
                         </h2>
 
                     </div>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,element.title)"
-                        *ngFor="let element of PageData[2].data">
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[0].title)">
 
-                        <li #Erreur id={{element.buttonID}}
+                        <li #Erreur id={{PageData[2].data[0].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center ">
-                            {{element.title}}
-                            <span class="badge text-dark">{{element.erreur}}</span>
+                            {{PageData[2].data[0].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["E_Groupe"]}}</span>
                         </li>
                         <div class="btnPi  ">
-                            <button class="w-100" [title]="'Details sur l\''+element.title" data-toggle="popover"
-                                data-placement="top" attr.data-bs-content={{element.description}}>i</button>
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[0].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[0].description}}>i</button>
                         </div>
 
                     </ul>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[1].title)">
+
+                        <li #Erreur id={{PageData[2].data[1].buttonID}}
+                            class="list-group-item d-flex w-50 justify-content-between align-items-center ">
+                            {{PageData[2].data[1].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["E_duree"]}}</span>
+                        </li>
+                        <div class="btnPi  ">
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[1].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[1].description}}>i</button>
+                        </div>
+
+                    </ul>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[2].title)">
+
+                        <li #Erreur id={{PageData[2].data[2].buttonID}}
+                            class="list-group-item d-flex w-50 justify-content-between align-items-center ">
+                            {{PageData[2].data[2].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["E_intrv"]}}</span>
+                        </li>
+                        <div class="btnPi  ">
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[2].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[2].description}}>i</button>
+                        </div>
+
+                    </ul>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[3].title)">
+
+                        <li #Erreur id={{PageData[2].data[3].buttonID}}
+                            class="list-group-item d-flex w-50 justify-content-between align-items-center ">
+                            {{PageData[2].data[3].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["E_nbEtud"]}}</span>
+                        </li>
+                        <div class="btnPi  ">
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[3].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[3].description}}>i</button>
+                        </div>
+
+                    </ul>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[4].title)">
+
+                        <li #Erreur id={{PageData[2].data[4].buttonID}}
+                            class="list-group-item d-flex w-50 justify-content-between align-items-center ">
+                            {{PageData[2].data[4].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["E_nbSea"]}}</span>
+                        </li>
+                        <div class="btnPi  ">
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[4].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[4].description}}>i</button>
+                        </div>
+
+                    </ul>
+
                 </div>
 
                 <div class="container-fluid">
@@ -199,16 +258,28 @@
                         </h2>
 
                     </div>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,element.title)"
-                        *ngFor="let element of PageData[2].data2">
-                        <li #Erreur id={{element.buttonID}}
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[5].title)">
+                        <li #Erreur id={{PageData[2].data[5].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center">
-                            {{element.title}}
-                            <span class="badge text-dark">{{element.erreur}}</span>
+                            {{PageData[2].data[5].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["HorsDisp"]}}</span>
                         </li>
                         <div class="btnPi">
-                            <button class="w-100" [title]="'Details sur l\''+element.title" data-toggle="popover"
-                                data-placement="top" attr.data-bs-content={{element.description}}>i</button>
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[5].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[5].description}}>i</button>
+                        </div>
+                    </ul>
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[6].title)">
+                        <li #Erreur id={{PageData[2].data[6].buttonID}}
+                            class="list-group-item d-flex w-50 justify-content-between align-items-center">
+                            {{PageData[2].data[6].title}}
+                            <span class="badge  fw-bold ">{{ComingDataPreTrai["NonSaisieDisp"]}}</span>
+                        </li>
+                        <div class="btnPi">
+                            <button class="w-100" [title]="'Details sur l\''+PageData[2].data[6].title"
+                                data-toggle="popover" data-placement="top"
+                                attr.data-bs-content={{PageData[2].data[6].description}}>i</button>
                         </div>
                     </ul>
 
@@ -221,16 +292,16 @@
                             </h2>
 
                         </div>
-                        <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].seancNP.title)">
-                            <li #Erreur id={{PageData[2].seancNP.buttonID}}
+                        <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[7].title)">
+                            <li #Erreur id={{PageData[2].data[7].buttonID}}
                                 class="list-group-item d-flex w-50 justify-content-between align-items-center">
-                                {{PageData[2].seancNP.title}}
-                                <span class="badge text-dark ">{{PageData[2].seancNP.erreur}}</span>
+                                {{PageData[2].data[7].title}}
+                                <span class="badge  fw-bold  ">{{ComingDataPreTrai["SecNonPlanif"]}}</span>
                             </li>
                             <div class="btnPi">
-                                <button class="w-100" [title]="'Details sur l\''+PageData[2].seancNP.title"
+                                <button class="w-100" [title]="'Details sur l\''+PageData[2].data[7].title"
                                     data-toggle="popover" data-placement="top"
-                                    attr.data-bs-content={{PageData[2].seancNP.description}}>i</button>
+                                    attr.data-bs-content={{PageData[2].data[7].description}}>i</button>
                             </div>
                         </ul>
                     </div>
@@ -239,7 +310,8 @@
             <!------------------------------------------------------------->
             <div class="sample-step-actions">
                 <button igxButton="raised" class="btn btn-secondary" (click)="stepper.prev()">Précèdent</button>
-                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.next()">Suivant</button>
+                <button igxButton="raised" class="btn btn-secondary"
+                    (click)="LancerPreTraiAlgo(stepper)">Suivant</button>
             </div>
         </div>
     </igx-step>
@@ -253,11 +325,48 @@
             <!----------------------------Lancement de l'algo--------------------------->
             <h1 id="Titre2Hide">{{StepperConfig[3].PageTitle}}</h1>
             <div class=" container-fluid " id="rootLancer">
-                <div id="rowLancer" *ngFor="let element of PageData[3].data">
+                <div id="rowLancer">
 
                     <div id="rowCol ">
-                        <div class="btn Banim ">
-                            {{element.title}} : {{element.erreur}}
+                        <div class="btn Banim justify-content-between">
+                            <div>{{PageData[3].data[0].title}} :</div>
+                            <span class="badge  fw-bold  ">{{ComingDataResumerPre["nombre_intervenants"]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="rowLancer">
+
+                    <div id="rowCol ">
+                        <div class="btn Banim  justify-content-between ">
+                            <div>{{PageData[3].data[1].title}} :</div>
+                            <span class="badge  fw-bold  ">{{ComingDataResumerPre["sections_planifiees"]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="rowLancer">
+
+                    <div id="rowCol ">
+                        <div class="btn Banim  justify-content-between">
+                            <div>{{PageData[3].data[2].title}} :</div>
+                            <span class="badge  fw-bold  ">{{ComingDataResumerPre["nb_salles"]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="rowLancer">
+
+                    <div id="rowCol ">
+                        <div class="btn Banim justify-content-between">
+                            <div>{{PageData[3].data[3].title}} :</div>
+                            <span class="badge  fw-bold  ">{{ComingDataResumerPre["nombre_groupes"]}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="rowLancer">
+
+                    <div id="rowCol ">
+                        <div class="btn Banim justify-content-between">
+                            <div>{{PageData[3].data[4].title}} :</div>
+                            <span class="badge  fw-bold  ">{{ComingDataResumerPre["nb_SeaNonPlanif"]}}</span>
                         </div>
                     </div>
                 </div>
@@ -287,8 +396,7 @@
             <div class="sample-step-actions">
                 <!------------------------Loader-------------------------------------->
                 <button igxButton="raised" class="btn btn-secondary " (click)="stepper.prev()">Précèdent</button>
-                <button igxButton="raised" class="btn btn-secondary" id="btnLancer"
-                    (click)="Lancer(stepper)">Lancer</button>
+                <button igxButton="raised" class="btn btn-secondary" id="btnLancer">Lancer</button>
             </div>
         </div>
     </igx-step>

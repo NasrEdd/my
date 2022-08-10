@@ -5,6 +5,7 @@ import { LoaderService } from 'src/app/services/loader-service/loader-service.se
 import { HttpClient, HttpParams, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { thisQuarter } from '@igniteui/material-icons-extended';
+import { Console } from 'console';
 
 declare var $: any;
 
@@ -28,12 +29,30 @@ export class PlanificationPageComponent implements OnInit {
     ]
 
 
-  ComingData!: any;
+  ComingDataPreTrai: any = {
+    "E_Groupe": 2,
+    "E_duree": 0,
+    "E_intrv": 0,
+    "E_nbEtud": 3,
+    "E_nbSea": 0,
+    "HorsDisp": 0,
+    "NonSaisieDisp": 3,
+    "SecNonPlanif": 2
+  };
+
+  ComingDataResumerPre : any = {
+    "generations_souhaites": 4,
+    "nb_SeaNonPlanif": 2,
+    "nb_salles": 40,
+    "nombre_groupes": 41,
+    "nombre_intervenants": 65,
+    "sections_planifiees": 308
+  }
 
 
   PageData: any[] = [
     {
-      Title: ["Généreration", "Evaluation"],
+      Title: ["Génération", "Evaluation"],
       descriptions: ["Pour générer un emploi du temps", "Pour évaluer l'emploi du temps"],
     },
     {
@@ -53,19 +72,20 @@ export class PlanificationPageComponent implements OnInit {
       },
       {
         description: "Des informations sur l'erreur apprevue du traitement",
-        title: "Erreur d'intervenant",
-        erreur: 1,
-        buttonID: "ErreurI",
-        type: true,
-        id: "El2",
-
-      }, {
-        description: "Des informations sur l'erreur apprevue du traitement",
         title: "Erreur de la durée",
         erreur: 1,
         buttonID: "ErreurD",
         type: true,
         id: "El3",
+
+      },
+      {
+        description: "Des informations sur l'erreur apprevue du traitement",
+        title: "Erreur d'intervenant",
+        erreur: 1,
+        buttonID: "ErreurI",
+        type: true,
+        id: "El2",
 
       }, {
         description: "Des informations sur l'erreur apprevue du traitement",
@@ -83,9 +103,7 @@ export class PlanificationPageComponent implements OnInit {
         type: false,
         id: "ElI1",
 
-      }],
-
-      data2: [{
+      }, {
         description: "Des informations sur l'erreur apprevue du traitement",
         title: "Hors disponibilités",
         erreur: 1,
@@ -101,9 +119,7 @@ export class PlanificationPageComponent implements OnInit {
         type: false,
         id: "ElI3",
 
-      }]
-      ,
-      seancNP: {
+      }, {
         description: "Des informations sur l'erreur apprevue du traitement",
         title: "Seances non planifiables",
         erreur: 1,
@@ -112,10 +128,11 @@ export class PlanificationPageComponent implements OnInit {
         id: "ElI4",
 
       },
+      ]
     },
     {
       data: [{
-        title: "Nombre de professeurs",
+        title: "Nombre d'intervenants",
         erreur: "3",
         buttonID: "detail1",
         id: "A"
@@ -175,19 +192,19 @@ export class PlanificationPageComponent implements OnInit {
   MilleuPlan: number = 5;
   erreur: any = [{
     Err: "1",
-    id:  1,
+    id: 1,
   },
   {
     Err: "2",
-    id:  2,
+    id: 2,
   },
   {
     Err: "3",
-    id:  3,
+    id: 3,
   },
   {
     Err: "4",
-    id:  4,
+    id: 4,
   }]
 
 
@@ -248,7 +265,6 @@ export class PlanificationPageComponent implements OnInit {
       });
     });
 
-    console.log(this.ComingData["E_Groupe"]);
 
 
   };
@@ -265,7 +281,6 @@ export class PlanificationPageComponent implements OnInit {
       let img = element.children()[1];
       $("#" + img.id).show(500);
       console.log(img.id)
-      img.id.show();
       element.css({
         color: "white",
         transform: "scale(1.1)",
@@ -284,7 +299,7 @@ export class PlanificationPageComponent implements OnInit {
 
         const formDataSP = new FormData();
         formDataSP.append("file_sections", event.target.files[0]);
-        this.http.post(this.PageData[1].urlGeneration + "/UploadSections/" + "nasr", formDataSP)
+        this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/UploadSections/" + "nasr", formDataSP)
           .subscribe(
             (response: any) => {
               console.log("Response: ", response);
@@ -297,7 +312,7 @@ export class PlanificationPageComponent implements OnInit {
 
         const formDataTD = new FormData();
         formDataTD.append("file_disponibililtes", event.target.files[0]);
-        this.http.post(this.PageData[1].url + "/UploadDisponibilites/" + "nasr", formDataTD)
+        this.http.post("https://smartplanning-backend.herokuapp.com" + "/UploadDisponibilites/" + "nasr", formDataTD)
           .subscribe(
             (response: any) => {
               console.log("Response: ", response);
@@ -313,7 +328,7 @@ export class PlanificationPageComponent implements OnInit {
 
         const formDataPD = new FormData();
         formDataPD.append("file_preferences", event.target.files[0]);
-        this.http.post(this.PageData[1].url + "/UploadPreferences/" + "nasr", formDataPD)
+        this.http.post("https://smartplanning-backend.herokuapp.com" + "/UploadPreferences/" + "nasr", formDataPD)
           .subscribe(
             (response: any) => {
               console.log("Response: ", response);
@@ -327,7 +342,7 @@ export class PlanificationPageComponent implements OnInit {
       case "TS":
         const formDataTS = new FormData();
         formDataTS.append("file_salles", event.target.files[0]);
-        this.http.post(this.PageData[1].url + "/UploadSalles/" + "nasr", formDataTS)
+        this.http.post("https://smartplanning-backend.herokuapp.com" + "/UploadSalles/" + "nasr", formDataTS)
           .subscribe(
             (response: any) => {
               console.log("Response: ", response);
@@ -350,7 +365,7 @@ export class PlanificationPageComponent implements OnInit {
   }
 
   LancerPreTraitement(stepper: any) {
-    let sub = this.http.post(this.PageData[1].urlGeneration + "/LancementPretraitement/" + "nasr", null)
+    let sub = this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/LancementPretraitement/" + "nasr", null)
       .subscribe(
         (response: any) => {
 
@@ -361,22 +376,21 @@ export class PlanificationPageComponent implements OnInit {
           console.error("Erreur: ", error)
         })
   }
-  checkPreTraitement(stepper : any) {
-    let sub = this.http.post(this.PageData[1].urlGeneration + "/LancementPretraitement/" + "nasr", null)
+  checkPreTraitement(stepper: any) {
+    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/LancementPretraitement/" + "nasr", null)
       .subscribe(
         (response: any) => {
-
           console.log("Response de Check: ", response);
-        },
-        (erreur) => {
-          console.error("Erreur de check: ", erreur)
-          setTimeout(()=>this.ResultatPreTraitement(stepper),3000);
+          if (response.is_Start) {
+            this.ResultatPreTraitement(stepper);
+          }
         })
+
   }
 
 
   ArreterPreTraitement() {
-    this.http.post(this.PageData[1].url + "/ArretPreTraitement/" + "nasr", null)
+    this.http.post("https://smartplanning-backend.herokuapp.com" + "/ArretPreTraitement/" + "nasr", null)
       .subscribe(
         (response: any) => {
           this.counter = 0;
@@ -389,40 +403,55 @@ export class PlanificationPageComponent implements OnInit {
           console.error("Erreur: ", error)
         })
 
-        
+
   }
 
-  ResultatPreTraitement(stepper : any) {
+  ResultatPreTraitement(stepper: any) {
 
-    this.http.post(this.PageData[1].urlGeneration + "/ResultatsPretraitement/" + "nasr", null)
+    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ResultatsPretraitement/" + "nasr", null)
       .subscribe(
-        (response) => {
-            console.log(response)
-            console.log("response") 
+        (res: any) => {
+          console.log("response")
+          console.log(res);
+          if (res.is_InProgress) {
+            if (this.counter <= 2)
+              this.counter += 2;
+            setTimeout(() => this.ResultatPreTraitement(stepper), 2000)
+          } else {
+            this.ComingDataPreTrai = res;
             stepper.next();
+          }
         },
         (error: any) => {
-          if(error instanceof Object) {
-            setTimeout(() => {
-              console.log("1")
-              this.ResultatPreTraitement(stepper)
-            }, 5 * 1000);
 
-          }   
-          console.log("error : " , error)
+          console.log("error : ", error)
+
         }
+
       )
 
   }
 
-  login() {
+  login(stepper: any) {
 
     const headers = { "Content-Type": "application/json" }
-    this.http.post<any>(this.PageData[1].url + "/Username", { "user": "nasr" }, { headers })
-      .subscribe(res => {
-        console.log(res);
-        alert('Post Successfully.');
-      });
+    this.http.post<any>("https://smartplanning-backend.herokuapp.com" + "/Username", { "user": "nasr" }, { headers })
+      .subscribe(
+        (res) => {
+          console.log(res);
+          if (res.status == 400 || res.status == 500) {
+            window.location.reload();
+          }
+
+          if (res.Creation) {
+            stepper.next();
+
+          }
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
 
   }
 
@@ -672,16 +701,16 @@ export class PlanificationPageComponent implements OnInit {
       this.counter--;
       if (this.counter === 0) {
         clearInterval(intervalId);
-        setTimeout(() => {
-          $("#Title2HideImporter").show();
-          $(".fin").hide();
-          $(".choses").show();
-          $(".case").hide();
-          $('.classic-1').show();
-          $(".arreter").html("Suivant");
-          $(".arreter").off("click")
 
-        }, 3000);
+        $("#Title2HideImporter").show();
+        $(".fin").hide();
+        $(".choses").show();
+        $(".case").hide();
+        $('.classic-1').show();
+        $(".arreter").html("Suivant");
+        $(".arreter").off("click")
+
+
 
         $('.classic-1').hide(1000);
         $('.info').css({
@@ -692,7 +721,22 @@ export class PlanificationPageComponent implements OnInit {
       }
     }, 1000);
   }
+LancerPreTraiAlgo(stepper :any){
 
+
+  this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ResumePreTPlanificationGenerees/" + "nasr",null)
+    .subscribe(
+      (response: any) => {
+        this.ComingDataResumerPre = response;
+        stepper.next();
+        console.log("Response: ", response);
+      },
+      (error) => {
+        this.counter = 0;
+        console.error("Erreur: ", error)
+      })
+
+}
 
 }
 
