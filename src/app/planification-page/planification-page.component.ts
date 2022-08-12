@@ -16,7 +16,8 @@ declare var $: any;
 })
 export class PlanificationPageComponent implements OnInit {
   counter: number = 5;
-
+  Stop: boolean = false;
+  temps_minute: any = 0;
 
 
   StepperConfig: { PageTitle: string, StepTitle: string, isValide: boolean, isComplete: boolean, isDisable: boolean }[] =
@@ -441,12 +442,12 @@ export class PlanificationPageComponent implements OnInit {
     const headers = { "Content-Type": "application/json" }
     this.http.post<any>("https://smartplanning-backend.herokuapp.com" + "/Username", { "user": "nasr" }, { headers })
       .subscribe(
-        (response : any) => {
+        (response: any) => {
           if (response.Creation) {
-            stepper.next();
+            this.StepperConfig[1].isDisable = false;
+            setTimeout(() => stepper.next(), 1000);
             console.log(response);
             this.StepperConfig[0].isValide = true;
-            this.StepperConfig[1].isDisable = false;
             this.StepperConfig[0].isComplete = true;
           }
         },
@@ -701,7 +702,7 @@ export class PlanificationPageComponent implements OnInit {
 
     let intervalId = setInterval(() => {
       this.counter--;
-      if (this.counter === 0) {
+      if (this.counter == 0) {
         clearInterval(intervalId);
         this.counter = 0;
         console.log("gdsfghj")
@@ -728,7 +729,7 @@ export class PlanificationPageComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.ComingDataResumerPre = response;
-          stepper.next();
+          setTimeout(()=>stepper.next(),800);
           this.StepperConfig[3].isDisable = false;
           this.StepperConfig[2].isComplete = true;
           this.StepperConfig[2].isValide = true;
@@ -742,29 +743,31 @@ export class PlanificationPageComponent implements OnInit {
         })
 
   }
-  Stop!: any;
-  temps_minute: any = 0;;
+  
 
   GenererPlanification(stepper: any) {
     this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/GenerationPlanifications/" + "nasr", null)
       .subscribe(
         (response: any) => {
           console.log(response);
-          if (response.is_Start)
+          if (response.is_Start) {
             this.StepperConfig[4].isDisable = false;
-          this.StepperConfig[3].isComplete = true;
-          this.StepperConfig[3].isValide = true;
-          stepper.next();
-          setTimeout(() => $(".alert-info").hide(), 2000);
-          this.Stop = setInterval(() => {
-            this.temps_minute++;
-            if (this.temps_minute == 59) {
-              this.TempsEcoule++;
-              this.temps_minute = 0;
-            }
-            this.MeilleuresPlanification();
+            this.StepperConfig[3].isComplete = true;
+            this.StepperConfig[3].isValide = true;
+            setTimeout(() => stepper.next(), 800);
+            setTimeout(() => $(".alert-info").hide(), 2000);
+            let i = setInterval(() => {
+              if(this.Stop) 
+                  clearInterval(i);
+
+              this.temps_minute++;
+              if (this.temps_minute == 59) {
+                this.TempsEcoule++;
+                this.temps_minute = 0;
+              }
+              this.MeilleuresPlanification();
+            }, 1000);
           }
-            , 1000);
         },
         (error: any) => {
 
@@ -786,12 +789,14 @@ export class PlanificationPageComponent implements OnInit {
   }
 
   ArretGeneration() {
+    
+
     this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ArretGeneration/" + "nasr", null)
       .subscribe(
         (response: any) => {
           if (response.is_Stop) {
             console.log("Generetion arreter");
-            clearInterval(this.Stop);
+            this.Stop = true;
             $(".planification").css(
               {
                 "transform": "scale(1.1)"
