@@ -23,6 +23,13 @@ import {
   ConfirmBoxConfigModule,
   ToastNotificationConfigModule
 } from '@costlydeveloper/ngx-awesome-popup';
+import {
+  IgxIconModule,
+  IgxButtonModule,
+  IgxButtonGroupModule,
+  IgxInputGroupModule,
+  IgxRadioModule
+} from "igniteui-angular";
 
 import { NgxIndexedDBModule, DBConfig} from 'ngx-indexed-db';
 import { environment } from 'src/environments/environment';
@@ -127,7 +134,7 @@ const indexDbConfig: DBConfig  = {
     ChoseComponent,
     PlchoixComponent,
     PlanificationPageComponent,
-
+  
   
   ],
   imports: [
@@ -155,6 +162,8 @@ const indexDbConfig: DBConfig  = {
     ScrollingModule,
     IgxStepperModule,
     FormsModule,
+    IgxIconModule,
+    
     
    
   ],  

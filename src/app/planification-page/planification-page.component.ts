@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IButtonGroupEventArgs } from 'igniteui-angular';
+import { IButtonGroupEventArgs, scaleInBl } from 'igniteui-angular';
 import { SmartPlaningComponent } from '../pages/smart-planing/smart-planing.component';
 import { LoaderService } from 'src/app/services/loader-service/loader-service.service';
 import { HttpClient, HttpParams, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http'
@@ -19,13 +19,13 @@ export class PlanificationPageComponent implements OnInit {
 
 
 
-  StepperConfig: { PageTitle: string, StepTitle: string, isValide: boolean, isComplete: boolean }[] =
+  StepperConfig: { PageTitle: string, StepTitle: string, isValide: boolean, isComplete: boolean, isDisable: boolean }[] =
     [
-      { PageTitle: "", StepTitle: "Smart-Planing", isValide: true, isComplete: false },
-      { PageTitle: "Importation des fichiers EXCEL", StepTitle: "Importation", isValide: false, isComplete: false },
-      { PageTitle: "Resultat Pre-Traitement", StepTitle: "PréTraitement", isValide: false, isComplete: false },
-      { PageTitle: "Lancement de l'algorithme", StepTitle: "Lancement", isValide: false, isComplete: false },
-      { PageTitle: "Meilleurs planifications", StepTitle: "Planifications", isValide: false, isComplete: false },
+      { PageTitle: "", StepTitle: "Smart-Planing", isValide: true, isComplete: false, isDisable: false },
+      { PageTitle: "Importation des fichiers EXCEL", StepTitle: "Importation", isValide: true, isComplete: false, isDisable: true },
+      { PageTitle: "Resultat Pre-Traitement", StepTitle: "PréTraitement", isValide: true, isComplete: false, isDisable: true },
+      { PageTitle: "Lancement de l'algorithme", StepTitle: "Lancement", isValide: true, isComplete: false, isDisable: true },
+      { PageTitle: "Meilleurs planifications", StepTitle: "Planifications", isValide: true, isComplete: false, isDisable: true },
     ]
 
 
@@ -40,7 +40,7 @@ export class PlanificationPageComponent implements OnInit {
     "SecNonPlanif": 2
   };
 
-  ComingDataResumerPre : any = {
+  ComingDataResumerPre: any = {
     "generations_souhaites": 4,
     "nb_SeaNonPlanif": 2,
     "nb_salles": 40,
@@ -188,24 +188,16 @@ export class PlanificationPageComponent implements OnInit {
   data: any = [];
   TitreTableau: string = "Tableau";
 
-  TempsEstimer: number = 4;
+  TempsEcoule: number = 0;
   MilleuPlan: number = 5;
-  erreur: any = [{
-    Err: "1",
-    id: 1,
-  },
-  {
-    Err: "2",
-    id: 2,
-  },
-  {
-    Err: "3",
-    id: 3,
-  },
-  {
-    Err: "4",
-    id: 4,
-  }]
+  erreur: any =
+    [{ "Planifications_generees": "0" },
+    { "Min_Erreur_1": "---" },
+    { "Min_Erreur_2": "---" },
+    { "Min_Erreur_3": "---" },
+    { "Min_Erreur_4": "---" }
+    ]
+
 
 
 
@@ -218,6 +210,7 @@ export class PlanificationPageComponent implements OnInit {
       $('[data-toggle="popover"]').popover({
         trigger: 'hover',
       });
+
     });
 
 
@@ -259,10 +252,8 @@ export class PlanificationPageComponent implements OnInit {
         }
       });
 
-      $("#" + choix).on("click", function () {
-        $("#dialog").dialog("open");
+      $("#dialog").dialog("open");
 
-      });
     });
 
 
@@ -288,6 +279,7 @@ export class PlanificationPageComponent implements OnInit {
         filter: "brightness(120%)"
       });
     });
+    this.IsValideImportation();
 
   }
 
@@ -357,12 +349,7 @@ export class PlanificationPageComponent implements OnInit {
     this.checked(nom);
   }
 
-  AffecterData() {
-    for (let i = 0; i < this.PageData[2].ComingData.length; i++) {
-      this.PageData[2].data[i].erreur = this.PageData[2].ComingData[i];
-      console.log(this.PageData[2].data[i].erreur)
-    }
-  }
+
 
   LancerPreTraitement(stepper: any) {
     let sub = this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/LancementPretraitement/" + "nasr", null)
@@ -384,9 +371,19 @@ export class PlanificationPageComponent implements OnInit {
           if (response.is_Start) {
             this.ResultatPreTraitement(stepper);
           }
-        })
+        },
 
+        (error) => {
+          console.error("Erreur lancement: ", error);
+          this.MessageError = error.error.Message;
+          $('.alert-danger').html(this.MessageError);
+          $('.alert-danger').show();
+          setTimeout(() => $('.alert-danger').hide(), 3000);;
+        })
   }
+
+
+
 
 
   ArreterPreTraitement() {
@@ -405,7 +402,7 @@ export class PlanificationPageComponent implements OnInit {
 
 
   }
-
+  MessageError !: any;
   ResultatPreTraitement(stepper: any) {
 
     this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ResultatsPretraitement/" + "nasr", null)
@@ -413,18 +410,25 @@ export class PlanificationPageComponent implements OnInit {
         (res: any) => {
           console.log("response")
           console.log(res);
+          this.showLoaderImportation(stepper);
           if (res.is_InProgress) {
             if (this.counter <= 2)
               this.counter += 2;
-            setTimeout(() => this.ResultatPreTraitement(stepper), 2000)
+
+            setTimeout(() => { this.ResultatPreTraitement(stepper); }, 2000)
           } else {
             this.ComingDataPreTrai = res;
-            stepper.next();
+            console.log("helo")
+
           }
         },
         (error: any) => {
 
-          console.log("error : ", error)
+          console.log("error : ", error);
+          this.MessageError = error.error.Message;
+          $('.alert-danger').html(this.MessageError);
+          $('.alert-danger').show();
+          setTimeout(() => { $('.alert-danger').hide(); window.location.reload() }, 3000);;
 
         }
 
@@ -437,33 +441,31 @@ export class PlanificationPageComponent implements OnInit {
     const headers = { "Content-Type": "application/json" }
     this.http.post<any>("https://smartplanning-backend.herokuapp.com" + "/Username", { "user": "nasr" }, { headers })
       .subscribe(
-        (res) => {
-          console.log(res);
-          if (res.status == 400 || res.status == 500) {
-            window.location.reload();
-          }
-
-          if (res.Creation) {
+        (response : any) => {
+          if (response.Creation) {
             stepper.next();
-
+            console.log(response);
+            this.StepperConfig[0].isValide = true;
+            this.StepperConfig[1].isDisable = false;
+            this.StepperConfig[0].isComplete = true;
           }
         },
         (error) => {
           console.error(error);
+          window.location.reload();
         }
       );
 
   }
 
   IsValideImportation() {
-    if (this.PageData[1].NumberFile >= 2) {
-      this.PageData[1].Validate = false;
-      this.PageData[1].Complete = true;
-      return true;
+    if (this.PageData[1].NumberFile >= 4) {
+      this.StepperConfig[1].isValide = true;
+      this.StepperConfig[1].isComplete = true;
+      this.StepperConfig[2].isDisable = false;
     }
     else
-      this.PageData[1].Validate = false;
-    return false
+      this.StepperConfig[1].isValide = false;
   }
 
 
@@ -484,7 +486,7 @@ export class PlanificationPageComponent implements OnInit {
   }
 
   Lancer(stepper: any) {
-    this.showLoaderImportation(stepper);
+    this.checkPreTraitement(stepper);
     this.counter = 5;
   }
 
@@ -531,6 +533,7 @@ export class PlanificationPageComponent implements OnInit {
 
   importer(stepper: any) {
     let a = setTimeout(() => this.showLoaderImportation(stepper), 2000);
+    this.StepperConfig[1].isComplete = true;
     this.counter = 5;
 
   }
@@ -687,56 +690,125 @@ export class PlanificationPageComponent implements OnInit {
 
 
   showLoaderImportation(stepper: any) {
-    $(".fin").hide();
     $("#Title2HideImporter").hide(500);
     $("#btnLancer").hide(100);
-    $(".choses").hide(2000);
-    $(".case").show(2000);
-    this.checkPreTraitement(stepper);
+    $(".choses").hide(1000);
+    $(".case").show(1000);
+    $('.classic-1').show();
+
+    $(".lancement_steps").hide();
+
+
     let intervalId = setInterval(() => {
-      $(".arreter").html("Arreter");
-      $(".arreter").click(() => {
-        this.ArreterPreTraitement();
-      })
       this.counter--;
       if (this.counter === 0) {
         clearInterval(intervalId);
+        this.counter = 0;
+        console.log("gdsfghj")
+        setTimeout(() => {
+          $(".lancement_steps").show();
+          stepper.next();
 
-        $("#Title2HideImporter").show();
-        $(".fin").hide();
-        $(".choses").show();
-        $(".case").hide();
-        $('.classic-1').show();
-        $(".arreter").html("Suivant");
-        $(".arreter").off("click")
+          $("#Title2HideImporter").show();
+          $(".case").hide();
+          $(".choses").show();
+          $(".arreter").html("Précedent ");
+          $(".arreter").off("click")
+          $('.classic-1').hide();
+        }, 1000);
 
-
-
-        $('.classic-1').hide(1000);
-        $('.info').css({
-          "filter": "brightness(120%)",
-          'color': "white"
-        });
-        $('.fin').show(1000);
       }
     }, 1000);
   }
-LancerPreTraiAlgo(stepper :any){
 
 
-  this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ResumePreTPlanificationGenerees/" + "nasr",null)
-    .subscribe(
-      (response: any) => {
-        this.ComingDataResumerPre = response;
-        stepper.next();
-        console.log("Response: ", response);
-      },
-      (error) => {
-        this.counter = 0;
-        console.error("Erreur: ", error)
-      })
+  LancerPreTraiAlgo(stepper: any) {
 
-}
+    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ResumePreTPlanificationGenerees/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+          this.ComingDataResumerPre = response;
+          stepper.next();
+          this.StepperConfig[3].isDisable = false;
+          this.StepperConfig[2].isComplete = true;
+          this.StepperConfig[2].isValide = true;
+
+          console.log("Response: ", response);
+        },
+        (error) => {
+          this.counter = 0;
+          console.error("Erreur: ", error)
+
+        })
+
+  }
+  Stop!: any;
+  temps_minute: any = 0;;
+
+  GenererPlanification(stepper: any) {
+    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/GenerationPlanifications/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.is_Start)
+            this.StepperConfig[4].isDisable = false;
+          this.StepperConfig[3].isComplete = true;
+          this.StepperConfig[3].isValide = true;
+          stepper.next();
+          setTimeout(() => $(".alert-info").hide(), 2000);
+          this.Stop = setInterval(() => {
+            this.temps_minute++;
+            if (this.temps_minute == 59) {
+              this.TempsEcoule++;
+              this.temps_minute = 0;
+            }
+            this.MeilleuresPlanification();
+          }
+            , 1000);
+        },
+        (error: any) => {
+
+          console.log(error);
+        })
+  }
+
+  MeilleuresPlanification() {
+    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/MeilleuresPlanificationsGenerees/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+          if (response.length > 3)
+            this.erreur = response;
+          console.log(response);
+        },
+        (error: any) => {
+          console.log(error);
+        })
+  }
+
+  ArretGeneration() {
+    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ArretGeneration/" + "nasr", null)
+      .subscribe(
+        (response: any) => {
+          if (response.is_Stop) {
+            console.log("Generetion arreter");
+            clearInterval(this.Stop);
+            $(".planification").css(
+              {
+                "transform": "scale(1.1)"
+              }
+            )
+            $(".alert-success").show();
+            setTimeout(() => $(".alert-success").hide(), 2000);
+            this.StepperConfig[4].isValide = false
+            this.StepperConfig[4].isComplete = true;
+          }
+          console.log(response);
+        },
+        (error: any) => {
+          console.log(error);
+        })
+
+  }
 
 }
 

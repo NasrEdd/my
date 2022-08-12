@@ -1,8 +1,11 @@
-<igx-stepper #stepper [linear]="true">
+<igx-stepper #stepper [linear]="true" stepType="title">
+    <ng-template igxStepActiveIndicator>
+        <igx-icon>edit</igx-icon>
+    </ng-template>
 
 
-
-    <igx-step #step1 [isValid]="StepperConfig[0].isValide">
+    <igx-step #step1 [isValid]="StepperConfig[0].isValide" [completed]="StepperConfig[0].isComplete"
+        [disabled]="StepperConfig[0].isDisable">
 
 
         <span igxStepTitle>{{StepperConfig[0].StepTitle}}</span>
@@ -54,12 +57,15 @@
 
     </igx-step>
 
-    <igx-step #step2 [isValid]="StepperConfig[1].isValide">>
+    <igx-step #step2 [isValid]="StepperConfig[1].isValide" [completed]="StepperConfig[1].isComplete"
+        [disabled]="StepperConfig[1].isDisable">
 
 
         <span igxStepTitle>{{StepperConfig[1].StepTitle}}</span>
         <div igxStepContent>
-
+            <div class="alert alert-danger" style="display: none">
+                <strong>Danger!</strong> {{MessageError}}
+            </div>
 
             <!--------------------Importer-------------------------------------->
             <h1 id="Title2HideImporter">{{StepperConfig[1].PageTitle}}</h1>
@@ -119,27 +125,23 @@
             </div>
             <!----------------------Timer--------------------------->
             <div class="case" style="display:none">
-                <div class="timing ">
-                    <div class="counter">
-                        {{counter}}
-                    </div>
-                    <div class="fin">
-                        <h2>Terminer</h2>
-                    </div>
+                <div class="timing ">²
                     <div class="classic-1"></div>
                 </div>
 
             </div>
             <!-------------------------------------------->
 
-            <div class="sample-step-actions">
+            <div class="sample-step-actions lancement_steps">
                 <button igxButton="raised" class="btn btn-secondary arreter" (click)="stepper.prev()">Précèdent</button>
-                <button igxButton="raised" class="btn btn-secondary" (click)="Lancer(stepper)">Suivant</button>
+                <button igxButton="raised" class="btn btn-secondary" [disabled]="!StepperConfig[1].isValide"
+                    (click)="Lancer(stepper)">Suivant</button>
             </div>
         </div>
     </igx-step>
 
-    <igx-step #step3 [isValid]="StepperConfig[2].isValide">>
+    <igx-step #step3 [isValid]="StepperConfig[2].isValide" [completed]="StepperConfig[2].isComplete"
+        [disabled]="StepperConfig[2].isDisable">
 
 
         <span igxStepTitle>{{StepperConfig[2].StepTitle}}</span>
@@ -147,7 +149,7 @@
 
             <!---------------------Pre-Traitement------------------------->
             <!---------------------------Tableu des erreurs--------------->
-            <div id="dialog" title="Basic dialog" style="display:none">
+            <div id="dialog" title="Details des Erreurs" style="display:none">
                 <h1 class="title">{{TitreTableau}}</h1>
 
                 <div class="root">
@@ -158,15 +160,14 @@
                         <tr #exist class="row" *ngFor="let elem of value" scope="row">
                             <td class="col" *ngFor="let val of elem">{{val}}</td>
                         </tr>
-                        <tr #none class="row" *ngFor="let elem of value" scope="row">
-                            <td class="col" *ngFor="let val of elem">{{val}}</td>
-                        </tr>
+
 
                     </table>
                 </div>
             </div>
 
             <!---------------------------Tableu des erreurs--------------->
+
             <h1>{{StepperConfig[2].PageTitle}}</h1>
             <div class="container-fluid col-lg-10" id="Preroot">
 
@@ -177,10 +178,11 @@
                         </h2>
 
                     </div>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[0].title)">
+                    <ul class="d-flex">
 
-                        <li #Erreur id={{PageData[2].data[0].buttonID}}
-                            class="list-group-item d-flex w-50 justify-content-between align-items-center ">
+                        <li #Erreur2 id={{PageData[2].data[0].buttonID}}
+                            class="list-group-item d-flex w-50 justify-content-between align-items-center "
+                            (click)="ErreursDetails(Erreur2.id,PageData[2].data[0].title)">
                             {{PageData[2].data[0].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["E_Groupe"]}}</span>
                         </li>
@@ -191,9 +193,9 @@
                         </div>
 
                     </ul>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[1].title)">
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur3.id,PageData[2].data[1].title)">
 
-                        <li #Erreur id={{PageData[2].data[1].buttonID}}
+                        <li #Erreur3 id={{PageData[2].data[1].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center ">
                             {{PageData[2].data[1].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["E_duree"]}}</span>
@@ -205,9 +207,9 @@
                         </div>
 
                     </ul>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[2].title)">
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur4.id,PageData[2].data[2].title)">
 
-                        <li #Erreur id={{PageData[2].data[2].buttonID}}
+                        <li #Erreur4 id={{PageData[2].data[2].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center ">
                             {{PageData[2].data[2].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["E_intrv"]}}</span>
@@ -219,9 +221,9 @@
                         </div>
 
                     </ul>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[3].title)">
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur5.id,PageData[2].data[3].title)">
 
-                        <li #Erreur id={{PageData[2].data[3].buttonID}}
+                        <li #Erreur5 id={{PageData[2].data[3].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center ">
                             {{PageData[2].data[3].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["E_nbEtud"]}}</span>
@@ -233,9 +235,9 @@
                         </div>
 
                     </ul>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[4].title)">
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur6.id,PageData[2].data[4].title)">
 
-                        <li #Erreur id={{PageData[2].data[4].buttonID}}
+                        <li #Erreur6 id={{PageData[2].data[4].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center ">
                             {{PageData[2].data[4].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["E_nbSea"]}}</span>
@@ -258,8 +260,8 @@
                         </h2>
 
                     </div>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[5].title)">
-                        <li #Erreur id={{PageData[2].data[5].buttonID}}
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur7.id,PageData[2].data[5].title)">
+                        <li #Erreur7 id={{PageData[2].data[5].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center">
                             {{PageData[2].data[5].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["HorsDisp"]}}</span>
@@ -270,8 +272,8 @@
                                 attr.data-bs-content={{PageData[2].data[5].description}}>i</button>
                         </div>
                     </ul>
-                    <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[6].title)">
-                        <li #Erreur id={{PageData[2].data[6].buttonID}}
+                    <ul class="d-flex" (click)="ErreursDetails(Erreur8.id,PageData[2].data[6].title)">
+                        <li #Erreur8 id={{PageData[2].data[6].buttonID}}
                             class="list-group-item d-flex w-50 justify-content-between align-items-center">
                             {{PageData[2].data[6].title}}
                             <span class="badge  fw-bold ">{{ComingDataPreTrai["NonSaisieDisp"]}}</span>
@@ -292,8 +294,8 @@
                             </h2>
 
                         </div>
-                        <ul class="d-flex" (click)="ErreursDetails(Erreur.id,PageData[2].data[7].title)">
-                            <li #Erreur id={{PageData[2].data[7].buttonID}}
+                        <ul class="d-flex" (click)="ErreursDetails(Erreur9.id,PageData[2].data[7].title)">
+                            <li #Erreur9 id={{PageData[2].data[7].buttonID}}
                                 class="list-group-item d-flex w-50 justify-content-between align-items-center">
                                 {{PageData[2].data[7].title}}
                                 <span class="badge  fw-bold  ">{{ComingDataPreTrai["SecNonPlanif"]}}</span>
@@ -308,15 +310,16 @@
                 </div>
             </div>
             <!------------------------------------------------------------->
-            <div class="sample-step-actions">
-                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.prev()">Précèdent</button>
+            <div class="sample-step-actions ">
+                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.prev()">Corriger</button>
                 <button igxButton="raised" class="btn btn-secondary"
                     (click)="LancerPreTraiAlgo(stepper)">Suivant</button>
             </div>
         </div>
     </igx-step>
 
-    <igx-step #step4 [isValid]="StepperConfig[3].isValide">
+    <igx-step #step4 [isValid]="StepperConfig[3].isValide" [completed]="StepperConfig[3].isComplete"
+        [disabled]="StepperConfig[3].isDisable">
 
 
         <span igxStepTitle>{{StepperConfig[3].StepTitle}}</span>
@@ -372,40 +375,33 @@
                 </div>
 
             </div>
-            <div class="case" style="display:none">
-                <div class="timing ">
-                    <div class="counter">
-                    </div>
-                    <div class="fin">
-                        <h2>Terminer</h2>
-                    </div>
-
-                    <div class="classic-1"></div>
 
 
-                </div>
-                <div class="info">
-                    <p>Les informations: {{counter}}</p>
-                    <p>Les informations: {{counter}}</p>
-                    <p>Les informations: {{counter}}</p>
-                </div>
-            </div>
 
-
+            <!------------------------Loader-------------------------------------->
+           
             <!-------------------------------------------------------------------------->
             <div class="sample-step-actions">
-                <!------------------------Loader-------------------------------------->
                 <button igxButton="raised" class="btn btn-secondary " (click)="stepper.prev()">Précèdent</button>
-                <button igxButton="raised" class="btn btn-secondary" id="btnLancer">Lancer</button>
+                <button igxButton="raised" class="btn btn-secondary" id="btnLancer"
+                    (click)="GenererPlanification(stepper)">Lancer</button>
             </div>
         </div>
     </igx-step>
 
-    <igx-step #step5 [isValid]="StepperConfig[4].isValide">
+    <igx-step #step5 [isValid]="StepperConfig[4].isValide" [completed]="StepperConfig[4].isComplete"
+        [disabled]="StepperConfig[4].isDisable">
+
         <span igxStepTitle>{{StepperConfig[4].StepTitle}}</span>
         <!-------------------------Resultat------------------------------>
         <div igxStepContent>
             <h1>{{StepperConfig[4].PageTitle}}</h1>
+            <div class="alert alert-success" style="display: none;">
+                <strong>Success!</strong> La génération a été arréter.
+            </div>
+            <div class="alert alert-info">
+                <strong>Info!</strong> La génération a été lancer.
+            </div>
             <div class="rootPlanification d-block">
                 <div id="Partie1">
                     <div class="form-check d-flex planification">
@@ -413,7 +409,7 @@
                         <button class="btn btn-info btn-lg">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <label for="3"> Planification {{erreur[0].id}} : {{erreur[0].Err}} Erreur</label>
+                        <label for="3"> Planification 1 : {{erreur[1]["Min_Erreur_1"]}} Erreur</label>
 
                     </div>
                     <div class="form-check d-flex planification">
@@ -421,7 +417,7 @@
                         <button class="btn btn-info btn-lg">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <label for="3"> Planification {{erreur[2].id}} : {{erreur[2].Err}} Erreur</label>
+                        <label for="3"> Planification 2 : {{erreur[2]["Min_Erreur_2"]}} Erreur</label>
 
                     </div>
                     <div class="form-check d-flex planification ">
@@ -429,7 +425,7 @@
                         <button class="btn btn-info btn-lg">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <label for="3"> Planification {{erreur[2].id}} : {{erreur[2].Err}} Erreur</label>
+                        <label for="3"> Planification 3 : {{erreur[3]["Min_Erreur_3"]}} Erreur</label>
 
                     </div>
                     <div class="form-check d-flex planification">
@@ -437,15 +433,21 @@
                         <button class="btn btn-info btn-lg">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <label for="3"> Planification {{erreur[2].id}} : {{erreur[2].Err}} Erreur</label>
+                        <label for="3"> Planification 4 : {{erreur[4]["Min_Erreur_4"]}} Erreur</label>
 
                     </div>
                 </div>
                 <div id="Partie2">
-                    <div class=" planification ">
+                    <div class="planification justify-content-between">
 
-                        <label for="3"> Temps Estimer: <span>{{TempsEstimer}}</span></label>
-                        <label for="3"> Meilleur Planification: <span>{{MilleuPlan}}</span></label>
+                        <div class=" justify-content-between">
+                            <label for="3"> Temps écoulé: </label>
+                            <span class="badge  fw-bold  ">{{TempsEcoule}}:{{temps_minute}}</span>
+                        </div>
+                        <div class=" justify-content-between">
+                            <label for="3"> Planification générées:</label>
+                            <span class="badge  fw-bold  ">{{erreur[0]["Planifications_generees"]}}</span>
+                        </div>
 
                     </div>
                 </div>
@@ -453,8 +455,10 @@
             <!---Resultat------------------------------>
 
             <div class="sample-step-actions">
-                <button igxButton="raised" class="btn btn-secondary" (click)="stepper.prev()">Précèdent</button>
-                <button igxButton="raised" class="btn btn-secondary" (click)="ArreterAlgo()">Terminer</button>
+                <button igxButton="raised" class="btn btn-secondary" [disabled]="StepperConfig[4].isValide"
+                    (click)="ArretGeneration();stepper.prev()">Précèdent</button>
+                <button igxButton="raised" class="btn btn-secondary"
+                    (click)="ArretGeneration()">Arréter/Evaluer</button>
             </div>
         </div>
     </igx-step>

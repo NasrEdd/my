@@ -638,7 +638,7 @@ li:hover {
 
 #Preroot span {
     font-size: 20px;
-    color: red;
+    color: #369;
     text-align: center;
 }
 
@@ -1027,6 +1027,9 @@ td:hover {
     margin-top: 4%;
 }
 
+#Partie1 label:hover{
+color:black;
+}
 #Partie2 {
     margin-left: 38%;
 }
@@ -1038,17 +1041,18 @@ td:hover {
     
 }
 #Partie2 .planification{
-    border-radius: 7px;
-        width: 40%;
+    
         background-color: #369;
-        border: .5 solid gray;
-        margin-top: 2%;
+       
+}
+#Partie2 span{
+        font-size: 20px;
 }
 .rootPlanification {
     margin-top: 7%;
     margin-bottom: 11%;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 781px) {
 
 #Partie1 {
     margin-left: 26%;
@@ -1059,13 +1063,17 @@ td:hover {
     margin-top: 4%;
 }
 .planification {
-    width: 65%;
+    width: 75%;
 }
-#Partie2 .planification {
-        width: 65%;
-}
+
 .rootPlanification{
     margin-top: 13%;
     margin-bottom: 17%;
 }
+}
+
+@media screen and (max-width: 1200px )and( min-width:720px) {
+    .planification {
+            width: 75%;
+        }
 }
