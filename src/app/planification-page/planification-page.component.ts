@@ -379,7 +379,7 @@ export class PlanificationPageComponent implements OnInit {
           this.MessageError = error.error.Message;
           $('.alert-danger').html(this.MessageError);
           $('.alert-danger').show();
-          setTimeout(() => $('.alert-danger').hide(), 3000);;
+          setTimeout(() => {$('.alert-danger').hide();window.location.reload()}, 3000);;
         })
   }
 
