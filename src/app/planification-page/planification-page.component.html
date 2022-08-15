@@ -379,11 +379,11 @@
 
 
             <!------------------------Loader-------------------------------------->
-           
+
             <!-------------------------------------------------------------------------->
             <div class="sample-step-actions">
                 <button igxButton="raised" class="btn btn-secondary " (click)="stepper.prev()">Précèdent</button>
-                <button igxButton="raised" class="btn btn-secondary" id="btnLancer"
+                <button igxButton="raised" class="btn btn-secondary"
                     (click)="GenererPlanification(stepper)">Lancer</button>
             </div>
         </div>
@@ -396,10 +396,10 @@
         <!-------------------------Resultat------------------------------>
         <div igxStepContent>
             <h1>{{StepperConfig[4].PageTitle}}</h1>
-            <div class="alert alert-success" style="display: none;">
+            <div class="alert alert-success" style="display:none">
                 <strong>Success!</strong> La génération a été arréter.
             </div>
-            <div class="alert alert-info">
+            <div class="alert alert-info" style="display:none">
                 <strong>Info!</strong> La génération a été lancer.
             </div>
             <div class="rootPlanification d-block">
@@ -440,13 +440,18 @@
                 <div id="Partie2">
                     <div class="planification justify-content-between">
 
-                        <div class=" justify-content-between">
+                        <div class=" justify-content-between tohide">
                             <label for="3"> Temps écoulé: </label>
                             <span class="badge  fw-bold  ">{{TempsEcoule}}:{{temps_minute}}</span>
                         </div>
-                        <div class=" justify-content-between">
+                        <div class=" justify-content-between tohide">
                             <label for="3"> Planification générées:</label>
                             <span class="badge  fw-bold  ">{{erreur[0]["Planifications_generees"]}}</span>
+                        </div>
+                        <div class=" justify-content-between btn-secondary" id="evaluation" style="display:none">
+                            <label for="3"> Temps d'évaluation: </label>
+                            <span class="badge  fw-bold">{{TempsEstime}} min</span>
+
                         </div>
 
                     </div>
@@ -456,13 +461,35 @@
 
             <div class="sample-step-actions">
                 <button igxButton="raised" class="btn btn-secondary" [disabled]="StepperConfig[4].isValide"
-                    (click)="ArretGeneration();stepper.prev()">Précèdent</button>
+                    (click)="stepper.prev()">Précèdent</button>
                 <button igxButton="raised" class="btn btn-secondary arrete"
-                    (click)="ArretGeneration()">Arréter/Evaluer</button>
+                    (click)="ArretGeneration(stepper)">Arréter</button>
             </div>
         </div>
+        <div id="dialog2" title="Tableau de board" style="display:none">
+
+            <h1>{{StepperConfig[5].PageTitle}}</h1>
+            <div class='tableauPlaceholder' id='viz1658486490626' style='position: relative'><noscript><a href='#'><img
+                            alt='Tableau de bord des planifications '
+                            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Dashboard_EDT_V3&#47;Tableaudeborddesplanificationsnombre&#47;1_rss.png'
+                            style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='Dashboard_EDT_V3&#47;Tableaudeborddesplanificationsnombre' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image'
+                        value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Dashboard_EDT_V3&#47;Tableaudeborddesplanificationsnombre&#47;1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                    <param name='filter' value='publish=yes' />
+                </object></div>
+        </div>
     </igx-step>
-
-
 
 </igx-stepper>

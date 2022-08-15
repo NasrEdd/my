@@ -6,6 +6,7 @@ import { HttpClient, HttpParams, HttpRequest, HttpEvent, HttpHeaders } from '@an
 import { Router } from '@angular/router';
 import { thisQuarter } from '@igniteui/material-icons-extended';
 import { Console } from 'console';
+import { idText } from 'typescript';
 
 declare var $: any;
 
@@ -23,10 +24,11 @@ export class PlanificationPageComponent implements OnInit {
   StepperConfig: { PageTitle: string, StepTitle: string, isValide: boolean, isComplete: boolean, isDisable: boolean }[] =
     [
       { PageTitle: "", StepTitle: "Smart-Planing", isValide: true, isComplete: false, isDisable: false },
-      { PageTitle: "Importation des fichiers EXCEL", StepTitle: "Importation", isValide: true, isComplete: false, isDisable: true },
+      { PageTitle: "Importation des fichiers EXCEL", StepTitle: "Importation", isValide: false, isComplete: false, isDisable: true },
       { PageTitle: "Resultat Pre-Traitement", StepTitle: "PréTraitement", isValide: true, isComplete: false, isDisable: true },
       { PageTitle: "Lancement de l'algorithme", StepTitle: "Lancement", isValide: true, isComplete: false, isDisable: true },
       { PageTitle: "Meilleurs planifications", StepTitle: "Planifications", isValide: true, isComplete: false, isDisable: true },
+      { PageTitle: "Evaluation", StepTitle: "Evaluation", isValide: true, isComplete: false, isDisable: true },
     ]
 
 
@@ -211,13 +213,11 @@ export class PlanificationPageComponent implements OnInit {
       $('[data-toggle="popover"]').popover({
         trigger: 'hover',
       });
-
     });
+    this.AfficheTableBoard();
 
 
-    /////////////////////////Tableau des erreur///////////////////////////
-
-
+    /////////////////////////Tableau de board///////////////////////////
 
   }
 
@@ -230,7 +230,51 @@ export class PlanificationPageComponent implements OnInit {
   public validate = false;
   waiter: number = 4;
 
+  AfficheTableBoard() {
 
+    $("##dialog2").show();
+    $(()=> {
+      $("#dialog2").dialog({
+        autoOpen: false,
+        width: window.innerWidth * 1,
+        height: window.innerHeight * 1,
+        show: {
+          effect: "blind",
+          duration: 1000
+        },
+        hide: {
+          effect: "none",
+          duration: 1000
+        }
+      });
+
+      $(".arrete").dialog("open");
+    })
+
+
+
+    var divElement = document.getElementById('viz1660562154514');
+    var vizElement = divElement?.getElementsByTagName('object')[0];
+
+    console.log(divElement, vizElement);
+    if (divElement && vizElement) {
+      if (divElement.offsetWidth > 800) {
+        vizElement.style.width = '1000px';
+        vizElement.style.height = '927px';
+      } else if (divElement.offsetWidth > 500) {
+        vizElement.style.width = '1000px';
+        vizElement.style.height = '927px';
+      } else {
+        vizElement.style.width = '100%';
+        vizElement.style.height = '1427px';
+      }
+    }
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    if (vizElement)
+      vizElement.parentNode?.insertBefore(scriptElement, vizElement);
+
+  }
 
   CreatTable(choix: string, Title: string) {
 
@@ -262,7 +306,11 @@ export class PlanificationPageComponent implements OnInit {
   };
 
 
-
+  CompleteAll(value: any) {
+    let i = value;
+    while (i)
+      this.StepperConfig[i--].isComplete = true;
+  }
 
 
   checked(id: string) {
@@ -281,7 +329,7 @@ export class PlanificationPageComponent implements OnInit {
       });
     });
     this.IsValideImportation();
-
+    this.CompleteAll(1);
   }
 
 
@@ -352,18 +400,7 @@ export class PlanificationPageComponent implements OnInit {
 
 
 
-  LancerPreTraitement(stepper: any) {
-    let sub = this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/LancementPretraitement/" + "nasr", null)
-      .subscribe(
-        (response: any) => {
 
-          console.log("Response: ", response);
-          this.ResultatPreTraitement(stepper);
-        },
-        (error) => {
-          console.error("Erreur: ", error)
-        })
-  }
   checkPreTraitement(stepper: any) {
     this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/LancementPretraitement/" + "nasr", null)
       .subscribe(
@@ -379,7 +416,7 @@ export class PlanificationPageComponent implements OnInit {
           this.MessageError = error.error.Message;
           $('.alert-danger').html(this.MessageError);
           $('.alert-danger').show();
-          setTimeout(() => {$('.alert-danger').hide();window.location.reload()}, 3000);;
+          setTimeout(() => { $('.alert-danger').hide(); window.location.reload() }, 3000);;
         })
   }
 
@@ -445,7 +482,7 @@ export class PlanificationPageComponent implements OnInit {
         (response: any) => {
           if (response.Creation) {
             this.StepperConfig[1].isDisable = false;
-            setTimeout(() => stepper.next(), 1000);
+            setTimeout(() => stepper.next(), 500);
             console.log(response);
             this.StepperConfig[0].isValide = true;
             this.StepperConfig[0].isComplete = true;
@@ -729,7 +766,8 @@ export class PlanificationPageComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.ComingDataResumerPre = response;
-          setTimeout(()=>stepper.next(),800);
+          setTimeout(() => stepper.next(), 800);
+          this.CompleteAll(2);
           this.StepperConfig[3].isDisable = false;
           this.StepperConfig[2].isComplete = true;
           this.StepperConfig[2].isValide = true;
@@ -743,7 +781,7 @@ export class PlanificationPageComponent implements OnInit {
         })
 
   }
-  
+
 
   GenererPlanification(stepper: any) {
     this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/GenerationPlanifications/" + "nasr", null)
@@ -751,14 +789,16 @@ export class PlanificationPageComponent implements OnInit {
         (response: any) => {
           console.log(response);
           if (response.is_Start) {
+            this.CompleteAll(3);
             this.StepperConfig[4].isDisable = false;
             this.StepperConfig[3].isComplete = true;
             this.StepperConfig[3].isValide = true;
             setTimeout(() => stepper.next(), 800);
+            $(".alert-info").show();
             setTimeout(() => $(".alert-info").hide(), 2000);
             let i = setInterval(() => {
-              if(this.Stop) 
-                  clearInterval(i);
+              if (this.Stop)
+                clearInterval(i);
 
               this.temps_minute++;
               if (this.temps_minute == 59) {
@@ -788,32 +828,45 @@ export class PlanificationPageComponent implements OnInit {
         })
   }
 
-  ArretGeneration() {
-    
+  TempsEstime: number = 0;
+  ArretGeneration(stepper: any) {
+    this.TempsEstime = 4 * 2;
 
-    this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ArretGeneration/" + "nasr", null)
-      .subscribe(
-        (response: any) => {
-          if (response.is_Stop) {
-            console.log("Generetion arreter");
-            this.Stop = true;
-            $(".planification").css(
-              {
-                "transform": "scale(1.1)"
+   
+        this.http.post("https://smartplanning-backend.herokuapp.com/Generation" + "/ArretGeneration/" + "nasr", null)
+          .subscribe(
+            (response: any) => {
+              if (response.is_Stop) {
+                console.log("Generetion arreter");
+                this.Stop = true;
+                $(".planification").css(
+                  {
+                    "transform": "scale(1.1)"
+                  }
+                )
+
+
+                setTimeout(() => $(".alert-success").hide(), 2000);
+                this.StepperConfig[4].isValide = false
+                this.StepperConfig[4].isComplete = true;
               }
-            )
-            $(".alert-success").show();
-            setTimeout(() => $(".alert-success").hide(), 2000);
-            this.StepperConfig[4].isValide = false
-            this.StepperConfig[4].isComplete = true;
-          }
-          console.log(response);
-        },
-        (error: any) => {
-          console.log(error);
-        })
+              console.log(response);
+            },
+            (error: any) => {
+              console.log(error);
+            })
+        
+        $(".arrete").html("Evaluer")
+        $(".tohide").hide(200);
+        $("#evaluation").show(500);
+        $(".alert-success").show();
 
+        
+   
   }
+
+
+
 
 }
 
