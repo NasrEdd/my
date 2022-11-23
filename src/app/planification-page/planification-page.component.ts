@@ -24,7 +24,7 @@ export class PlanificationPageComponent implements OnInit {
   StepperConfig: { PageTitle: string, StepTitle: string, isValide: boolean, isComplete: boolean, isDisable: boolean }[] =
     [
       { PageTitle: "", StepTitle: "Smart-Planing", isValide: true, isComplete: false, isDisable: false },
-      { PageTitle: "Importation des fichiers EXCEL", StepTitle: "Importation", isValide: false, isComplete: false, isDisable: true },
+      { PageTitle: "Importation des fichiers EXCEL", StepTitle: "Importation", isValide: true, isComplete: false, isDisable: true },
       { PageTitle: "Resultat Pre-Traitement", StepTitle: "PréTraitement", isValide: true, isComplete: false, isDisable: true },
       { PageTitle: "Lancement de l'algorithme", StepTitle: "Lancement", isValide: true, isComplete: false, isDisable: true },
       { PageTitle: "Meilleurs planifications", StepTitle: "Planifications", isValide: true, isComplete: false, isDisable: true },
